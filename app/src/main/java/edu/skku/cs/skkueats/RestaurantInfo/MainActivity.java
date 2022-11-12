@@ -1,9 +1,8 @@
-package edu.skku.cs.skkueats;
+package edu.skku.cs.skkueats.RestaurantInfo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -15,6 +14,8 @@ import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.Marker;
 
 import java.util.ArrayList;
+
+import edu.skku.cs.skkueats.R;
 
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, RestaurantInfoContract.contactView {

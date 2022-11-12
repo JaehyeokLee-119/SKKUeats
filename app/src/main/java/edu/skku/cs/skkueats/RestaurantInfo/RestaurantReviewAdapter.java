@@ -1,4 +1,4 @@
-package edu.skku.cs.skkueats;
+package edu.skku.cs.skkueats.RestaurantInfo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import edu.skku.cs.skkueats.R;
 
 class RestaurantReview {
     public String writer;

@@ -1,4 +1,4 @@
-package edu.skku.cs.skkueats;
+package edu.skku.cs.skkueats.RestaurantInfo;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package edu.skku.cs.skkueats;
+package edu.skku.cs.skkueats.RestaurantInfo;
 
 public interface RestaurantInfoContract {
     interface contactView {

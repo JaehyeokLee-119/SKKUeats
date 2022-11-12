@@ -1,4 +1,4 @@
-package edu.skku.cs.skkueats;
+package edu.skku.cs.skkueats.RestaurantInfo;
 
 public class RestaurantInfoPresenter implements RestaurantInfoContract.contactPresenter {
     RestaurantInfoContract.contactView view;
@@ -10,6 +10,6 @@ public class RestaurantInfoPresenter implements RestaurantInfoContract.contactPr
 
     @Override
     public void initRestaurant() {
-        view.newReview();
+
     }
 }
