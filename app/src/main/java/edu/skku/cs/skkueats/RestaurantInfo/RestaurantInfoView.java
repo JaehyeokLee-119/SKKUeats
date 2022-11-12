@@ -2,6 +2,7 @@ package edu.skku.cs.skkueats.RestaurantInfo;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,14 +27,20 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
     private RestaurantReviewAdapter restaurantReviewAdapter;
     private RestaurantInfoPresenter presenter;
     private Bundle savedInstanceState;
+    private String restaurantName;
+    private TextView textViewRestaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_restaurant_info);
         this.savedInstanceState = savedInstanceState;
-        presenter = new RestaurantInfoPresenter(this);
+
+        restaurantName = getIntent().getStringExtra("RestaurantName");
+        presenter = new RestaurantInfoPresenter(this, restaurantName);
+
         initView();
+        textViewRestaurantName.setText(restaurantName);
 
         newReview("rPwjd1", "돈가스김치나베", 5, "돈가스김치나베 맛있어요", false);
         newReview("rPwjd15", "카베동", 3, "리뷰내용", false);
@@ -50,6 +57,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
+        textViewRestaurantName = findViewById(R.id.textViewRestaurantName);
         reviewList = findViewById(R.id.listViewReviews);
     }
 

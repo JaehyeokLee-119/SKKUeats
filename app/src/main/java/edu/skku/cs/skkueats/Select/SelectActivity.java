@@ -1,4 +1,4 @@
-package edu.skku.cs.skkueats.RestaurantInfo;
+package edu.skku.cs.skkueats.Select;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.skku.cs.skkueats.R;
+import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 public class SelectActivity extends AppCompatActivity {
     Button button;
