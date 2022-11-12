@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewHeadLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="상세정보"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textViewRestaurantName"
+        android:background="@drawable/shape_for_soft_rectangle_pastelblue"
+        android:layout_width="350dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:text="미가"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine" />
+
+    <TextView
+        android:id="@+id/menus"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_marginTop="8dp"
+        android:text="메뉴 보기"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map_view" />
+
+    <com.naver.maps.map.MapView
+        android:id="@+id/map_view"
+        android:layout_width="350dp"
+        android:layout_height="210dp"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRestaurantName">
+
+    </com.naver.maps.map.MapView>
+
+    <Button
+        android:id="@+id/buttonReviewWrite"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/shape_for_circle_button"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <ListView
+        android:id="@+id/listViewReviews"
+        android:layout_width="0dp"
+        android:layout_height="440dp"
+        android:layout_marginTop="24dp"
+        android:divider="#FFFFFF"
+        android:dividerHeight="0px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menus">
+
+    </ListView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
