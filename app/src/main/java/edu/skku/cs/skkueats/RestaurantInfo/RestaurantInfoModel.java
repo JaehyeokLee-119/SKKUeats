@@ -24,6 +24,7 @@ public class RestaurantInfoModel implements RestaurantInfoContract.contactModel 
 
     @Override
     public void fetchReviews(String restaurantName) {
+        // restaurantName으로 db에 요청해서 리뷰 정보를 다 받아와야 함
         reviewArray.add(new RestaurantReview("rPwjd1", "돈가스김치나베", 5,
                 "돈가스김치나베 맛있어요", false));
 
@@ -45,6 +46,7 @@ public class RestaurantInfoModel implements RestaurantInfoContract.contactModel 
 
     @Override
     public void fetchLatLng(String restaurantName) {
+        // restaurantName으로 db에 요청해서 가게의 위도, 경도를 받아오기
         latLng = new LatLng(37.29718,  126.97018);
 
         // 위도, 경도 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시

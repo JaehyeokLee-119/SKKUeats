@@ -5,23 +5,21 @@ import com.naver.maps.geometry.LatLng;
 import java.util.ArrayList;
 
 public class MenuRecommendsModel implements MenuRecommendsContract.contactModel {
-    public String restaurantName;
     private ArrayList<MenuRecommends> recommendsArray;
     private MenuRecommendsContract.contactView view;
 
-    public MenuRecommendsModel(MenuRecommendsContract.contactView view, String restaurantName) {
-        this.restaurantName = restaurantName;
+    public MenuRecommendsModel(MenuRecommendsContract.contactView view) {
         this.view = view;
         recommendsArray = new ArrayList<>();
-        fetchRecommends(restaurantName);
+        fetchRecommends();
     }
 
     @Override
-    public void fetchRecommends(String restaurantName) {
+    public void fetchRecommends() {
         recommendsArray.add(new MenuRecommends("미가", "돈가스김치나베", 8000, "후문쪽"));
-//        recommendsArray.add(new MenuRecommends("미가", "돈가스김치나베", 6000, "후문쪽"));
-//        recommendsArray.add(new MenuRecommends("미가", "돈가스김치나베", 6000, "후문쪽"));
-//        recommendsArray.add(new MenuRecommends("미가", "돈가스김치나베", 6000, "후문쪽"));
+        recommendsArray.add(new MenuRecommends("미가", "돈가스김치나베", 6000, "후문쪽"));
+        recommendsArray.add(new MenuRecommends("본찌 돈가스", "메밀정식", 7000, "후문쪽"));
+        recommendsArray.add(new MenuRecommends("미가", "돈가스김치나베", 6000, "후문쪽"));
 
 
         // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시

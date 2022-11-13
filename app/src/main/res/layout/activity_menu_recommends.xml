@@ -13,6 +13,7 @@
         android:layout_marginTop="36dp"
         android:text="추천목록"
         android:textSize="24sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

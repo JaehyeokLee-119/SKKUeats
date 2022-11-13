@@ -1,6 +1,7 @@
 package edu.skku.cs.skkueats.MenuRecommends;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.skku.cs.skkueats.R;
+import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 class MenuRecommends {
     public String restaurantName;
@@ -80,21 +82,20 @@ public class MenuRecommendsAdapter extends BaseAdapter {
                 R.drawable.shape_for_soft_rectangle_pastelpurple};
         Random rand = new Random();
         box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
-        
-        
+
         restaurantName.setText(items.get(i).restaurantName);
         menuName.setText(items.get(i).menuName);
         menuContent.setText(Integer.toString(items.get(i).price)+" ₩\n"+items.get(i).locations);
 
-        // ListView 클릭 비활성화
-        view.setOnTouchListener(new View.OnTouchListener() {
 
+        view.setOnClickListener(new View.OnClickListener(){
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-
-            }});
-
+            public void onClick(View view){
+                Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
+                intent.putExtra("RestaurantName",items.get(i).restaurantName);
+                mContext.startActivity(intent);
+            }
+        });
         return view;
     }
 }

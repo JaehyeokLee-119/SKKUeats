@@ -1,5 +1,6 @@
 package edu.skku.cs.skkueats.RestaurantInfo;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
@@ -29,6 +30,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
     private Bundle savedInstanceState;
     private String restaurantName;
     private TextView textViewRestaurantName;
+    private TextView textViewSeeMenu;
     private LatLng latLng; // 지도에 표시할 위도/경도
     private CameraPosition cameraPosition; // 지도에 표시할 camera position
     private RestaurantInfoModel model;
@@ -68,8 +70,10 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         textViewRestaurantName = findViewById(R.id.textViewRestaurantName);
         reviewList = findViewById(R.id.listViewReviews);
         textViewRestaurantName.setText(restaurantName);
+        textViewSeeMenu = findViewById(R.id.textViewSeeMenu);
         latLng = new LatLng(37.293363799999916,  126.9746702539383);
 
+        textViewSeeMenu.setPaintFlags(textViewSeeMenu.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         mapView = (MapView) findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);

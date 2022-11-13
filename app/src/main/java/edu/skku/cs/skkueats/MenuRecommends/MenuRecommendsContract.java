@@ -7,10 +7,11 @@ import java.util.ArrayList;
 public interface MenuRecommendsContract {
     interface contactView {
         void showRecommend(MenuRecommends menuRecommends);
+        void initView();
     }
 
     interface contactModel {
-        void fetchRecommends(String restaurantName);
+        void fetchRecommends();
         void pushRecommendsToViewer(ArrayList<MenuRecommends> reviewArrays);
     }
 }

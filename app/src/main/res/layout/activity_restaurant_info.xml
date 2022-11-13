@@ -12,8 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="상세정보"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,25 +27,28 @@
         android:layout_width="350dp"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
-        android:text="미가"
+        android:text="가게이름"
+        android:textColor="@color/black"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="32dp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewHeadLine" />
 
     <TextView
-        android:id="@+id/menus"
+        android:id="@+id/textViewSeeMenu"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:layout_marginTop="8dp"
         android:text="메뉴 보기"
+        android:textColor="@color/black"
         android:textAlignment="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +89,7 @@
         android:dividerHeight="0px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menus">
+        app:layout_constraintTop_toBottomOf="@+id/textViewSeeMenu">
 
     </ListView>
 
