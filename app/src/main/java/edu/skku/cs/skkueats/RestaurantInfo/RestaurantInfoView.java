@@ -25,12 +25,12 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
     private ArrayList<RestaurantReview> reviewArray = new ArrayList<>();
     private ListView reviewList;
     private RestaurantReviewAdapter restaurantReviewAdapter;
-    private RestaurantInfoPresenter presenter;
     private Bundle savedInstanceState;
     private String restaurantName;
     private TextView textViewRestaurantName;
     private LatLng latLng; // 지도에 표시할 위도/경도
     private CameraPosition cameraPosition; // 지도에 표시할 camera position
+    private RestaurantInfoModel model;
 
     /*
     각 식당의 상세 정보를 눌렀을 때 나오는 창 (추천 혹은 검색 결과에서)
@@ -45,15 +45,22 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         setContentView(R.layout.activity_restaurant_info);
         this.savedInstanceState = savedInstanceState;
 
+        /*
+        View 생성시:
+            0. Activity에 있는 View를 초기화해줌
+                - initView()
+            1. Intent로부터 가게이름 Extra를 받아옴
+            2. 모델에게 DB 통신을 시켜서 가게메뉴들, 가게위치, 리뷰들을 받아옴
+                - model = new model
+                // 가게 DB에 가게 이름으로 쿼리를 보내서 위도, 경도를 받아옴
+                // 리뷰 DB에 가게 이름으로 쿼리를 보내서 리뷰 정보들을 받아옴
+                - 모델은 view에게 리뷰를 표시
+            3. 네이버지도가 로딩이 완료되면, model에게 onMapLoaded를 실행시켜 카메라 위치를 재설정하도록 함
+         */
+
         restaurantName = getIntent().getStringExtra("RestaurantName");
-            // 가게 DB에 가게 이름으로 쿼리를 보내서 위도, 경도를 받아옴
-            // 리뷰 DB에 가게 이름으로 쿼리를 보내서 리뷰 정보들을 받아옴
-
         initView();
-
-        presenter = new RestaurantInfoPresenter(this, restaurantName);
-        //setMapCamera(37.29718,  126.97018);
-
+        model = new RestaurantInfoModel(this, restaurantName);
     }
 
     private void initView() {
@@ -82,6 +89,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         marker.setPosition(latLng);
         marker.setMap(naverMap);
         naverMap.setCameraPosition(cameraPosition);
+        model.onMapLoaded();
     }
 
     @Override

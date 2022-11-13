@@ -1,5 +1,7 @@
 package edu.skku.cs.skkueats.RestaurantInfo;
 
+import com.naver.maps.geometry.LatLng;
+
 import java.util.ArrayList;
 
 public interface RestaurantInfoContract {
@@ -9,17 +11,9 @@ public interface RestaurantInfoContract {
     }
 
     interface contactModel {
-        interface onFinished_Listener{
-            void onFinished(ArrayList<RestaurantReview> reviewArray);
-        }
-        void sendRequest(onFinished_Listener onFinished_listener);
-    }
-
-    interface contactPresenter {
-        void initRestaurant();
-        void onMenuButtonTouched();
-        void onNewReviewButtonTouched();
+        void fetchReviews(String restaurantName);
         void pushReviewsToViewer(ArrayList<RestaurantReview> reviewArrays);
+        void fetchLatLng(String restaurantName);
+        void pushMapCamera(LatLng latLng);
     }
-
 }
