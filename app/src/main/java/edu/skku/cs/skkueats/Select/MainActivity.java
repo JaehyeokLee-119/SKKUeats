@@ -18,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
     /*
     앱 실행시 가장 먼저 나오는 창
-    지금은 우선 버튼 하나만 구현됨
     버튼: 누르면 미가라멘 가게의 상세정보로 가는 인텐트를 함
+    
+    테스트 용도로 사용
+    버튼 만들어서 액티비티 연결해서 테스트용도로 쓰세요
      */
 
     @Override
@@ -29,22 +31,19 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.migaTest);
         button2 = findViewById(R.id.button2);
 
-        button.setOnClickListener(new View.OnClickListener(){
-
+        button2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), RestaurantInfoView.class);
-                intent.putExtra("RestaurantName","미가라멘");
+                Intent intent = new Intent(getApplicationContext(), MenuRecommendsView.class);
                 startActivity(intent);
             }
         });
 
-
-        button2.setOnClickListener(new View.OnClickListener(){
-
+        button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), MenuRecommendsView.class);
+                Intent intent = new Intent(getApplicationContext(), RestaurantInfoView.class);
+                intent.putExtra("RestaurantName","미가라멘");
                 startActivity(intent);
             }
         });
