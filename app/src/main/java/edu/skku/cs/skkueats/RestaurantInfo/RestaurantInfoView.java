@@ -1,6 +1,7 @@
 package edu.skku.cs.skkueats.RestaurantInfo;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
