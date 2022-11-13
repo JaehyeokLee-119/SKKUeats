@@ -26,6 +26,13 @@ class RestaurantReview {
         this.content = content;
         this.isTroll = isTroll;
     }
+    public RestaurantReview(RestaurantReview restaurantReview) {
+        this.writer = restaurantReview.writer;
+        this.menu = restaurantReview.menu;
+        this.grade = restaurantReview.grade;
+        this.content = restaurantReview.content;
+        this.isTroll = restaurantReview.isTroll;
+    }
 }
 
 
@@ -79,7 +86,7 @@ public class RestaurantReviewAdapter extends BaseAdapter {
         gradeStar.setText(starString);
         reviewContent.setText(items.get(i).content);
 
-        // 클릭 비활성화
+        // ListView 클릭 비활성화
         view.setOnTouchListener(new View.OnTouchListener() {
 
             @Override

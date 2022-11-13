@@ -51,16 +51,9 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
 
         initView();
 
-        showReview("rPwjd1", "돈가스김치나베", 5, "돈가스김치나베 맛있어요", false);
-        showReview("rPwjd15", "에비동", 3, "리뷰내용", false);
-        showReview("rPw55jd1", "치킨동", 4, "치킨동맛있어요", true);
-        showReview("rPw24jd1", "치킨동", 2, "치킨동맛있어요", true);
-        showReview("r125jd1", "치킨동", 2, "치킨동맛있어요", true);
-        showReview("rPw24d1", "치킨동", 2, "치킨동맛있어요", true);
-        showReview("rPw521d1", "치킨동", 2, "치킨동맛있어요", true);
-
-        //presenter = new RestaurantInfoPresenter(this, restaurantName);
+        presenter = new RestaurantInfoPresenter(this, restaurantName);
         //setMapCamera(37.29718,  126.97018);
+
     }
 
     private void initView() {
