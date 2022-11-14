@@ -25,7 +25,7 @@
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/shape_for_soft_rectangle_pastelblue"
+        android:background="@drawable/shape_for_soft_rectangle_pastelcyan"
         android:gravity="center"
         android:text="검색"
         android:textColor="@color/black"

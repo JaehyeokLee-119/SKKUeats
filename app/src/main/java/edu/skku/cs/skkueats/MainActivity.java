@@ -1,4 +1,4 @@
-package edu.skku.cs.skkueats.Select;
+package edu.skku.cs.skkueats;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import edu.skku.cs.skkueats.MenuRecommends.MenuRecommendsView;
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 import edu.skku.cs.skkueats.SearchActivity.SearchActivityView;
+import edu.skku.cs.skkueats.Select.SelectActivity;
 
 
 public class MainActivity extends AppCompatActivity {
