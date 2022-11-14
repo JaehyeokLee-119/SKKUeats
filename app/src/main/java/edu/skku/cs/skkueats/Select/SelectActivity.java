@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.skku.cs.skkueats.MenuRecommendedList.MenuRecommendsView;
+import edu.skku.cs.skkueats.MyProfile.MyProfileView;
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.SearchActivity.SearchActivityView;
 
@@ -38,8 +39,8 @@ public class SelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), SearchActivityView.class);
-                String userID = "DummyID";
-                intent.putExtra("userID", userID);
+                String userId = "DummyID";
+                intent.putExtra("userId", userId);
                 startActivity(intent);
             }
         });
@@ -47,8 +48,10 @@ public class SelectActivity extends AppCompatActivity {
         textViewSelectMyprofile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-//                Intent intent = new Intent(getApplicationContext(), SearchActivityView.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), MyProfileView.class);
+                String userId = "DummyID";
+                intent.putExtra("userId", userId);
+                startActivity(intent);
             }
         });
     }

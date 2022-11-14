@@ -24,6 +24,7 @@
         <activity android:name=".SearchActivity.SearchActivityView" />
         <activity android:name=".Login.LoginView" />
         <activity android:name=".Register.RegisterView" />
+        <activity android:name=".MyProfile.MyProfileView" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
