@@ -20,20 +20,498 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ListView
-        android:id="@+id/listViewRecommends"
-        android:layout_width="match_parent"
-        android:layout_height="620dp"
-        android:divider="#FFFFFF"
-        android:dividerHeight="0px"
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutBigCategory"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHeadLine">
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeadLine"
+        app:layout_constraintVertical_bias="0.033">
 
-    </ListView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutBigCategoryTitle"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_for_soft_rectangle_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.622"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.071">
+
+            <TextView
+                android:id="@+id/textViewBigCategoryTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="대분류"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewBigCategoryArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="↓"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle">
+
+            <RadioGroup
+                android:id="@+id/radioGroupBig1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxKorean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="한식" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxChinese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="중식" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxJapanese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="일식" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupBig2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxWestern"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="양식" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxAsian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="아시안" />
+
+                <RadioButton
+                    android:id="@+id/radioBigFast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="패스트푸드" />
+
+                <RadioButton
+                    android:id="@+id/radioBigElse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="뭐든지" />
+            </RadioGroup>
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutSmallCategory"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutBigCategory"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutBigCategory"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategory">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutSmallCategoryTitle"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_for_soft_rectangle_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.086">
+
+            <TextView
+                android:id="@+id/textViewSmallCategoryTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="소분류"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewSmallCategoryArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="↓"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroupSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSmallCategoryTitle">
+
+            <RadioGroup
+                android:id="@+id/radioGroupSmall1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioSmallSoup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="탕" />
+
+                <RadioButton
+                    android:id="@+id/radioSmallRice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="밥" />
+
+                <RadioButton
+                    android:id="@+id/radioSmallMeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="고기" />
+
+                <RadioButton
+                    android:id="@+id/radioSmallNoddle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="면" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupSmall2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioSmallWithAlcohol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="안주" />
+
+                <RadioButton
+                    android:id="@+id/radioSmallPizza"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="피자" />
+
+                <RadioButton
+                    android:id="@+id/radioSmallChicken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="치킨" />
+
+                <RadioButton
+                    android:id="@+id/radioSmallElse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="뭐든지" />
+
+            </RadioGroup>
+
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutPrice"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutSmallCategory"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutSmallCategory"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSmallCategory">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutPriceTitle"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_for_soft_rectangle_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.135">
+
+            <TextView
+                android:id="@+id/textViewPriceTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="가격"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewPriceArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="↓"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <SeekBar
+            android:id="@+id/seekBarPrice"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutPriceTitle"
+            app:layout_constraintHorizontal_bias="0.245"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutPriceTitle"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPriceTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutMinGrade"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutPrice"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutPrice"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPrice">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutMinGradeTitle"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_for_soft_rectangle_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.135">
+
+            <TextView
+                android:id="@+id/textViewMingradeTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="최소평점"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.428" />
+
+            <TextView
+                android:id="@+id/textViewMingradeArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="↓"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutMinGradeTitle"
+            app:layout_constraintHorizontal_bias="0.245"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutMinGradeTitle"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGradeTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutLocation"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutMinGrade"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutMinGrade"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGrade">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutLocationTitle"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_for_soft_rectangle_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.622"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.071">
+
+            <TextView
+                android:id="@+id/textViewLocationTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="위치"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewLocationArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:text="↓"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutLocationTitle"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutLocationTitle"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutLocationTitle"
+            app:layout_constraintVertical_bias="0.0">
+
+            <RadioButton
+                android:id="@+id/radioLocationForeDoor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="정문쪽" />
+
+            <RadioButton
+                android:id="@+id/radioLocationBehindDoor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="후문쪽" />
+
+            <RadioButton
+                android:id="@+id/radioLocationAcross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="길건너" />
+
+            <RadioButton
+                android:id="@+id/radioLocationElsewhere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="멀리" />
+
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/boxRecommendComplete"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_for_soft_rectangle_purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutLocation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutLocation"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutLocation"
+        app:layout_constraintVertical_bias="0.49">
+
+        <TextView
+            android:id="@+id/textViewMMIrestaurantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추천 받기"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
