@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,11 +42,26 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
         /*
         View 생성시:
             0. Activity에 있는 View를 초기화해줌
-
+            1. recommendQueryCondition에다가 Intent로부터 조건들을 받아옴
+                [대분류, 소분류, 가격, 최소평점, 위치]
+            2. recommendQueryCondition를 넣어서 model을 만든다
+            -> model은
          */
 
         initView();
-        model = new MenuRecommendsModel(this);
+
+        String[] conditions = getIntent().getStringArrayExtra("conditions");
+        RecommendQueryCondition recommendQueryCondition = new RecommendQueryCondition(
+                conditions[0], conditions[1], Integer.parseInt(conditions[2]),
+                Double.parseDouble(conditions[3]), conditions[4], Integer.parseInt(conditions[5])
+        );
+
+        // 받은 조건 Intent를 일단 테스트용으로 토스트 띄워보기
+        Toast.makeText(getApplicationContext(), conditions[0]+" "+conditions[1]+" "+conditions[2]+" "+
+                conditions[3]+" "+conditions[4]+" "+conditions[5], Toast.LENGTH_SHORT).show();
+        
+        
+        model = new MenuRecommendsModel(this, recommendQueryCondition);
     }
 
     @Override

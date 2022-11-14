@@ -17,6 +17,7 @@ import java.util.Random;
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
+
 class MenuRecommends {
     public String restaurantName;
     public String menuName;

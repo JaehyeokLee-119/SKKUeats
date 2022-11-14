@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 import edu.skku.cs.skkueats.MenuRecommends.MenuRecommendsView;
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), MenuRecommendsView.class);
+                String[] conditions = new String[]{"대분류", "소분류", "5000", "3.5", "위치", "5"};
+                intent.putExtra("conditions", conditions);
                 startActivity(intent);
             }
         });
