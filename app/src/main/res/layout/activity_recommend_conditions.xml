@@ -84,15 +84,44 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioBigWestern"
+                <CheckBox
+                    android:id="@+id/checkBoxKorean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="한식" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxChinese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="중식" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxJapanese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="일식" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupBig2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxWestern"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="양식" />
 
-                <RadioButton
-                    android:id="@+id/radioBigAsian"
+                <CheckBox
+                    android:id="@+id/checkBoxAsian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -113,33 +142,6 @@
                     android:text="뭐든지" />
             </RadioGroup>
 
-            <RadioGroup
-                android:id="@+id/radioGroupBig2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioBigKorean"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="한식" />
-
-                <RadioButton
-                    android:id="@+id/radioBigChinese"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="중식" />
-
-                <RadioButton
-                    android:id="@+id/radioBigJapanese"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="일식" />
-            </RadioGroup>
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
