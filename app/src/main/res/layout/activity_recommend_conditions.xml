@@ -69,90 +69,78 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TableLayout
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle">
+
+            <RadioGroup
+                android:id="@+id/radioGroupBig1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/constraintLayoutBigCategoryTitle"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayoutBigCategoryTitle"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <RadioButton
+                    android:id="@+id/radioBigWestern"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="양식" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <RadioButton
+                    android:id="@+id/radioBigAsian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="아시안" />
 
-                    <RadioGroup
-                        android:id="@+id/radioGroupBig"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radioBigFast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="패스트푸드" />
 
-                        <RadioButton
-                            android:id="@+id/radioBigKorean"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="한식" />
+                <RadioButton
+                    android:id="@+id/radioBigElse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="뭐든지" />
+            </RadioGroup>
 
-                        <RadioButton
-                            android:id="@+id/radioBigChinese"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="중식" />
+            <RadioGroup
+                android:id="@+id/radioGroupBig2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/radioBigJapanese"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="일식" />
-                    </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radioBigKorean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="한식" />
 
-                </TableRow>
+                <RadioButton
+                    android:id="@+id/radioBigChinese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="중식" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupBig"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/radioBigWestern"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="양식" />
-
-                        <RadioButton
-                            android:id="@+id/radioBigAsian"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="아시안" />
-
-                        <RadioButton
-                            android:id="@+id/radioBigFast"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="패스트푸드" />
-
-                        <RadioButton
-                            android:id="@+id/radioBigElse"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="뭐든지" />
-                    </RadioGroup>
-                </TableRow>
-
-            </TableLayout>
+                <RadioButton
+                    android:id="@+id/radioBigJapanese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="일식" />
+            </RadioGroup>
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -203,91 +191,85 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RadioGroup
+            android:id="@+id/radioGroupSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSmallCategoryTitle">
 
-            <TableLayout
+            <RadioGroup
+                android:id="@+id/radioGroupSmall1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <RadioButton
+                    android:id="@+id/radioSmallSoup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="탕" />
 
-                    <RadioButton
-                        android:id="@+id/radioSmallRice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="밥" />
+                <RadioButton
+                    android:id="@+id/radioSmallRice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="밥" />
 
-                    <RadioButton
-                        android:id="@+id/radioSmallNoddle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="면" />
+                <RadioButton
+                    android:id="@+id/radioSmallMeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="고기" />
 
-                    <RadioButton
-                        android:id="@+id/radioSmallSoup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="탕" />
+                <RadioButton
+                    android:id="@+id/radioSmallNoddle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="면" />
+            </RadioGroup>
 
-                    <RadioButton
-                        android:id="@+id/radioSmallMeat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="고기" />
-                </TableRow>
+            <RadioGroup
+                android:id="@+id/radioGroupSmall2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <RadioButton
+                    android:id="@+id/radioSmallWithAlcohol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="안주" />
 
-                    <RadioButton
-                        android:id="@+id/radioSmallChicken"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="치킨" />
+                <RadioButton
+                    android:id="@+id/radioSmallPizza"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="피자" />
 
-                    <RadioButton
-                        android:id="@+id/radioSmallPizza"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="피자" />
+                <RadioButton
+                    android:id="@+id/radioSmallChicken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="치킨" />
 
-                    <RadioButton
-                        android:id="@+id/radioSmallWithAlcohol"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="안주" />
+                <RadioButton
+                    android:id="@+id/radioSmallElse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="뭐든지" />
 
-                    <RadioButton
-                        android:id="@+id/radioSmallElse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="뭐든지" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </TableLayout>
+            </RadioGroup>
 
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -468,44 +450,33 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayoutLocationTitle"
             app:layout_constraintVertical_bias="0.0">
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <RadioButton
+                android:id="@+id/radioLocationForeDoor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="정문쪽" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <RadioButton
+                android:id="@+id/radioLocationBehindDoor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="후문쪽" />
 
-                    <RadioButton
-                        android:id="@+id/radioLocationBehindDoor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="후문쪽" />
+            <RadioButton
+                android:id="@+id/radioLocationAcross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="길건너" />
 
-                    <RadioButton
-                        android:id="@+id/radioLocationForeDoor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="정문쪽" />
-
-                    <RadioButton
-                        android:id="@+id/radioLocationAcross"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="길건너" />
-
-                    <RadioButton
-                        android:id="@+id/radioLocationElsewhere"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="멀리" />
-                </TableRow>
-
-            </TableLayout>
+            <RadioButton
+                android:id="@+id/radioLocationElsewhere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="멀리" />
 
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
