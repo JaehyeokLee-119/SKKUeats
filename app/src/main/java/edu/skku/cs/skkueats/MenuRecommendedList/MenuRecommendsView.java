@@ -1,26 +1,14 @@
-package edu.skku.cs.skkueats.MenuRecommends;
+package edu.skku.cs.skkueats.MenuRecommendedList;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.naver.maps.geometry.LatLng;
-import com.naver.maps.map.CameraPosition;
-import com.naver.maps.map.MapView;
-import com.naver.maps.map.NaverMap;
-import com.naver.maps.map.OnMapReadyCallback;
-import com.naver.maps.map.overlay.Marker;
 
 import java.util.ArrayList;
 
 import edu.skku.cs.skkueats.R;
-import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 
 public class MenuRecommendsView extends AppCompatActivity implements MenuRecommendsContract.contactView {

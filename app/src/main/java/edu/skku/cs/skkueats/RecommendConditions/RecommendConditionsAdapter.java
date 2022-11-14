@@ -1,9 +1,8 @@
-package edu.skku.cs.skkueats.MenuRecommends;
+package edu.skku.cs.skkueats.RecommendConditions;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,32 +17,35 @@ import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 
-class MenuRecommends {
-    public String restaurantName;
-    public String menuName;
+class RecommendConditionItem {
+    public String conditionName;
+    public String itemType;
+        // =="Condition Name", =="Condition Content"
+    public boolean conditionActivated;
     public int price;
-    public String locations;
+    public double minGrade;
 
-    public MenuRecommends(String restaurantName, String menuName, int price, String locations) {
-        this.restaurantName = restaurantName;
-        this.menuName = menuName;
+
+    public RecommendConditionItem(String conditionName, boolean conditionActivated, int price, String locations) {
+        this.conditionName = conditionName;
+        this.conditionActivated = conditionActivated;
         this.price = price;
-        this.locations = locations;
+        this.minGrade = minGrade;
     }
-    public MenuRecommends(MenuRecommends menuRecommends) {
-        this.restaurantName = menuRecommends.restaurantName;
-        this.menuName = menuRecommends.menuName;
-        this.price = menuRecommends.price;
-        this.locations = menuRecommends.locations;
+    public RecommendConditionItem(RecommendConditionItem recommendConditionItem) {
+        this.conditionName = recommendConditionItem.conditionName;
+        this.conditionActivated = recommendConditionItem.conditionActivated;
+        this.price = recommendConditionItem.price;
+        this.minGrade = recommendConditionItem.minGrade;
     }
 }
 
 
-public class MenuRecommendsAdapter extends BaseAdapter {
+public class RecommendConditionsAdapter extends BaseAdapter {
     private Context mContext;
-    private ArrayList<MenuRecommends> items;
+    private ArrayList<RecommendConditionItem> items;
 
-    public MenuRecommendsAdapter(Context mContext, ArrayList<MenuRecommends> items) {
+    public RecommendConditionsAdapter(Context mContext, ArrayList<RecommendConditionItem> items) {
         this.mContext = mContext;
         this.items = items;
     }
@@ -69,6 +71,29 @@ public class MenuRecommendsAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.menu_recommend_item, viewGroup, false);
         }
+        /* 결과적인 형태
+            대분류 ↓
+            ― 조건선택 (조건 이름에 맞는 적절한 형태의 조건)
+            소분류 ↓
+            ― 조건선택
+            가격 ↓ (화살표 클릭시 조건선택,다음조건이름이 추가되면서 [추천받기] 버튼은 아래로 밀린다)
+            [  추천받기  ]
+
+        (가격의 화살표를 눌렀을 때)
+
+            대분류 ↓
+            ― 조건선택 (조건 이름에 맞는 적절한 형태의 조건)
+            소분류 ↓
+            ― 조건선택
+            가격 ↓
+            ― 조건선택(SeekBar)
+            최소평점 ↓
+            [  추천받기  ]
+
+         */
+
+
+
         TextView restaurantName = view.findViewById(R.id.textViewMMIrestaurantName);
         TextView menuName = view.findViewById(R.id.textViewMMImenuName);
         TextView menuContent = view.findViewById(R.id.textViewMMImenuContent);
@@ -84,16 +109,14 @@ public class MenuRecommendsAdapter extends BaseAdapter {
         Random rand = new Random();
         box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
 
-        restaurantName.setText(items.get(i).restaurantName);
-        menuName.setText(items.get(i).menuName);
-        menuContent.setText(Integer.toString(items.get(i).price)+" ₩\n"+items.get(i).locations);
+        restaurantName.setText(items.get(i).conditionName);
 
 
         view.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
-                intent.putExtra("RestaurantName",items.get(i).restaurantName);
+                intent.putExtra("RestaurantName",items.get(i).conditionName);
                 mContext.startActivity(intent);
             }
         });

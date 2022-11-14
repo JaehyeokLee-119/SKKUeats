@@ -8,10 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import edu.skku.cs.skkueats.Login.LoginView;
-import edu.skku.cs.skkueats.MenuRecommends.MenuRecommendsView;
-import edu.skku.cs.skkueats.R;
-import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
-import edu.skku.cs.skkueats.SearchActivity.SearchActivityView;
+import edu.skku.cs.skkueats.MenuRecommendedList.MenuRecommendsView;
 import edu.skku.cs.skkueats.Select.SelectActivity;
 
 

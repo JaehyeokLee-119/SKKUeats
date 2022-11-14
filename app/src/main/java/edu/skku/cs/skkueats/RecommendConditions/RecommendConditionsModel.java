@@ -1,6 +1,4 @@
-package edu.skku.cs.skkueats.MenuRecommends;
-
-import com.naver.maps.geometry.LatLng;
+package edu.skku.cs.skkueats.RecommendConditions;
 
 import java.util.ArrayList;
 
@@ -30,12 +28,12 @@ class RecommendQueryCondition {
         this.maxNum = maxNum;
     }
 }
-public class MenuRecommendsModel implements MenuRecommendsContract.contactModel {
-    private ArrayList<MenuRecommends> recommendsArray;
-    private MenuRecommendsContract.contactView view;
+public class RecommendConditionsModel implements RecommendConditionsContract.contactModel {
+    private ArrayList<RecommendConditionItem> recommendsArray;
+    private RecommendConditionsContract.contactView view;
     private RecommendQueryCondition recommendQueryCondition;
 
-    public MenuRecommendsModel(MenuRecommendsContract.contactView view, RecommendQueryCondition recommendQueryCondition) {
+    public RecommendConditionsModel(RecommendConditionsContract.contactView view, RecommendQueryCondition recommendQueryCondition) {
         this.view = view;
         recommendsArray = new ArrayList<>();
         this.recommendQueryCondition = recommendQueryCondition;
@@ -47,10 +45,10 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
         // 추천 쿼리는 RecommendQueryCondition 형태로 주어짐
         // 이걸로 백엔드에 쿼리를 보내서 [가게, 메뉴, 가격, 위치]를 '개수'만큼 받아온다
 
-        recommendsArray.add(new MenuRecommends("미가라멘", "돈가스김치나베", 8000, "후문쪽"));
-        recommendsArray.add(new MenuRecommends("미가라멘", "돈가스김치나베", 6000, "후문쪽"));
-        recommendsArray.add(new MenuRecommends("본찌 돈가스", "메밀정식", 7000, "후문쪽"));
-        recommendsArray.add(new MenuRecommends("미가라멘", "돈가스김치나베", 6000, "후문쪽"));
+//        recommendsArray.add(new RecommendConditionItem("미가라멘", "돈가스김치나베", 8000, "후문쪽"));
+//        recommendsArray.add(new RecommendConditionItem("미가라멘", "돈가스김치나베", 6000, "후문쪽"));
+//        recommendsArray.add(new RecommendConditionItem("본찌 돈가스", "메밀정식", 7000, "후문쪽"));
+//        recommendsArray.add(new RecommendConditionItem("미가라멘", "돈가스김치나베", 6000, "후문쪽"));
 
 
         // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
@@ -63,10 +61,10 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
      */
 
     @Override
-    public void pushRecommendsToViewer(ArrayList<MenuRecommends> recommendsArrays) {
-        MenuRecommends menuRecommends;
+    public void pushRecommendsToViewer(ArrayList<RecommendConditionItem> recommendsArrays) {
+        RecommendConditionItem menuRecommends;
         for(int i = 0; i < recommendsArrays.size(); i++) {
-            menuRecommends = new MenuRecommends(recommendsArrays.get(i));
+            menuRecommends = new RecommendConditionItem(recommendsArrays.get(i));
             view.showRecommend(menuRecommends);
         }
     }

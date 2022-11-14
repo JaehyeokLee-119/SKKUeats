@@ -1,6 +1,4 @@
-package edu.skku.cs.skkueats.MenuRecommends;
-
-import com.naver.maps.geometry.LatLng;
+package edu.skku.cs.skkueats.MenuRecommendedList;
 
 import java.util.ArrayList;
 
