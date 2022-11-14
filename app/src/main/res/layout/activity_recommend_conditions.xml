@@ -96,14 +96,14 @@
                         android:text="한식" />
 
                     <RadioButton
-                        android:id="@+id/radioButton3"
+                        android:id="@+id/radioBigChinese"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="중식" />
 
                     <RadioButton
-                        android:id="@+id/radioButton4"
+                        android:id="@+id/radioBigJapanese"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -115,28 +115,28 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
-                        android:id="@+id/radioButton9"
+                        android:id="@+id/radioBigWestern"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="양식" />
 
                     <RadioButton
-                        android:id="@+id/radioButton10"
+                        android:id="@+id/radioBigAsian"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="아시안" />
 
                     <RadioButton
-                        android:id="@+id/radioButton11"
+                        android:id="@+id/radioBigFast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="패스트푸드" />
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/radioBigElse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -157,7 +157,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategory">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutBigCategoryTitle"
+            android:id="@+id/constraintLayoutSmallCategoryTitle"
             android:layout_width="350dp"
             android:layout_height="60dp"
             android:background="@drawable/shape_for_soft_rectangle_grey"
@@ -169,7 +169,7 @@
             app:layout_constraintVertical_bias="0.086">
 
             <TextView
-                android:id="@+id/textViewBigCategoryTitleText"
+                android:id="@+id/textViewSmallCategoryTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -182,7 +182,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewBigCategoryArrow"
+                android:id="@+id/textViewSmallCategoryArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
@@ -200,7 +200,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSmallCategoryTitle">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -211,28 +211,28 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
-                        android:id="@+id/radioBigKorean"
+                        android:id="@+id/radioSmallRice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="밥" />
 
                     <RadioButton
-                        android:id="@+id/radioButton3"
+                        android:id="@+id/radioSmallNoddle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="면" />
 
                     <RadioButton
-                        android:id="@+id/radioButton4"
+                        android:id="@+id/radioSmallSoup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="탕" />
 
                     <RadioButton
-                        android:id="@+id/radioButton5"
+                        android:id="@+id/radioSmallMeat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -244,28 +244,28 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
-                        android:id="@+id/radioButton9"
+                        android:id="@+id/radioSmallChicken"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="치킨" />
 
                     <RadioButton
-                        android:id="@+id/radioButton10"
+                        android:id="@+id/radioSmallPizza"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="피자" />
 
                     <RadioButton
-                        android:id="@+id/radioButton11"
+                        android:id="@+id/radioSmallWithAlcohol"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="안주" />
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/radioSmallElse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -294,7 +294,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutBigCategoryTitle"
+            android:id="@+id/constraintLayoutPriceTitle"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:background="@drawable/shape_for_soft_rectangle_grey"
@@ -305,7 +305,7 @@
             app:layout_constraintVertical_bias="0.135">
 
             <TextView
-                android:id="@+id/textViewBigCategoryTitleText"
+                android:id="@+id/textViewPriceTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -318,7 +318,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewBigCategoryArrow"
+                android:id="@+id/textViewPriceArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
@@ -331,14 +331,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <SeekBar
-            android:id="@+id/seekBar"
+            android:id="@+id/seekBarPrice"
             android:layout_width="0dp"
             android:layout_height="36dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutBigCategoryTitle"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutPriceTitle"
             app:layout_constraintHorizontal_bias="0.245"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayoutBigCategoryTitle"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutPriceTitle"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPriceTitle"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -353,7 +353,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutBigCategoryTitle"
+            android:id="@+id/constraintLayoutMinGradeTitle"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:background="@drawable/shape_for_soft_rectangle_grey"
@@ -364,7 +364,7 @@
             app:layout_constraintVertical_bias="0.135">
 
             <TextView
-                android:id="@+id/textViewBigCategoryTitleText"
+                android:id="@+id/textViewMingradeTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -378,7 +378,7 @@
                 app:layout_constraintVertical_bias="0.428" />
 
             <TextView
-                android:id="@+id/textViewBigCategoryArrow"
+                android:id="@+id/textViewMingradeArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
@@ -395,10 +395,10 @@
             android:layout_width="0dp"
             android:layout_height="36dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutBigCategoryTitle"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutMinGradeTitle"
             app:layout_constraintHorizontal_bias="0.245"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayoutBigCategoryTitle"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutMinGradeTitle"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGradeTitle"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -412,7 +412,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGrade">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutBigCategoryTitle"
+            android:id="@+id/constraintLayoutLocationTitle"
             android:layout_width="350dp"
             android:layout_height="60dp"
             android:background="@drawable/shape_for_soft_rectangle_grey"
@@ -424,7 +424,7 @@
             app:layout_constraintVertical_bias="0.071">
 
             <TextView
-                android:id="@+id/textViewBigCategoryTitleText"
+                android:id="@+id/textViewLocationTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -437,7 +437,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewBigCategoryArrow"
+                android:id="@+id/textViewLocationArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
@@ -454,10 +454,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutLocation"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutLocationTitle"
             app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayoutLocation"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayoutLocationTitle"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutLocationTitle"
             app:layout_constraintVertical_bias="0.0">
 
             <TableLayout
@@ -469,28 +469,28 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
-                        android:id="@+id/radioBigKorean"
+                        android:id="@+id/radioLocationBehindDoor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="후문쪽" />
 
                     <RadioButton
-                        android:id="@+id/radioButton3"
+                        android:id="@+id/radioLocationForeDoor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="정문쪽" />
 
                     <RadioButton
-                        android:id="@+id/radioButton4"
+                        android:id="@+id/radioLocationAcross"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="길건너" />
 
                     <RadioButton
-                        android:id="@+id/radioButton6"
+                        android:id="@+id/radioLocationElsewhere"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
