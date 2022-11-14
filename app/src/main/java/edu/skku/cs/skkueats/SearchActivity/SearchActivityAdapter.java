@@ -70,7 +70,7 @@ public class SearchActivityAdapter extends BaseAdapter {
         TextView restaurantName = view.findViewById(R.id.textViewMMIrestaurantName);
         TextView menuName = view.findViewById(R.id.textViewMMImenuName);
         TextView menuContent = view.findViewById(R.id.textViewMMImenuContent);
-        ConstraintLayout box = view.findViewById(R.id.boxMMIrecommend);
+        ConstraintLayout box = view.findViewById(R.id.boxRecommendComplete);
 
         
         // 박스모양+색깔 랜덤배정

@@ -13,7 +13,7 @@ import edu.skku.cs.skkueats.R;
 
 public class RecommendConditionsView extends AppCompatActivity implements RecommendConditionsContract.contactView {
     private ArrayList<RecommendConditionItem> recommendsArray = new ArrayList<>();
-    private ListView recommendsList;
+    private ListView listViewRecommendCondition;
     private RecommendConditionsAdapter restaurantReviewAdapter;
     private Bundle savedInstanceState;
     private RecommendConditionsModel model;
@@ -45,12 +45,12 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 conditions[3]+" "+conditions[4]+" "+conditions[5], Toast.LENGTH_SHORT).show();
         
         
-        model = new RecommendConditionsModel(this, recommendQueryCondition);
+        //model = new RecommendConditionsModel(this, recommendQueryCondition);
     }
 
     @Override
     public void initView() {
-        recommendsList = findViewById(R.id.listViewRecommends);
+        listViewRecommendCondition = findViewById(R.id.listViewRecommendCondition);
 
     }
 
@@ -63,6 +63,6 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         recommendsArray.add(new RecommendConditionItem(recommendConditionItem));
 //        restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray);
         restaurantReviewAdapter = new RecommendConditionsAdapter(this, recommendsArray);
-        recommendsList.setAdapter(restaurantReviewAdapter);
+        listViewRecommendCondition.setAdapter(restaurantReviewAdapter);
     }
 }

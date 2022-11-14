@@ -3,26 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutBigCategoryTitle"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:layout_margin="10dp"
         android:background="@drawable/shape_for_soft_rectangle_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499">
 
         <TextView
-            android:id="@+id/textViewRCCIconditionName"
+            android:id="@+id/textViewBigCategoryTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="조건이름"
+            android:text="가격"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -31,15 +35,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewRCCIconditionActivation"
+            android:id="@+id/textViewBigCategoryArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:text="↓"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutBigCategoryTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutBigCategoryTitle"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutBigCategoryTitle"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

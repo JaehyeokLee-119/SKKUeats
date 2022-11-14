@@ -1,6 +1,7 @@
 package edu.skku.cs.skkueats.MyProfile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import edu.skku.cs.skkueats.R;
+import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 class MyProfileReview {
     public String restaurantName;
@@ -66,13 +68,13 @@ public class MyProfileReviewAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.profile_review_item, viewGroup, false);
         }
-        TextView restaurantName = view.findViewById(R.id.textViewPRIrestaurantName);
-        TextView menuName = view.findViewById(R.id.textViewPRImenuName);
-        TextView gradeStar = view.findViewById(R.id.textViewPRIGradeStar);
-        TextView reviewContent = view.findViewById(R.id.textViewPRIReviewContent);
+        TextView textViewRestaurantName = view.findViewById(R.id.textViewPRIrestaurantName);
+        TextView textViewMenuName = view.findViewById(R.id.textViewPRImenuName);
+        TextView textViewGradeStar = view.findViewById(R.id.textViewPRIGradeStar);
+        TextView textViewReviewContent = view.findViewById(R.id.textViewPRIReviewContent);
 
-        restaurantName.setText("식당: "+items.get(i).restaurantName);
-        menuName.setText("메뉴: "+items.get(i).menu);
+        textViewRestaurantName.setText("식당: "+items.get(i).restaurantName);
+        textViewMenuName.setText("메뉴: "+items.get(i).menu);
         String starString = "";
         int j = 0;
         for (; j < items.get(i).grade; j++) {
@@ -83,8 +85,19 @@ public class MyProfileReviewAdapter extends BaseAdapter {
             starString += "☆";
         }
 
-        gradeStar.setText(starString);
-        reviewContent.setText(items.get(i).content);
+        textViewGradeStar.setText(starString);
+        textViewReviewContent.setText(items.get(i).content);
+
+        /*
+        view.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
+                intent.putExtra("RestaurantName", items.get(i).restaurantName);
+                mContext.startActivity(intent);
+            }
+        });
+        */
 
         // ListView 클릭 비활성화
         view.setOnTouchListener(new View.OnTouchListener() {
@@ -93,8 +106,8 @@ public class MyProfileReviewAdapter extends BaseAdapter {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
 
-            }});
-
+            }
+        });
         return view;
     }
 }

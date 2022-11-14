@@ -20,17 +20,16 @@ import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 class RecommendConditionItem {
     public String conditionName;
     public String itemType;
-        // =="Condition Name", =="Condition Content"
+        // =="Radio" =="SeekBar"
     public boolean conditionActivated;
     public int price;
     public double minGrade;
 
 
-    public RecommendConditionItem(String conditionName, boolean conditionActivated, int price, String locations) {
+    public RecommendConditionItem(String conditionName, boolean conditionActivated, int price) {
         this.conditionName = conditionName;
         this.conditionActivated = conditionActivated;
         this.price = price;
-        this.minGrade = minGrade;
     }
     public RecommendConditionItem(RecommendConditionItem recommendConditionItem) {
         this.conditionName = recommendConditionItem.conditionName;
@@ -67,9 +66,15 @@ public class RecommendConditionsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view == null) {
-            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.menu_recommend_item, viewGroup, false);
+
+
+        if (items.get(i).itemType=="Radio") {
+            if (view == null) {
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                view = inflater.inflate(R.layout.recommend_condition_big_category_item, viewGroup, false);
+            }
+            TextView textViewRCCIconditionActivation = view.findViewById(R.id.textViewBigCategoryArrow);
+
         }
         /* 결과적인 형태
             대분류 ↓
@@ -97,7 +102,7 @@ public class RecommendConditionsAdapter extends BaseAdapter {
         TextView restaurantName = view.findViewById(R.id.textViewMMIrestaurantName);
         TextView menuName = view.findViewById(R.id.textViewMMImenuName);
         TextView menuContent = view.findViewById(R.id.textViewMMImenuContent);
-        ConstraintLayout box = view.findViewById(R.id.boxMMIrecommend);
+        ConstraintLayout box = view.findViewById(R.id.boxRecommendComplete);
 
         
         // 박스모양+색깔 랜덤배정
