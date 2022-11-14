@@ -11,9 +11,9 @@ import edu.skku.cs.skkueats.R;
 
 
 public class SearchActivityView extends AppCompatActivity implements SearchActivityContract.contactView {
-    private ArrayList<SearchResult> recommendsArray = new ArrayList<>();
-    private ListView recommendsList;
-    private SearchActivityAdapter restaurantReviewAdapter;
+    private ArrayList<SearchResult> searchResultArray = new ArrayList<>();
+    private ListView searchResultList;
+    private SearchActivityAdapter searchActivityAdapter;
     private Bundle savedInstanceState;
     private SearchActivityModel model;
 
@@ -38,7 +38,7 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
 
     @Override
     public void initView() {
-        recommendsList = findViewById(R.id.listViewRecommends);
+        searchResultList = findViewById(R.id.listViewSearchResults);
 
     }
 
@@ -48,9 +48,9 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
         /*
         받은 정보를 바탕으로 ListView에 Review를 추가하여 화면에 표시한다
          */
-        recommendsArray.add(new SearchResult(searchResult));
+        searchResultArray.add(new SearchResult(searchResult));
 //        restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray);
-        restaurantReviewAdapter = new SearchActivityAdapter(this, recommendsArray);
-        recommendsList.setAdapter(restaurantReviewAdapter);
+        searchActivityAdapter = new SearchActivityAdapter(this, searchResultArray);
+        searchResultList.setAdapter(searchActivityAdapter);
     }
 }

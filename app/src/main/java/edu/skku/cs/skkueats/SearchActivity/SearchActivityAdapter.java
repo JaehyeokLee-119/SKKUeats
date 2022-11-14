@@ -65,7 +65,7 @@ public class SearchActivityAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.menu_recommend_item, viewGroup, false);
+            view = inflater.inflate(R.layout.search_result_item, viewGroup, false);
         }
         TextView restaurantName = view.findViewById(R.id.textViewMMIrestaurantName);
         TextView menuName = view.findViewById(R.id.textViewMMImenuName);

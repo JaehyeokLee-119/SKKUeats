@@ -18,9 +18,9 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
      */
     @Override
     public void fetchSearchResults() {
-        searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 6000, "후문쪽"));
+        //searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 6000, "후문쪽"));
 
-        pushSearchResultsToViewer(searchResultsArray);
+        //pushSearchResultsToViewer(searchResultsArray);
 
     }
 

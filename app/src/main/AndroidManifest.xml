@@ -21,6 +21,9 @@
         <activity android:name=".Select.SelectActivity" />
         <activity android:name=".RestaurantInfo.RestaurantInfoView" />
         <activity android:name=".MenuRecommends.MenuRecommendsView" />
+        <activity android:name=".SearchActivity.SearchActivityView" />
+        <activity android:name=".Login.LoginView" />
+        <activity android:name=".Register.RegisterView" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"

@@ -17,7 +17,7 @@ public class SelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
-        button = findViewById(R.id.migaTest);
+        button = findViewById(R.id.loginTest);
 
         button.setOnClickListener(new View.OnClickListener(){
 

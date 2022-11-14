@@ -30,9 +30,6 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
     private Bundle savedInstanceState;
     private MenuRecommendsModel model;
 
-    /*
-
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +37,11 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
         this.savedInstanceState = savedInstanceState;
 
         /*
-        View 생성시:
             0. Activity에 있는 View를 초기화해줌
             1. recommendQueryCondition에다가 Intent로부터 조건들을 받아옴
                 [대분류, 소분류, 가격, 최소평점, 위치]
             2. recommendQueryCondition를 넣어서 model을 만든다
-            -> model은
+            -> model은 [대분류, 소분류, 가격, 최소평점, 위치, 추천최대개수]로 이루어짐
          */
 
         initView();
