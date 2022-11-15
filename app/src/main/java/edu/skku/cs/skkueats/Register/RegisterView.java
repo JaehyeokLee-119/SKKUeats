@@ -1,13 +1,12 @@
 package edu.skku.cs.skkueats.Register;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
 
 import edu.skku.cs.skkueats.R;
 
@@ -41,11 +40,95 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
 
         initView();
         model = new RegisterModel(this);
+
+        buttonsend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = editemail.getText().toString();
+                if(email.equals("")){
+                    Toast alert = Toast.makeText(getApplicationContext(), "이메일을 입력하세요.", Toast.LENGTH_SHORT);
+                    alert.show();
+                }else {
+                    Boolean result = model.sendEmail(email);
+                    if(result){
+                        Toast alert = Toast.makeText(getApplicationContext(), "이메일 전송 완료", Toast.LENGTH_SHORT);
+                        alert.show();
+                    }else{
+                        Toast alert = Toast.makeText(getApplicationContext(), "이메일 전송에 실패했습니다.", Toast.LENGTH_SHORT);
+                        alert.show();
+                    }
+                }
+            }
+        });
+
+        buttonverify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String code = editcode.getText().toString();
+                if(code.equals("")){
+                    Toast alert = Toast.makeText(getApplicationContext(), "인증코드를 입력하세요.", Toast.LENGTH_SHORT);
+                    alert.show();
+                }else{
+                    Boolean result = model.verifyCode(code);
+                    if(result){
+                        Toast alert = Toast.makeText(getApplicationContext(), "인증코드 인증 성공", Toast.LENGTH_SHORT);
+                        alert.show();
+                    }else{
+                        Toast alert = Toast.makeText(getApplicationContext(), "인증코드 인증에 실패했습니다.", Toast.LENGTH_SHORT);
+                        alert.show();
+                    }
+                }
+            }
+        });
+
+        buttonsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = editid.getText().toString();
+                String pw = editpw.getText().toString();
+                String pw2 = editpw2.getText().toString();
+                String email = editemail.getText().toString();
+                String alertText;
+
+                if(!pw.equals(pw2)){
+                    alertText = "비밀번호가 일치하지 않습니다.";
+                    Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
+                    alert.show();
+                }else if(id.equals("") || pw.equals("")){
+                    alertText = "빈칸을 채워넣어주세요.";
+                    Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
+                    alert.show();
+                }else{
+                    Boolean result = model.signup(id, pw, email);
+                    if(result){
+                        alertText = "회원가입에 성공했습니다.";
+                        Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
+                        alert.show();
+                        finish();
+                    }else{
+                        alertText = "회원가입에 실패했습니다.";
+                        Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
+                        alert.show();
+                    }
+                }
+
+
+            }
+        });
+
+
     }
 
     @Override
     public void initView() {
-
+        buttonsend = findViewById(R.id.buttonsend);
+        buttonverify = findViewById(R.id.buttonverify);
+        buttonsignup = findViewById(R.id.buttonsignup);
+        editid = findViewById(R.id.editregisterid);
+        editpw = findViewById(R.id.editregisterpw);
+        editpw2 = findViewById(R.id.editregisterpw2);
+        editemail = findViewById(R.id.editregisteremail);
+        editcode = findViewById(R.id.editregistercode);
     }
 
 
