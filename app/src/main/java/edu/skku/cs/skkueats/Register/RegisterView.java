@@ -1,6 +1,8 @@
 package edu.skku.cs.skkueats.Register;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,14 @@ import edu.skku.cs.skkueats.R;
 public class RegisterView extends AppCompatActivity implements RegisterContract.contactView {
     private Bundle savedInstanceState;
     private RegisterModel model;
+    private Button buttonsend;
+    private Button buttonverify;
+    private Button buttonsignup;
+    private EditText editid;
+    private EditText editpw;
+    private EditText editpw2;
+    private EditText editemail;
+    private EditText editcode;
 
     /*
 

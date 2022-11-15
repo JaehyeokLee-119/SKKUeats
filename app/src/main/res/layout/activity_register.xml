@@ -63,12 +63,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="PW"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textViewpw"
-        app:layout_constraintTop_toBottomOf="@id/editregisterid"
-        />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editregisterid"
+        app:layout_constraintTop_toBottomOf="@id/editregisterid" />
 
     <TextView
         android:id="@+id/textViewpw2"
@@ -88,12 +86,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="PW"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textViewpw2"
-        app:layout_constraintTop_toBottomOf="@id/editregisterpw"
-        />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editregisterid"
+        app:layout_constraintTop_toBottomOf="@id/editregisterpw" />
 
 
     <TextView
@@ -113,13 +109,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:ems="5"
         android:hint="email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textViewemail"
-        app:layout_constraintTop_toBottomOf="@id/editregisterpw2"
-        />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editregisterid"
+        app:layout_constraintTop_toBottomOf="@id/editregisterpw2" />
 
     <Button
         android:id="@+id/buttonsend"
@@ -148,12 +142,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="verification code"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textViewcode"
-        app:layout_constraintTop_toBottomOf="@id/buttonsend"
-        />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editregisterid"
+        app:layout_constraintTop_toBottomOf="@id/buttonsend" />
 
     <Button
         android:id="@+id/buttonverify"
@@ -161,8 +153,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="인증하기"
-        app:layout_constraintStart_toStartOf="@id/editregisteremail"
-        app:layout_constraintTop_toBottomOf="@id/editregistercode"/>
+        app:layout_constraintStart_toStartOf="@+id/editregistercode"
+        app:layout_constraintTop_toBottomOf="@id/editregistercode" />
 
     <Button
         android:id="@+id/buttonsignupresult"
@@ -173,6 +165,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonverify"/>
+
+    <TextView
+        android:id="@+id/textskkkemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\@skku.edu"
+        android:layout_marginTop="10dp"
+        android:textSize="7pt"
+        app:layout_constraintStart_toEndOf="@id/editregisteremail"
+        app:layout_constraintTop_toTopOf="@id/editregisteremail"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
