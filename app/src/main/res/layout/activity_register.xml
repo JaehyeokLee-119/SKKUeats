@@ -170,12 +170,11 @@
         android:id="@+id/textskkkemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="\@skku.edu"
-        android:layout_marginTop="10dp"
         android:textSize="7pt"
         app:layout_constraintStart_toEndOf="@id/editregisteremail"
-        app:layout_constraintTop_toTopOf="@id/editregisteremail"
-        />
+        app:layout_constraintTop_toTopOf="@id/editregisteremail" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
