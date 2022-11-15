@@ -312,8 +312,19 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewPriceArrow"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.461" />
+
+            <TextView
+                android:id="@+id/textViewPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewPriceTitleText"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -348,12 +359,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <SeekBar
-                android:id="@+id/seekBar"
+                android:id="@+id/seekBarPrice"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:max="10"
-                android:progress="3"
+                android:max="30"
+                android:progress="6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/checkBoxActivatePrice"
@@ -392,10 +403,21 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewMinGradeArrow"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.428" />
+                app:layout_constraintVertical_bias="0.461" />
+
+            <TextView
+                android:id="@+id/textViewMinGradeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=": 3.5"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewMinGradeTitleText"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewMinGradeArrow"
@@ -432,6 +454,8 @@
                 android:id="@+id/seekBarMinGrade"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:max="10"
+                android:progress="0"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/checkBoxActivateMinGrade"

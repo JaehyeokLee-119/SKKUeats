@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +47,14 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     TextView textViewMinGradeArrow;
     TextView textViewLocationArrow;
 
+
+    CheckBox checkBoxActivatePrice;
+    CheckBox checkBoxActivateMinGrade;
+    TextView textViewPriceText;
+    TextView textViewMinGradeText;
+    SeekBar seekBarPrice;
+    SeekBar seekBarMinGrade;
+
     private int visibilityLevel; // 화면에 표시되는 조건의 개수
 
     @Override
@@ -59,7 +70,9 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             1. 처음에는 대분류, 소분류까지만 열려 있음 (가격은 비활성화 상태)
             2. 비활성화 조건의 화살표를 누르면 조건이 열리며,
                 아래 조건이 비활성화된 채 나타나서 활성화시킬 수 있음
-            
+
+            가격은 seekBarPrice.getProgress()*1000
+            최소 평점은 (double)seekBarMinGrade.getProgress()/2
             
          */
 
@@ -80,6 +93,9 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 if (visibilityLevel <= 2)
                     visibilityLevel = 3;
                 showConditions(visibilityLevel);
+
+                priceTextChange();
+
             }
         });
 
@@ -101,6 +117,53 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             }
         });
 
+        seekBarPrice.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                priceTextChange();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //textViewPriceText.setText(String.format(": %d₩", seekBar.getProgress()*1000));
+            }
+        });
+
+        seekBarMinGrade.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                minGradeTextChange();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //textViewPriceText.setText(String.format(": %d₩", seekBar.getProgress()*1000));
+            }
+        });
+        checkBoxActivatePrice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                priceTextChange();
+            }
+        });
+        checkBoxActivateMinGrade.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                minGradeTextChange();
+            }
+        });
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +173,27 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 startActivity(intent);
             }
         });
+
+
+
+
+
     }
+
+    public void priceTextChange() {
+        if (checkBoxActivatePrice.isChecked())
+            textViewPriceText.setText(String.format(": %d ₩", seekBarPrice.getProgress()*1000));
+        else
+            textViewPriceText.setText(String.format(": 상관없음"));
+    }
+
+    public void minGradeTextChange() {
+        if (checkBoxActivateMinGrade.isChecked())
+            textViewMinGradeText.setText(String.format(": %.1f", (double)seekBarMinGrade.getProgress()/2));
+        else
+            textViewMinGradeText.setText(String.format(": 상관없음"));
+    }
+
 
     @Override
     public void initView() {
@@ -133,6 +216,14 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         textViewPriceArrow = findViewById(R.id.textViewPriceArrow);
         textViewMinGradeArrow = findViewById(R.id.textViewMinGradeArrow);
         textViewLocationArrow = findViewById(R.id.textViewLocationArrow);
+
+        seekBarPrice = findViewById(R.id.seekBarPrice);
+        seekBarMinGrade = findViewById(R.id.seekBarMinGrade);
+        textViewPriceText = findViewById(R.id.textViewPriceText);
+        textViewMinGradeText = findViewById(R.id.textViewMinGradeText);
+        checkBoxActivatePrice = findViewById(R.id.checkBoxActivatePrice);
+        checkBoxActivateMinGrade = findViewById(R.id.checkBoxActivateMinGrade);
+
 
         // 초기에는 대분류 빼곤 다 비활성화상태
         smallCategoryCondition.setVisibility(View.GONE);
