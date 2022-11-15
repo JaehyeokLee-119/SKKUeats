@@ -18,9 +18,13 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
      */
     @Override
     public void fetchSearchResults() {
-        //searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 6000, "후문쪽"));
+        searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 2.5, "후문쪽"));
+        searchResultsArray.add(new SearchResult("모수밀면", "물밀면, 비빔밀면, 찐만두", 4.7, "길건너"));
+        searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
+        searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
+        searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
 
-        //pushSearchResultsToViewer(searchResultsArray);
+        pushSearchResultsToViewer(searchResultsArray);
 
     }
 
@@ -29,7 +33,7 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         SearchResult searchResult;
         for(int i = 0; i < searchResultsArray.size(); i++) {
             searchResult = new SearchResult(searchResultsArray.get(i));
-            view.showRecommend(searchResult);
+            view.showSearchResult(searchResult);
         }
 
     }

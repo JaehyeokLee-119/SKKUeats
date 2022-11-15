@@ -45,7 +45,7 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
 
 
     @Override
-    public void showRecommend(SearchResult searchResult) {
+    public void showSearchResult(SearchResult searchResult) {
         /*
         받은 SearchResult를 바탕으로 ListView에 Search Result를 추가하여 화면에 표시한다
          */

@@ -18,20 +18,20 @@ import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 class SearchResult {
     public String restaurantName;
-    public String menuName;
-    public int price;
+    public String menus;
+    public double grade;
     public String locations;
 
-    public SearchResult(String restaurantName, String menuName, int price, String locations) {
+    public SearchResult(String restaurantName, String menus, double grade, String locations) {
         this.restaurantName = restaurantName;
-        this.menuName = menuName;
-        this.price = price;
+        this.menus = menus;
+        this.grade = grade;
         this.locations = locations;
     }
     public SearchResult(SearchResult searchResult) {
         this.restaurantName = searchResult.restaurantName;
-        this.menuName = searchResult.menuName;
-        this.price = searchResult.price;
+        this.menus = searchResult.menus;
+        this.grade = searchResult.grade;
         this.locations = searchResult.locations;
     }
 }
@@ -67,25 +67,27 @@ public class SearchActivityAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.search_result_item, viewGroup, false);
         }
-        TextView restaurantName = view.findViewById(R.id.textViewMMIrestaurantName);
-        TextView menuName = view.findViewById(R.id.textViewMMImenuName);
-        TextView menuContent = view.findViewById(R.id.textViewMMImenuContent);
-        ConstraintLayout box = view.findViewById(R.id.boxRecommendComplete);
+        TextView textViewRestaurantName = view.findViewById(R.id.textViewSRIrestaurantName);
+        TextView textViewGrade = view.findViewById(R.id.textViewSRIgrade);
+        TextView textViewMenus = view.findViewById(R.id.textViewSRImenus);
+        TextView textViewLocation = view.findViewById(R.id.textViewSRIlocation);
+        ConstraintLayout box = view.findViewById(R.id.boxSRIresult);
 
         
         // 박스모양+색깔 랜덤배정
-        int shapeItems[] = {R.drawable.shape_for_soft_rectangle_pastelblue,
+        /*int shapeItems[] = {R.drawable.shape_for_soft_rectangle_pastelblue,
                 R.drawable.shape_for_soft_rectangle_pastelred,
                 R.drawable.shape_for_soft_rectangle_pastelgreen,
                 R.drawable.shape_for_soft_rectangle_pastelorange,
-                R.drawable.shape_for_soft_rectangle_pastelpurple};
+                R.drawable.shape_for_soft_rectangle_pastelpurple};*/
+        int shapeItems[] = {R.drawable.shape_for_soft_rectangle_grey};
         Random rand = new Random();
         box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
 
-        restaurantName.setText(items.get(i).restaurantName);
-        menuName.setText(items.get(i).menuName);
-        menuContent.setText(Integer.toString(items.get(i).price)+" ₩\n"+items.get(i).locations);
-
+        textViewRestaurantName.setText(items.get(i).restaurantName);
+        textViewGrade.setText(Double.toString(items.get(i).grade)+" 점");
+        textViewMenus.setText(items.get(i).menus);
+        textViewLocation.setText(items.get(i).locations);
 
         view.setOnClickListener(new View.OnClickListener(){
             @Override
