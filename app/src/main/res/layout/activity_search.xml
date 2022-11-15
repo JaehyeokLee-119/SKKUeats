@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextSearchContent"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -64,16 +64,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewOptionToggle" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="검색"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextSearchContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toEndOf="@+id/editTextSearchContent"
+        app:layout_constraintTop_toTopOf="@+id/editTextSearchContent"
         app:layout_constraintVertical_bias="0.0" />
 
     <ListView
@@ -86,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearchContent"
         app:layout_constraintVertical_bias="1.0">
 
     </ListView>

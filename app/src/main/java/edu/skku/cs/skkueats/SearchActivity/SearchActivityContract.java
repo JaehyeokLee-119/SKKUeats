@@ -9,7 +9,8 @@ public interface SearchActivityContract {
     }
 
     interface contactModel {
-        void fetchSearchResults();
+        void fetchSearchResults(String queryContent, int queryType);
         void pushSearchResultsToViewer(ArrayList<SearchResult> reviewArrays);
+        void searchResultReset();
     }
 }
