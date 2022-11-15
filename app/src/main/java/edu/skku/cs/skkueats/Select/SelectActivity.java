@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.skku.cs.skkueats.MenuRecommendedList.MenuRecommendsView;
 import edu.skku.cs.skkueats.MyProfile.MyProfileView;
 import edu.skku.cs.skkueats.R;
+import edu.skku.cs.skkueats.RecommendConditions.RecommendConditionsView;
 import edu.skku.cs.skkueats.SearchActivity.SearchActivityView;
 
 public class SelectActivity extends AppCompatActivity {
@@ -28,11 +29,10 @@ public class SelectActivity extends AppCompatActivity {
         textViewSelectRecommend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), MenuRecommendsView.class);
-                String[] conditions = new String[]{"대분류", "소분류", "5000", "3.5", "위치", "5"};
-                intent.putExtra("conditions", conditions);
+                Intent intent = new Intent(getApplicationContext(), RecommendConditionsView.class);
                 startActivity(intent);
             }
+
         });
 
         textViewSelectSearch.setOnClickListener(new View.OnClickListener(){
