@@ -55,6 +55,29 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     SeekBar seekBarPrice;
     SeekBar seekBarMinGrade;
 
+    CheckBox checkBoxBigKorean;
+    CheckBox checkBoxBigChinese;
+    CheckBox checkBoxBigJapanese;
+    CheckBox checkBoxBigWestern;
+    CheckBox checkBoxBigAsian;
+    CheckBox checkBoxBigFast;
+    CheckBox checkBoxBigAll;
+
+    CheckBox checkBoxSmallRice;
+    CheckBox checkBoxSmallSoup;
+    CheckBox checkBoxSmallMeat;
+    CheckBox checkBoxSmallNoodle;
+    CheckBox checkBoxSmallWithAlcohol;
+    CheckBox checkBoxSmallPizza;
+    CheckBox checkBoxSmallChicken;
+    CheckBox checkBoxSmallAll;
+
+    CheckBox checkBoxLocationFrontDoor;
+    CheckBox checkBoxLocationBackDoor;
+    CheckBox checkBoxLocationAcross;
+    CheckBox checkBoxLocationElsewhere;
+    CheckBox checkBoxLocationAll;
+
     private int visibilityLevel; // 화면에 표시되는 조건의 개수
 
     @Override
@@ -167,8 +190,25 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RecommendQueryCondition recommendQueryCondition = new RecommendQueryCondition(
+                        makeBigCategoryQueryString(),
+                        makeSmallCategoryQueryString(),
+                        seekBarPrice.getProgress()*1000,
+                        (double)seekBarMinGrade.getProgress()/2,
+                        makeLocationQueryString(),
+                        5
+                );
+
+
+
                 Intent intent = new Intent(getApplicationContext(), MenuRecommendsView.class);
-                String[] conditions = new String[]{"대분류", "소분류", "5000", "3.5", "위치", "5"};
+                String[] conditions = new String[]{
+                        recommendQueryCondition.bigCategory,
+                        recommendQueryCondition.smallCategory,
+                        Integer.toString(recommendQueryCondition.price),
+                        Double.toString(recommendQueryCondition.minGrade),
+                        recommendQueryCondition.location,
+                        Integer.toString(recommendQueryCondition.maxNum)};
                 intent.putExtra("conditions", conditions);
                 startActivity(intent);
             }
@@ -224,6 +264,27 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         checkBoxActivatePrice = findViewById(R.id.checkBoxActivatePrice);
         checkBoxActivateMinGrade = findViewById(R.id.checkBoxActivateMinGrade);
 
+        checkBoxBigKorean           =   findViewById(R.id.checkBoxBigKorean);
+        checkBoxBigChinese          =   findViewById(R.id.checkBoxBigChinese);
+        checkBoxBigJapanese         =   findViewById(R.id.checkBoxBigJapanese);
+        checkBoxBigWestern          =   findViewById(R.id.checkBoxBigWestern);
+        checkBoxBigAsian            =   findViewById(R.id.checkBoxBigAsian);
+        checkBoxBigFast             =   findViewById(R.id.checkBoxBigFast);
+        checkBoxBigAll              =   findViewById(R.id.checkBoxBigAll);
+        checkBoxSmallRice           =   findViewById(R.id.checkBoxSmallRice);
+        checkBoxSmallSoup           =   findViewById(R.id.checkBoxSmallSoup);
+        checkBoxSmallMeat           =   findViewById(R.id.checkBoxSmallMeat);
+        checkBoxSmallNoodle         =   findViewById(R.id.checkBoxSmallNoodle);
+        checkBoxSmallWithAlcohol    =   findViewById(R.id.checkBoxSmallWithAlcohol);
+        checkBoxSmallPizza          =   findViewById(R.id.checkBoxSmallPizza);
+        checkBoxSmallChicken        =   findViewById(R.id.checkBoxSmallChicken);
+        checkBoxSmallAll            =   findViewById(R.id.checkBoxSmallAll);
+        checkBoxLocationFrontDoor   =   findViewById(R.id.checkBoxLocationFrontDoor);
+        checkBoxLocationBackDoor    =   findViewById(R.id.checkBoxLocationBackDoor);
+        checkBoxLocationAcross      =   findViewById(R.id.checkBoxLocationAcross);
+        checkBoxLocationElsewhere   =   findViewById(R.id.checkBoxLocationElsewhere);
+        checkBoxLocationAll         =   findViewById(R.id.checkBoxLocationAll);
+
 
         // 초기에는 대분류 빼곤 다 비활성화상태
         smallCategoryCondition.setVisibility(View.GONE);
@@ -237,6 +298,136 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         visibilityLevel = 1;
         showConditions(visibilityLevel);
     }
+
+
+    public String makeBigCategoryQueryString() {
+        String res = "";
+        if (checkBoxBigAll.isChecked()) {
+            res += "뭐든지";
+        } else {
+            if (checkBoxBigKorean.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "한식";
+            }
+            if (checkBoxBigChinese.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "중식";
+            }
+            if (checkBoxBigJapanese.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "일식";
+            }
+            if (checkBoxBigWestern.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "양식";
+            }
+            if (checkBoxBigAsian.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "아시안";
+            }
+            if (checkBoxBigFast.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "패스트푸드";
+            }
+        }
+        return res;
+    }
+    public String makeSmallCategoryQueryString() {
+        String res = "";
+        if (checkBoxSmallAll.isChecked()) {
+            res += "뭐든지";
+        } else {
+            if (checkBoxSmallRice.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "밥";
+            }
+            if (checkBoxSmallSoup.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "탕";
+            }
+            if (checkBoxSmallMeat.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "고기";
+            }
+            if (checkBoxSmallNoodle.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "면";
+            }
+            if (checkBoxSmallWithAlcohol.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "안주";
+            }
+            if (checkBoxSmallPizza.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "피자";
+            }
+            if (checkBoxSmallChicken.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "치킨";
+            }
+        }
+        return res;
+    }
+    public String makeLocationQueryString() {
+        String res = "";
+
+        if (checkBoxLocationAll.isChecked()) {
+            res += "모두";
+        } else {
+            if (checkBoxLocationFrontDoor.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "정문쪽";
+            }
+            if (checkBoxLocationBackDoor.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "후문쪽";
+            }
+            if (checkBoxLocationAcross.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "길건너";
+            }
+            if (checkBoxLocationElsewhere.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "멀리";
+            }
+        }
+        return res;
+    }
+
 
     public void showConditions(int visibilityLevel) {
         if (visibilityLevel >= 0) {
