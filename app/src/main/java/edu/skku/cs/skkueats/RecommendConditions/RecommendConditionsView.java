@@ -128,6 +128,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 if (visibilityLevel <= 3)
                     visibilityLevel = 4;
                 showConditions(visibilityLevel);
+                minGradeTextChange();
             }
         });
 
@@ -190,11 +191,24 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                int priceValue;
+                double minGradeValue;
+                if (checkBoxActivatePrice.isChecked() && visibilityLevel >= 3) {
+                    priceValue = seekBarPrice.getProgress()*1000;
+                } else {
+                    priceValue = 0;
+                }
+                if (checkBoxActivateMinGrade.isChecked()  && visibilityLevel >= 4) {
+                    minGradeValue = (double)seekBarMinGrade.getProgress()/2;
+                } else {
+                    minGradeValue = 0;
+                }
                 RecommendQueryCondition recommendQueryCondition = new RecommendQueryCondition(
                         makeBigCategoryQueryString(),
                         makeSmallCategoryQueryString(),
-                        seekBarPrice.getProgress()*1000,
-                        (double)seekBarMinGrade.getProgress()/2,
+                        priceValue,
+                        minGradeValue,
                         makeLocationQueryString(),
                         5
                 );
@@ -342,6 +356,9 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 res += "패스트푸드";
             }
         }
+        if (res.isEmpty()) {
+            return "뭐든지";
+        }
         return res;
     }
     public String makeSmallCategoryQueryString() {
@@ -392,6 +409,9 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 res += "치킨";
             }
         }
+        if (res.isEmpty()) {
+            return "뭐든지";
+        }
         return res;
     }
     public String makeLocationQueryString() {
@@ -425,9 +445,11 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 res += "멀리";
             }
         }
+        if (res.isEmpty()) {
+            return "모두";
+        }
         return res;
     }
-
 
     public void showConditions(int visibilityLevel) {
         if (visibilityLevel >= 0) {
