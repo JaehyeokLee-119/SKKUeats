@@ -26,15 +26,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeadLine"
-        app:layout_constraintVertical_bias="0.033">
+        app:layout_constraintVertical_bias="0.015">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutBigCategoryTitle"
             android:layout_width="350dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_for_soft_rectangle_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,12 +46,13 @@
                 android:id="@+id/textViewBigCategoryTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_margin="6dp"
                 android:text="대분류"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,8 +60,8 @@
                 android:id="@+id/textViewBigCategoryArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="↓"
+                android:layout_marginRight="30dp"
+                android:text="▼"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -159,7 +159,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutSmallCategoryTitle"
             android:layout_width="350dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_for_soft_rectangle_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -172,12 +172,13 @@
                 android:id="@+id/textViewSmallCategoryTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_margin="6dp"
                 android:text="소분류"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -185,8 +186,8 @@
                 android:id="@+id/textViewSmallCategoryArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="↓"
+                android:layout_marginRight="30dp"
+                android:text="▼"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -293,7 +294,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutPriceTitle"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_for_soft_rectangle_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -305,12 +306,13 @@
                 android:id="@+id/textViewPriceTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_margin="6dp"
                 android:text="가격"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -318,8 +320,8 @@
                 android:id="@+id/textViewPriceArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="↓"
+                android:layout_marginRight="30dp"
+                android:text="▼"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -340,14 +342,18 @@
                 android:id="@+id/checkBoxActivatePrice"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:checked="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <SeekBar
-                android:id="@+id/seekBarPrice"
+                android:id="@+id/seekBar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:max="10"
+                android:progress="3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/checkBoxActivatePrice"
@@ -368,7 +374,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutMinGradeTitle"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_for_soft_rectangle_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -377,25 +383,26 @@
             app:layout_constraintVertical_bias="0.135">
 
             <TextView
-                android:id="@+id/textViewMingradeTitleText"
+                android:id="@+id/textViewMinGradeTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_margin="6dp"
                 android:text="최소평점"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.428" />
 
             <TextView
-                android:id="@+id/textViewMingradeArrow"
+                android:id="@+id/textViewMinGradeArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="↓"
+                android:layout_marginRight="30dp"
+                android:text="▼"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -416,6 +423,7 @@
                 android:id="@+id/checkBoxActivateMinGrade"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:checked="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -443,7 +451,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutLocationTitle"
             android:layout_width="350dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_for_soft_rectangle_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -456,12 +464,13 @@
                 android:id="@+id/textViewLocationTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_margin="6dp"
                 android:text="위치"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -469,8 +478,8 @@
                 android:id="@+id/textViewLocationArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="↓"
+                android:layout_marginRight="30dp"
+                android:text="▼"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -536,11 +545,11 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/shape_for_soft_rectangle_purple"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutLocation"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayoutLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutLocation"
-        app:layout_constraintVertical_bias="0.49">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textViewMMIrestaurantName"
