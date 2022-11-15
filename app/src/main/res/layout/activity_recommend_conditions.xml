@@ -70,6 +70,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RadioGroup
+            android:id="@+id/BigCategoryCondition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -85,21 +86,21 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBoxKorean"
+                    android:id="@+id/checkBoxBigKorean"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="한식" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxChinese"
+                    android:id="@+id/checkBoxBigChinese"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="중식" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxJapanese"
+                    android:id="@+id/checkBoxBigJapanese"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -114,32 +115,33 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBoxWestern"
+                    android:id="@+id/checkBoxBigWestern"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="양식" />
 
                 <CheckBox
-                    android:id="@+id/checkBoxAsian"
+                    android:id="@+id/checkBoxBigAsian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="아시안" />
 
-                <RadioButton
-                    android:id="@+id/radioBigFast"
+                <CheckBox
+                    android:id="@+id/checkBoxBigFast"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="패스트푸드" />
 
-                <RadioButton
-                    android:id="@+id/radioBigElse"
+                <CheckBox
+                    android:id="@+id/checkBoxBigAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="뭐든지" />
+
             </RadioGroup>
 
         </RadioGroup>
@@ -193,7 +195,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RadioGroup
-            android:id="@+id/radioGroupSmall"
+            android:id="@+id/SmallCategoryCondition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -208,33 +210,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioSmallSoup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="탕" />
-
-                <RadioButton
-                    android:id="@+id/radioSmallRice"
+                <CheckBox
+                    android:id="@+id/checkBoxSmallRice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="밥" />
 
-                <RadioButton
-                    android:id="@+id/radioSmallMeat"
+                <CheckBox
+                    android:id="@+id/checkBoxSmallSoup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="탕" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxSmallMeat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="고기" />
 
-                <RadioButton
-                    android:id="@+id/radioSmallNoddle"
+                <CheckBox
+                    android:id="@+id/checkBoxSmallNoodle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="면" />
+
             </RadioGroup>
 
             <RadioGroup
@@ -243,29 +246,29 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioSmallWithAlcohol"
+                <CheckBox
+                    android:id="@+id/checkBoxSmallWithAlcohol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="안주" />
 
-                <RadioButton
-                    android:id="@+id/radioSmallPizza"
+                <CheckBox
+                    android:id="@+id/checkBoxSmallPizza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="피자" />
 
-                <RadioButton
-                    android:id="@+id/radioSmallChicken"
+                <CheckBox
+                    android:id="@+id/checkBoxSmallChicken"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="치킨" />
 
-                <RadioButton
-                    android:id="@+id/radioSmallElse"
+                <CheckBox
+                    android:id="@+id/checkBoxSmallAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -280,9 +283,11 @@
         android:id="@+id/constraintLayoutPrice"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayoutSmallCategory"
         app:layout_constraintStart_toStartOf="@+id/constraintLayoutSmallCategory"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSmallCategory">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSmallCategory"
+        tools:visibility="visible">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -322,16 +327,32 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <SeekBar
-            android:id="@+id/seekBarPrice"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/PriceCondition"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/constraintLayoutPriceTitle"
-            app:layout_constraintHorizontal_bias="0.245"
             app:layout_constraintStart_toStartOf="@+id/constraintLayoutPriceTitle"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPriceTitle"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPriceTitle">
+
+            <CheckBox
+                android:id="@+id/checkBoxActivatePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/seekBarPrice"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxActivatePrice"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -382,16 +403,32 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/MinGradeCondition"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayoutMinGradeTitle"
-            app:layout_constraintHorizontal_bias="0.245"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayoutMinGradeTitle"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGradeTitle"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGradeTitle">
+
+            <CheckBox
+                android:id="@+id/checkBoxActivateMinGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/seekBarMinGrade"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxActivateMinGrade"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -442,6 +479,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RadioGroup
+            android:id="@+id/LocationCondition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -452,33 +490,40 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayoutLocationTitle"
             app:layout_constraintVertical_bias="0.0">
 
-            <RadioButton
-                android:id="@+id/radioLocationForeDoor"
+            <CheckBox
+                android:id="@+id/checkBoxLocationFrontDoor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="정문쪽" />
 
-            <RadioButton
-                android:id="@+id/radioLocationBehindDoor"
+            <CheckBox
+                android:id="@+id/checkBoxLocationBackDoor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="후문쪽" />
 
-            <RadioButton
-                android:id="@+id/radioLocationAcross"
+            <CheckBox
+                android:id="@+id/checkBoxLocationAcross"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="길건너" />
 
-            <RadioButton
-                android:id="@+id/radioLocationElsewhere"
+            <CheckBox
+                android:id="@+id/checkBoxLocationElsewhere"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="멀리" />
+
+            <CheckBox
+                android:id="@+id/checkBoxLocationAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="모두" />
 
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>

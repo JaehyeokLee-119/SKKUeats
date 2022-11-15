@@ -17,7 +17,13 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     private RecommendConditionsModel model;
 
     ConstraintLayout completeButton;
-    
+
+    ConstraintLayout boxBigCategory;
+    ConstraintLayout boxSmallCategory;
+    ConstraintLayout boxPrice;
+    ConstraintLayout boxMinGrade;
+    ConstraintLayout boxLocation;
+
 
 
 
@@ -47,5 +53,10 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     public void initView() {
         completeButton = findViewById(R.id.boxRecommendComplete);
 
+        boxBigCategory = findViewById(R.id.constraintLayoutBigCategory);
+        boxSmallCategory = findViewById(R.id.constraintLayoutSmallCategory);
+        boxPrice = findViewById(R.id.constraintLayoutPrice);
+        boxMinGrade = findViewById(R.id.constraintLayoutMinGrade);
+        boxLocation = findViewById(R.id.constraintLayoutLocation);
     }
 }
