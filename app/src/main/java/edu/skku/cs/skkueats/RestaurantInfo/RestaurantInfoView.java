@@ -1,8 +1,9 @@
 package edu.skku.cs.skkueats.RestaurantInfo;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ import com.naver.maps.map.overlay.Marker;
 import java.util.ArrayList;
 
 import edu.skku.cs.skkueats.R;
+import edu.skku.cs.skkueats.RestaurantMenus.RestaurantMenusView;
+import edu.skku.cs.skkueats.SearchActivity.SearchActivityView;
 
 
 public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyCallback, RestaurantInfoContract.contactView {
@@ -64,11 +67,21 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         restaurantName = getIntent().getStringExtra("RestaurantName");
         initView();
         model = new RestaurantInfoModel(this, restaurantName);
+
+        textViewSeeMenu.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), RestaurantMenusView.class);
+                intent.putExtra("RestaurantName", restaurantName);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initView() {
-        textViewRestaurantName = findViewById(R.id.textViewRestaurantName);
-        reviewList = findViewById(R.id.listViewReviews);
+        textViewRestaurantName = findViewById(R.id.textViewRestaurantNameToSeeMenu);
+        reviewList = findViewById(R.id.listViewRestaurantMenus);
         textViewRestaurantName.setText(restaurantName);
         textViewSeeMenu = findViewById(R.id.textViewSeeMenu);
         latLng = new LatLng(37.293363799999916,  126.9746702539383);
