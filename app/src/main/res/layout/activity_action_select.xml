@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/textViewSelectRecommend"
         android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/shape_for_soft_rectangle_pastelgreen"
         android:gravity="center"
@@ -23,19 +23,33 @@
     <TextView
         android:id="@+id/textViewSelectSearch"
         android:layout_width="350dp"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape_for_soft_rectangle_pastelcyan"
         android:gravity="center"
         android:text="검색"
         android:textColor="@color/black"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/textViewSelectCampusCafe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectRecommend" />
+
+    <TextView
+        android:id="@+id/textViewSelectCampusCafe"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_for_soft_rectangle_pastelorange"
+        android:gravity="center"
+        android:text="학식 보기"
+        android:textColor="@color/black"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSelectRecommend"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintTop_toBottomOf="@id/textViewSelectSearch" />
 
     <TextView
         android:id="@+id/textViewSelectMyProfile"

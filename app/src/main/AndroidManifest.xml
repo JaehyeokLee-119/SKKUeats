@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Skkueats">
         <activity
-            android:name=".MainActivity"
+            android:name=".Login.LoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +23,11 @@
         <activity android:name=".MenuRecommendedList.MenuRecommendsView" />
         <activity android:name=".RecommendConditions.RecommendConditionsView" />
         <activity android:name=".SearchActivity.SearchActivityView" />
-        <activity android:name=".Login.LoginView" />
+<!--        <activity android:name=".Login.LoginView" />-->
         <activity android:name=".Register.RegisterView" />
         <activity android:name=".MyProfile.MyProfileView" />
         <activity android:name=".RestaurantMenus.RestaurantMenusView" />
+        <activity android:name=".CampusRestaurantMenus.CampusCafeMenusView" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
