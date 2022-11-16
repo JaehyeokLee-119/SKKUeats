@@ -8,22 +8,23 @@
     <TextView
         android:id="@+id/textViewSelectRecommend"
         android:layout_width="350dp"
-        android:layout_height="180dp"
+        android:layout_height="0dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/shape_for_soft_rectangle_pastelgreen"
         android:gravity="center"
         android:text="추천 받기"
         android:textColor="@color/black"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/textViewSelectSearch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSelectMyProfile" />
 
     <TextView
         android:id="@+id/textViewSelectSearch"
         android:layout_width="350dp"
-        android:layout_height="180dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape_for_soft_rectangle_pastelcyan"
         android:gravity="center"
@@ -38,7 +39,7 @@
     <TextView
         android:id="@+id/textViewSelectCampusCafe"
         android:layout_width="350dp"
-        android:layout_height="0dp"
+        android:layout_height="75dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/shape_for_soft_rectangle_pastelorange"
@@ -54,7 +55,7 @@
     <TextView
         android:id="@+id/textViewSelectMyProfile"
         android:layout_width="350dp"
-        android:layout_height="107dp"
+        android:layout_height="85dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape_for_soft_rectangle_grey"
         android:gravity="center"
@@ -63,8 +64,8 @@
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.029" />
 </androidx.constraintlayout.widget.ConstraintLayout>

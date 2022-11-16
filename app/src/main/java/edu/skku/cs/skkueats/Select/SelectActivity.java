@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.skku.cs.skkueats.CampusRestaurantMenus.CampusCafeMenusView;
 import edu.skku.cs.skkueats.MenuRecommendedList.MenuRecommendsView;
 import edu.skku.cs.skkueats.MyProfile.MyProfileView;
 import edu.skku.cs.skkueats.R;
@@ -62,7 +63,7 @@ public class SelectActivity extends AppCompatActivity {
         textViewSelectCampusCafe.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), RecommendConditionsView.class);
+                Intent intent = new Intent(getApplicationContext(), CampusCafeMenusView.class);
                 startActivity(intent);
             }
 
