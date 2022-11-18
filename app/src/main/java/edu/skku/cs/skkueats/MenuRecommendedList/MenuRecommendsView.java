@@ -18,7 +18,7 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
     private MenuRecommendsAdapter restaurantReviewAdapter;
     private Bundle savedInstanceState;
     private MenuRecommendsModel model;
-
+    private String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
 
         initView();
 
+        id = getIntent().getStringExtra("id");
         String[] conditions = getIntent().getStringArrayExtra("conditions");
         RecommendQueryCondition recommendQueryCondition = new RecommendQueryCondition(
                 conditions[0], conditions[1], Integer.parseInt(conditions[2]),
@@ -63,7 +64,7 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
          */
         recommendsArray.add(new MenuRecommends(menuRecommends));
 //        restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray);
-        restaurantReviewAdapter = new MenuRecommendsAdapter(this, recommendsArray);
+        restaurantReviewAdapter = new MenuRecommendsAdapter(this, recommendsArray, id);
         recommendsList.setAdapter(restaurantReviewAdapter);
     }
 }

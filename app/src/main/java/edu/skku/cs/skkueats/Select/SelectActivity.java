@@ -20,6 +20,10 @@ public class SelectActivity extends AppCompatActivity {
     TextView textViewSelectMyprofile;
     TextView textViewSelectCampusCafe;
 
+    private String id;
+    private String pw;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +33,15 @@ public class SelectActivity extends AppCompatActivity {
         textViewSelectMyprofile = findViewById(R.id.textViewSelectMyProfile);
         textViewSelectCampusCafe = findViewById(R.id.textViewSelectCampusCafe);
 
+
+        id = getIntent().getStringExtra("id");
+        pw = getIntent().getStringExtra("pw");
+
         textViewSelectRecommend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), RecommendConditionsView.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
 
@@ -42,8 +51,8 @@ public class SelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), SearchActivityView.class);
-                String userId = "DummyID";
-                intent.putExtra("userId", userId);
+                String userId = id;
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -52,8 +61,8 @@ public class SelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MyProfileView.class);
-                String userId = "DummyID";
-                intent.putExtra("userId", userId);
+                String userId = id;
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

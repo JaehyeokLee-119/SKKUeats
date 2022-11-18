@@ -28,6 +28,7 @@
         <activity android:name=".MyProfile.MyProfileView" />
         <activity android:name=".RestaurantMenus.RestaurantMenusView" />
         <activity android:name=".CampusRestaurantMenus.CampusCafeMenusView" />
+        <activity android:name=".WriteReview.WriteReviewView" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"

@@ -41,10 +41,12 @@ class MenuRecommends {
 public class MenuRecommendsAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<MenuRecommends> items;
+    private String id;
 
-    public MenuRecommendsAdapter(Context mContext, ArrayList<MenuRecommends> items) {
+    public MenuRecommendsAdapter(Context mContext, ArrayList<MenuRecommends> items, String id) {
         this.mContext = mContext;
         this.items = items;
+        this.id = id;
     }
 
     @Override
@@ -91,7 +93,8 @@ public class MenuRecommendsAdapter extends BaseAdapter {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
-                intent.putExtra("RestaurantName",items.get(i).restaurantName);
+                intent.putExtra("id", id);
+                intent.putExtra("RestaurantName", items.get(i).restaurantName);
                 mContext.startActivity(intent);
             }
         });

@@ -19,6 +19,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/textReviewRestaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restuarant Name"
+        android:textSize="14pt"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine"/>
+
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
@@ -34,35 +46,25 @@
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="15"
         android:gravity="start|left"
+        android:hint="여기에 리뷰 내용 입력"
         android:inputType="textMultiLine"
         android:lines="8"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ratingBar"
-        />
+        app:layout_constraintTop_toBottomOf="@id/ratingBar" />
 
-    <TextView
-        android:id="@+id/textReviewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Restuarant Name"
-        android:textSize="14pt"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine"/>
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textReviewName"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textReviewRestaurantName" />
 
     <Button
         android:id="@+id/button4"

@@ -77,7 +77,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     CheckBox checkBoxLocationAcross;
     CheckBox checkBoxLocationElsewhere;
     CheckBox checkBoxLocationAll;
-
+    private String id;
     private int visibilityLevel; // 화면에 표시되는 조건의 개수
 
     @Override
@@ -99,6 +99,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             
          */
 
+        id = getIntent().getStringExtra("id");
         initView();
 
         boxSmallCategory.setOnClickListener(new View.OnClickListener() {
@@ -224,6 +225,8 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                         recommendQueryCondition.location,
                         Integer.toString(recommendQueryCondition.maxNum)};
                 intent.putExtra("conditions", conditions);
+                intent.putExtra("id", id);
+
                 startActivity(intent);
             }
         });

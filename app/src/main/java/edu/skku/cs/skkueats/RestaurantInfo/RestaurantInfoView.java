@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.RestaurantMenus.RestaurantMenusView;
 import edu.skku.cs.skkueats.SearchActivity.SearchActivityView;
+import edu.skku.cs.skkueats.WriteReview.WriteReviewView;
 
 
 public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyCallback, RestaurantInfoContract.contactView {
@@ -37,6 +39,8 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
     private LatLng latLng; // 지도에 표시할 위도/경도
     private CameraPosition cameraPosition; // 지도에 표시할 camera position
     private RestaurantInfoModel model;
+    private Button buttonInfoWrite;
+    private String id;
 
     /*
     각 식당의 상세 정보를 눌렀을 때 나오는 창 (추천 혹은 검색 결과에서)
@@ -51,6 +55,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         setContentView(R.layout.activity_restaurant_info);
         this.savedInstanceState = savedInstanceState;
 
+        id = getIntent().getStringExtra("id");
         /*
         View 생성시:
             0. Activity에 있는 View를 초기화해줌
@@ -77,6 +82,16 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
             }
         });
 
+        buttonInfoWrite.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), WriteReviewView.class);
+                intent.putExtra("RestaurantName", restaurantName);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initView() {
@@ -86,6 +101,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         textViewSeeMenu = findViewById(R.id.textViewSeeMenu);
         latLng = new LatLng(37.293363799999916,  126.9746702539383);
 
+        buttonInfoWrite = findViewById(R.id.buttonReviewWrite);
         textViewSeeMenu.setPaintFlags(textViewSeeMenu.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         mapView = (MapView) findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
