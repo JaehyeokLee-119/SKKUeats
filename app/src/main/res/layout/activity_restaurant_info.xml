@@ -22,7 +22,7 @@
 
 
     <TextView
-        android:id="@+id/textViewRestaurantName"
+        android:id="@+id/textViewRestaurantNameToSeeMenu"
         android:background="@drawable/shape_for_soft_rectangle_pastelblue"
         android:layout_width="350dp"
         android:layout_height="64dp"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRestaurantName">
+        app:layout_constraintTop_toBottomOf="@+id/textViewRestaurantNameToSeeMenu">
 
     </com.naver.maps.map.MapView>
 
@@ -81,7 +81,7 @@
         tools:ignore="HardcodedText" />
 
     <ListView
-        android:id="@+id/listViewReviews"
+        android:id="@+id/listViewRestaurantMenus"
         android:layout_width="0dp"
         android:layout_height="440dp"
         android:layout_marginTop="24dp"

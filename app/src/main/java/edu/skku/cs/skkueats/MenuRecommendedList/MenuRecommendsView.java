@@ -1,6 +1,7 @@
 package edu.skku.cs.skkueats.MenuRecommendedList;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
