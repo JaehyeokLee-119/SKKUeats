@@ -22,14 +22,27 @@
 
     <TextView
         android:id="@+id/textReviewRestaurantName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="64dp"
         android:text="Restuarant Name"
-        android:textSize="14pt"
+        android:background="@drawable/shape_for_soft_rectangle_pastelcyan"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="32sp"
         android:layout_marginTop="50dp"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewHeadLine"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textReviewRestaurantName" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -57,14 +70,6 @@
         app:layout_constraintTop_toBottomOf="@id/ratingBar" />
 
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="300dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textReviewRestaurantName" />
 
     <Button
         android:id="@+id/button4"
