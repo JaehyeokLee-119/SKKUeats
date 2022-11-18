@@ -1,14 +1,29 @@
 package edu.skku.cs.skkueats.SearchActivity;
 
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+
+import java.io.IOException;
 import java.util.ArrayList;
+
+import edu.skku.cs.skkueats.ApplicationGlobal;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class SearchActivityModel implements SearchActivityContract.contactModel {
     private ArrayList<SearchResult> searchResultsArray;
     private SearchActivityContract.contactView view;
+    private ApplicationGlobal applicationGlobal;
 
-    public SearchActivityModel(SearchActivityContract.contactView view) {
+    public SearchActivityModel(SearchActivityContract.contactView view, ApplicationGlobal applicationGlobal) {
         this.view = view;
         searchResultsArray = new ArrayList<>();
+        this.applicationGlobal = applicationGlobal;
     }
 
     public void searchResultReset() {
@@ -29,6 +44,27 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         if (queryContent.isEmpty()) {
             searchResultReset();
         } else {
+            OkHttpClient client = new OkHttpClient();
+
+            HttpUrl.Builder urlBuilder = HttpUrl.parse(applicationGlobal.getServerURL()).newBuilder();
+            //urlBuilder.addQueryParameter();
+            String url = urlBuilder.build().toString();
+            Request req = new Request.Builder().url(url).build();
+            client.newCall(req).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    final String myResponse = response.body().string();
+
+                    pushSearchResultsToViewer(searchResultsArray);
+
+                }
+            });
+
             searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 2.5, "후문쪽"));
             searchResultsArray.add(new SearchResult("모수밀면", "물밀면, 비빔밀면, 찐만두", 4.7, "길건너"));
             searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import edu.skku.cs.skkueats.ApplicationGlobal;
 import edu.skku.cs.skkueats.R;
 
 
@@ -42,7 +43,8 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
          */
         searchCondition = 0;
         initView();
-        model = new SearchActivityModel(this);
+        model = new SearchActivityModel(this, (ApplicationGlobal) getApplicationContext());
+        getApplicationContext();
 
         textViewOptionToggle.setOnClickListener(new View.OnClickListener() {
             @Override
