@@ -6,6 +6,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -66,6 +69,17 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                     final String myResponse = response.body().string();
+
+                    String restaurant_name;
+                    String menu_name;
+                    try {
+                        JSONObject jsObj = new JSONObject(myResponse);
+                        restaurant_name = jsObj.getJSONObject("menu").getString("restaurant_name");
+                        menu_name = jsObj.getJSONObject("menu").getString("menu_name");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     //Log.i("response", myResponse.toString());
                     //Toast.makeText((Context) view, myResponse.toString(), Toast.LENGTH_SHORT).show();
                     searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 2.5, "후문쪽"));
