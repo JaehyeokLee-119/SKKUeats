@@ -207,7 +207,7 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                alertText = "회원가입실패";
+                alertText = "회원가입성공";
                 Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
                 alert.show();
             }
