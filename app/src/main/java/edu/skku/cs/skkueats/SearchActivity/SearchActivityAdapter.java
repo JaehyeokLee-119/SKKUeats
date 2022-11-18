@@ -19,19 +19,19 @@ import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 class SearchResult {
     public String restaurantName;
     public String menus;
-    public double grade;
+    public int price;
     public String locations;
 
-    public SearchResult(String restaurantName, String menus, double grade, String locations) {
+    public SearchResult(String restaurantName, String menus, int price, String locations) {
         this.restaurantName = restaurantName;
         this.menus = menus;
-        this.grade = grade;
+        this.price = price;
         this.locations = locations;
     }
     public SearchResult(SearchResult searchResult) {
         this.restaurantName = searchResult.restaurantName;
         this.menus = searchResult.menus;
-        this.grade = searchResult.grade;
+        this.price = searchResult.price;
         this.locations = searchResult.locations;
     }
 }
@@ -85,7 +85,7 @@ public class SearchActivityAdapter extends BaseAdapter {
         box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
 
         textViewRestaurantName.setText(items.get(i).restaurantName);
-        textViewGrade.setText(Double.toString(items.get(i).grade)+" 점");
+        textViewGrade.setText(items.get(i).price+" 원");
         textViewMenus.setText(items.get(i).menus);
         textViewLocation.setText(items.get(i).locations);
 
