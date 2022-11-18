@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,9 +25,10 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
     private ArrayList<SearchResult> searchResultsArray;
     private SearchActivityContract.contactView view;
     private ApplicationGlobal applicationGlobal;
-
+    private String serverUrl;
     public SearchActivityModel(SearchActivityContract.contactView view, ApplicationGlobal applicationGlobal) {
         this.view = view;
+        this.serverUrl = applicationGlobal.getServerURL();
         searchResultsArray = new ArrayList<>();
         this.applicationGlobal = applicationGlobal;
     }
@@ -51,12 +53,12 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         } else {
             OkHttpClient client = new OkHttpClient();
 
-            HttpUrl.Builder urlBuilder = HttpUrl.parse(applicationGlobal.getServerURL()+"/search").newBuilder();
-            urlBuilder.addQueryParameter("search",queryContent);
+            HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl+"search?search="+queryContent).newBuilder();
+            //urlBuilder.addQueryParameter("search",queryContent);
             String url = urlBuilder.build().toString();
             Request req = new Request.Builder().url(url).build();
 
-            Toast.makeText((Context) view, (CharSequence) url, Toast.LENGTH_SHORT).show();
+            //Toast.makeText((Context) view, (CharSequence) url, Toast.LENGTH_SHORT).show();
 
 
 
@@ -80,13 +82,27 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
                         e.printStackTrace();
                     }
 
-                    //Log.i("response", myResponse.toString());
-                    //Toast.makeText((Context) view, myResponse.toString(), Toast.LENGTH_SHORT).show();
-                    searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 2.5, "후문쪽"));
-                    searchResultsArray.add(new SearchResult("모수밀면", "물밀면, 비빔밀면, 찐만두", 4.7, "길건너"));
-                    searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
-                    searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
-                    searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
+                    String res = response.body().string();
+
+                    JSONObject json = null;
+                    JSONArray restraurant = null;
+                    try {
+                        json = new JSONObject(res);
+                        restraurant = json.getJSONArray("menu");
+
+                        JSONObject tempJson = new JSONObject();
+                        for(int i=0; i<restraurant.length(); i++){
+                            tempJson = restraurant.getJSONObject(i);
+                            searchResultsArray.add(new SearchResult(tempJson.getString("restaurant_name"),
+                                    tempJson.getString("menu_name"),
+                                    tempJson.getInt("price"),
+                                    ""));
+                        }
+
+                        pushSearchResultsToViewer(searchResultsArray);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
                     pushSearchResultsToViewer(searchResultsArray);
 

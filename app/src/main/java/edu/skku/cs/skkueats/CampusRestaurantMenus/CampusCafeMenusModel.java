@@ -15,9 +15,9 @@ public class CampusCafeMenusModel implements CampusCafeMenusContract.contactMode
     @Override
     public void fetchCampusCafeMenus() {
         // restaurantName으로 db에 요청해서 리뷰 정보를 다 받아와야 함
-        cafeArray.add(new RestaurantMenu("학생회관", "학내"));
-        cafeArray.add(new RestaurantMenu("교직원식당", "학내"));
-        cafeArray.add(new RestaurantMenu("공대식당", "학내"));
+        cafeArray.add(new RestaurantMenu("학생회관(행단골)", "학내"));
+        cafeArray.add(new RestaurantMenu("교직원식당(구시재)", "학내"));
+        cafeArray.add(new RestaurantMenu("공대식당(해오름)", "학내"));
         cafeArray.add(new RestaurantMenu("기숙사식당", "학내"));
 
         // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
