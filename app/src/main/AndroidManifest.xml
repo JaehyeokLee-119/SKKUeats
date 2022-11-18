@@ -27,7 +27,7 @@
         <activity android:name=".MenuRecommendedList.MenuRecommendsView" />
         <activity android:name=".RecommendConditions.RecommendConditionsView" />
         <activity android:name=".SearchActivity.SearchActivityView" />
-<!--        <activity android:name=".Login.LoginView" />-->
+        <!-- <activity android:name=".Login.LoginView" /> -->
         <activity android:name=".Register.RegisterView" />
         <activity android:name=".MyProfile.MyProfileView" />
         <activity android:name=".RestaurantMenus.RestaurantMenusView" />

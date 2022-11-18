@@ -121,8 +121,7 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
 
 
         Request request = new Request.Builder()
-                .url("http://3.39.192.139:5000/menus")
-                .addHeader("restaurant_name", restaurantName)
+                .url("http://3.39.192.139:5000/menus?restaurant_name=" + restaurantName)
                 .build();
 
 
