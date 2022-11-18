@@ -2,8 +2,6 @@ package edu.skku.cs.skkueats.WriteReview;
 
 import java.util.ArrayList;
 
-import edu.skku.cs.skkueats.SearchActivity.SearchActivityContract;
-
 class MenuReview {
     public String restaurantName;
     public String menu;
@@ -48,8 +46,10 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
     }
 
     @Override
-    public int reviewUpload() {
-        return 0;
+    public void reviewUpload(MenuReview menuReview, String id) {
+        // 리뷰(menuReview)를 서버에 보냄
+
+        view.reviewComplete();
     }
 
 
