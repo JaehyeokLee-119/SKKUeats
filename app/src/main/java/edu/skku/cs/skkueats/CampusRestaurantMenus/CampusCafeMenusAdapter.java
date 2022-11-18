@@ -1,6 +1,7 @@
 package edu.skku.cs.skkueats.CampusRestaurantMenus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -8,24 +9,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 import edu.skku.cs.skkueats.R;
+import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 class RestaurantMenu {
-    public String menu;
-    public double grade;
-    public int price;
+    public String restaurantName;
+    public String locations;
 
-    public RestaurantMenu(String menu, double grade, int price) {
-        this.menu = menu;
-        this.grade = grade;
-        this.price = price;
+    public RestaurantMenu(String restaurantName, String locations) {
+        this.restaurantName = restaurantName;
+        this.locations = locations;
     }
-    public RestaurantMenu(RestaurantMenu restaurantmenu) {
-        this.menu = restaurantmenu.menu;
-        this.grade = restaurantmenu.grade;
-        this.price = restaurantmenu.price;
+
+    public RestaurantMenu(edu.skku.cs.skkueats.CampusRestaurantMenus.RestaurantMenu menuRecommends) {
+        this.restaurantName = menuRecommends.restaurantName;
+        this.locations = menuRecommends.locations;
     }
 }
 
@@ -33,10 +36,12 @@ class RestaurantMenu {
 public class CampusCafeMenusAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<RestaurantMenu> items;
+    private String id;
 
-    public CampusCafeMenusAdapter(Context mContext, ArrayList<RestaurantMenu> items) {
+    public CampusCafeMenusAdapter(Context mContext, ArrayList<RestaurantMenu> items, String id) {
         this.mContext = mContext;
         this.items = items;
+        this.id = id;
     }
 
     @Override
@@ -56,27 +61,38 @@ public class CampusCafeMenusAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view == null) {
+        if (view == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.restaurant_menu_item, viewGroup, false);
+            view = inflater.inflate(R.layout.menu_recommend_item, viewGroup, false);
         }
-        TextView textViewMenuName = view.findViewById(R.id.textViewRMImenuName);
-        TextView textViewGrade = view.findViewById(R.id.textViewRMIgrade);
-        TextView textViewPrice = view.findViewById(R.id.textViewRMIprice);
+        TextView restaurantName = view.findViewById(R.id.textViewMMIrestaurantName);
+        TextView menuName = view.findViewById(R.id.textViewMMImenuName);
+        TextView menuContent = view.findViewById(R.id.textViewMMImenuContent);
+        ConstraintLayout box = view.findViewById(R.id.boxRecommendComplete);
 
-        textViewMenuName.setText(items.get(i).menu);
-        textViewGrade.setText(Double.toString(items.get(i).grade)+" 점");
-        textViewPrice.setText(items.get(i).price+"  ₩");
 
-        // ListView 클릭 비활성화
-        view.setOnTouchListener(new View.OnTouchListener() {
+        // 박스모양+색깔 랜덤배정
+        int shapeItems[] = {R.drawable.shape_for_soft_rectangle_pastelblue,
+                R.drawable.shape_for_soft_rectangle_pastelred,
+                R.drawable.shape_for_soft_rectangle_pastelgreen,
+                R.drawable.shape_for_soft_rectangle_pastelorange,
+                R.drawable.shape_for_soft_rectangle_pastelpurple};
+        Random rand = new Random();
+        box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
 
+        restaurantName.setText(items.get(i).restaurantName);
+        menuName.setText("");
+        menuContent.setText(items.get(i).locations);
+
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-
-            }});
-
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
+                intent.putExtra("id", id);
+                intent.putExtra("RestaurantName", items.get(i).restaurantName);
+                mContext.startActivity(intent);
+            }
+        });
         return view;
     }
 }

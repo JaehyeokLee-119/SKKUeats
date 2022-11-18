@@ -8,18 +8,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import edu.skku.cs.skkueats.MenuRecommendedList.MenuRecommendsAdapter;
 import edu.skku.cs.skkueats.R;
 
 
 public class CampusCafeMenusView extends AppCompatActivity implements CampusCafeMenusContract.contactView {
-    private ArrayList<RestaurantMenu> menuArrayLunch = new ArrayList<>();
-    private ArrayList<RestaurantMenu> menuArrayDinner = new ArrayList<>();
-    private ListView campusCafeLunchListView;
-    private ListView campusCafeDinnerListView;
+    private ArrayList<RestaurantMenu> cafeArrayList = new ArrayList<>();
+    private ListView campusCafeListView;
     private CampusCafeMenusAdapter campusCafeLunchMenusAdapter;
-    private CampusCafeMenusAdapter campusCafeDinnerMenusAdapter;
     private Bundle savedInstanceState;
     private CampusCafeMenusModel model;
+    private String id;
 
     /*
     각 식당의 상세 정보를 눌렀을 때 나오는 창 (추천 혹은 검색 결과에서)
@@ -48,29 +47,23 @@ public class CampusCafeMenusView extends AppCompatActivity implements CampusCafe
          */
 
         initView();
+        id = getIntent().getStringExtra("id");
         model = new CampusCafeMenusModel(this);
     }
 
     private void initView() {
-        campusCafeLunchListView = findViewById(R.id.listViewCampusCafeLunch);
-        campusCafeDinnerListView = findViewById(R.id.listViewCampusCafeDinner);
+        campusCafeListView = findViewById(R.id.listViewCampusCafeLunch);
 
     }
 
     @Override
-    public void showMenuLunch(String menu, double grade, int price) {
+    public void showCafes(RestaurantMenu restaurantMenu) {
         /*
         받은 정보를 바탕으로 ListView에 menu를 추가하여 화면에 표시한다
          */
-        menuArrayLunch.add(new RestaurantMenu(menu, grade, price));
-        campusCafeLunchMenusAdapter = new CampusCafeMenusAdapter(getApplicationContext(), menuArrayLunch);
-        campusCafeLunchListView.setAdapter(campusCafeLunchMenusAdapter);
-    }
-
-    @Override
-    public void showMenuDinner(String menu, double grade, int price) {
-        menuArrayDinner.add(new RestaurantMenu(menu, grade, price));
-        campusCafeDinnerMenusAdapter = new CampusCafeMenusAdapter(getApplicationContext(), menuArrayDinner);
-        campusCafeDinnerListView.setAdapter(campusCafeDinnerMenusAdapter);
+        cafeArrayList.add(new RestaurantMenu(restaurantMenu));
+//        restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray);
+        campusCafeLunchMenusAdapter = new CampusCafeMenusAdapter(this, cafeArrayList, id);
+        campusCafeListView.setAdapter(campusCafeLunchMenusAdapter);
     }
 }

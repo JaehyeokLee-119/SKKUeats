@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public interface CampusCafeMenusContract {
     interface contactView {
-        void showMenuLunch(String menu, double grade, int price);
-        void showMenuDinner(String menu, double grade, int price);
+        void showCafes(RestaurantMenu restaurantMenu);
     }
 
     interface contactModel {

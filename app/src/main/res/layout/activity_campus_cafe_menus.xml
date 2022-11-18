@@ -21,48 +21,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/textViewLunch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="점심밥"
-        app:layout_constraintEnd_toEndOf="@+id/textViewHeadLine"
-        app:layout_constraintStart_toStartOf="@+id/textViewHeadLine"
-        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine" />
-
     <ListView
         android:id="@+id/listViewCampusCafeLunch"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:divider="#FFFFFF"
-        android:dividerHeight="0px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLunch">
-
-    </ListView>
-
-    <TextView
-        android:id="@+id/textViewDinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="저녁밥"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/listViewCampusCafeLunch" />
-
-    <ListView
-        android:id="@+id/listViewCampusCafeDinner"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
         android:divider="#FFFFFF"
         android:dividerHeight="0px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDinner"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeadLine">
 
     </ListView>
 
