@@ -1,5 +1,6 @@
 package edu.skku.cs.skkueats.Login;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.skku.cs.skkueats.ApplicationGlobal;
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.Register.RegisterView;
 import edu.skku.cs.skkueats.Select.SelectActivity;
@@ -38,7 +40,7 @@ public class LoginView extends AppCompatActivity implements LoginContract.contac
          */
 
         initView();
-        model = new LoginModel(this);
+        model = new LoginModel(this, (ApplicationGlobal) getApplication());
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
