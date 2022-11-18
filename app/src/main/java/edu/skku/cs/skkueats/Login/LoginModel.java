@@ -69,6 +69,7 @@ public class LoginModel implements LoginContract.contactModel {
                 .build();
         Request request = new Request.Builder()
                 .url(serverUrl + "users/log-in")
+                .post(body)
                 .build();
 
         client.newCall(request).enqueue(callback);

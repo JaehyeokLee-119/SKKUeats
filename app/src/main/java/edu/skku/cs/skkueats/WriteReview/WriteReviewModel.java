@@ -2,15 +2,27 @@ package edu.skku.cs.skkueats.WriteReview;
 
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 class MenuReview {
     public String restaurantName;
     public String menu;
-    public double grade;
+    public Integer grade;
     public String reviewContent;
 
-    public MenuReview(String restaurantName, String menu, double grade, String reviewContent) {
+    public MenuReview(String restaurantName, String menu, Integer grade, String reviewContent) {
         this.restaurantName = restaurantName;
         this.menu = menu;
         this.grade = grade;
@@ -28,6 +40,8 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
     private WriteReviewContract.contactView view;
     private ArrayList<String> menus;
     private String restaurantName;
+    private boolean check = false;
+    private MenuReview menuReview;
 
     public WriteReviewModel(WriteReviewContract.contactView view, String restaurantName) {
         this.view = view;
@@ -35,6 +49,35 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
         this.restaurantName = restaurantName;
         fetchMenus(restaurantName);
     }
+
+    private Callback callback = new Callback() {
+        @Override
+        public void onFailure(Call call, IOException e) {
+
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+            String res = response.body().string();
+
+            JSONObject json = null;
+            try {
+                json = new JSONObject(res);
+                check = json.getBoolean("reviewSuccess");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if(check){
+                String strToShow= menuReview.reviewContent+"/ 점수는: "+Double.toString(menuReview.grade);
+                view.reviewComplete(strToShow);
+            }else{
+                String strToShow= "리뷰작성에 실패하였습니다.";
+                view.reviewComplete(strToShow);
+            }
+
+        }
+    };
 
     @Override
     public void fetchMenus(String restaurantName) {
@@ -51,8 +94,22 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
     public void reviewUpload(MenuReview menuReview, String id) {
         // 리뷰(menuReview)를 서버에 보냄
 
-        String strToShow= menuReview.reviewContent+"/ 점수는: "+Double.toString(menuReview.grade);
-        view.reviewComplete(strToShow);
+        this.menuReview = menuReview;
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = new FormBody.Builder()
+                .add("restaurantName", menuReview.restaurantName)
+                .add("menuName", menuReview.menu)
+                .add("grade", menuReview.grade.toString())
+                .add("reviewContents", menuReview.reviewContent)
+                .build();
+        Request request = new Request.Builder()
+                .url("http://3.39.192.139:5000/reviews")
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(callback);
 
     }
 

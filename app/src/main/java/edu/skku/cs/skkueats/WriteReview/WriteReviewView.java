@@ -46,8 +46,8 @@ public class WriteReviewView extends AppCompatActivity implements WriteReviewCon
             public void onClick(View view){
                 String menuName;
                 menuName = spinner.getSelectedItem().toString();
-                double grade;
-                grade = (double) ratingBar.getRating();
+                Integer grade;
+                grade = (int) ratingBar.getRating();
                 String reviewContent;
                 reviewContent = editTextReviewContent.getText().toString();
 
