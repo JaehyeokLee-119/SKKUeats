@@ -6,6 +6,9 @@ public interface RegisterContract {
     interface contactView {
         void initView();
 
+        void signupFail();
+
+        void signupSuccess();
     }
 
     interface contactModel {
@@ -13,6 +16,6 @@ public interface RegisterContract {
 
         boolean verifyCode(String code);
 
-        boolean signup(String id, String pw, String email);
+        void signup(String id, String pw, String pw2, String email);
     }
 }

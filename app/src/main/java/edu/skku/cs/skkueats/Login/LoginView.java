@@ -40,6 +40,7 @@ public class LoginView extends AppCompatActivity implements LoginContract.contac
          */
 
         initView();
+
         model = new LoginModel(this, (ApplicationGlobal) getApplication());
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +52,7 @@ public class LoginView extends AppCompatActivity implements LoginContract.contac
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginView.this, RegisterView.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterView.class);
                 startActivity(intent);
             }
         });

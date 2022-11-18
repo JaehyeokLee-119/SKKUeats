@@ -10,6 +10,7 @@ import android.widget.Button;
 import edu.skku.cs.skkueats.Login.LoginView;
 import edu.skku.cs.skkueats.MenuRecommendedList.MenuRecommendsView;
 import edu.skku.cs.skkueats.RecommendConditions.RecommendConditionsView;
+import edu.skku.cs.skkueats.Register.RegisterView;
 import edu.skku.cs.skkueats.Select.SelectActivity;
 
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), LoginView.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterView.class);
                 startActivity(intent);
             }
         });
