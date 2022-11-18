@@ -59,8 +59,8 @@ public class WriteReviewView extends AppCompatActivity implements WriteReviewCon
     }
 
     @Override
-    public void reviewComplete() {
-        Toast.makeText(this, "리뷰가 등록되었습니다", Toast.LENGTH_SHORT).show();
+    public void reviewComplete(String strToShow) {
+        Toast.makeText(this, "리뷰가 등록되었습니다\n"+strToShow, Toast.LENGTH_SHORT).show();
         finish();
     }
 

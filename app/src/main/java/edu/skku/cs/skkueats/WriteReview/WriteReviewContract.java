@@ -9,7 +9,7 @@ public interface WriteReviewContract {
 
     interface contactView {
         void setSpinnerMenus(String[] menuList);
-        void reviewComplete();
+        void reviewComplete(String strToShow);
         void initView();
     }
 }

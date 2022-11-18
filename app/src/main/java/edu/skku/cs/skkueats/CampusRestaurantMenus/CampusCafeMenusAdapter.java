@@ -72,11 +72,8 @@ public class CampusCafeMenusAdapter extends BaseAdapter {
 
 
         // 박스모양+색깔 랜덤배정
-        int shapeItems[] = {R.drawable.shape_for_soft_rectangle_pastelblue,
-                R.drawable.shape_for_soft_rectangle_pastelred,
-                R.drawable.shape_for_soft_rectangle_pastelgreen,
-                R.drawable.shape_for_soft_rectangle_pastelorange,
-                R.drawable.shape_for_soft_rectangle_pastelpurple};
+        int shapeItems[] = {
+                R.drawable.shape_for_soft_rectangle_grey};
         Random rand = new Random();
         box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
 

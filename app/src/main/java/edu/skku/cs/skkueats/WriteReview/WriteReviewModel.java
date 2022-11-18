@@ -1,5 +1,7 @@
 package edu.skku.cs.skkueats.WriteReview;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 class MenuReview {
@@ -49,7 +51,9 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
     public void reviewUpload(MenuReview menuReview, String id) {
         // 리뷰(menuReview)를 서버에 보냄
 
-        view.reviewComplete();
+        String strToShow= menuReview.reviewContent+"/ 점수는: "+Double.toString(menuReview.grade);
+        view.reviewComplete(strToShow);
+
     }
 
 
