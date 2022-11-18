@@ -48,13 +48,11 @@ public class MyProfileView extends AppCompatActivity implements MyProfileContrac
             0. Activity에 있는 View를 초기화해줌
                 - initView()
             1. Intent로부터 사용자id Extra를 받아옴
-            2. 모델에게 DB 통신을 시켜서 사용자id에 따른 리뷰들을 받아옴
-                - model = new model
-                // 리뷰 DB에 가게 이름으로 쿼리를 보내서 리뷰 정보들을 받아옴
+            2. 모델에게 DB 통신을 시켜서 사용자id에 따른 리뷰들을
                 - 모델은 view에게 리뷰를 표시
          */
 
-        userId = getIntent().getStringExtra("userId");
+        userId = getIntent().getStringExtra("id");
         initView();
 
         textViewMyId.setText(userId);
