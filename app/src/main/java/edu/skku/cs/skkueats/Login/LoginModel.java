@@ -58,15 +58,19 @@ public class LoginModel implements LoginContract.contactModel {
     };
 
     @Override
-    public void verifyId(String id, String password){
+    public void verifyId(String id, String password) throws JSONException {
         //서버에서 인증 받아오기
 
         OkHttpClient client = new OkHttpClient();
 
-        RequestBody body = new FormBody.Builder()
-                .add("id", id)
-                .add("password", password)
-                .build();
+        JSONObject json = new JSONObject();
+        json.put("id", id)
+                .put("password", password);
+
+        RequestBody body = RequestBody.create(JSON, json.toString());
+
+
+
         Request request = new Request.Builder()
                 .url(serverUrl + "users/log-in")
                 .post(body)

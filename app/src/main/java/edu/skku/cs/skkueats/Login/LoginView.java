@@ -3,12 +3,16 @@ package edu.skku.cs.skkueats.Login;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
 
 import edu.skku.cs.skkueats.ApplicationGlobal;
 import edu.skku.cs.skkueats.R;
@@ -45,7 +49,11 @@ public class LoginView extends AppCompatActivity implements LoginContract.contac
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                model.verifyId(editId.getText().toString(), editPassword.getText().toString());
+                try {
+                    model.verifyId(editId.getText().toString(), editPassword.getText().toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -77,8 +85,16 @@ public class LoginView extends AppCompatActivity implements LoginContract.contac
 
     @Override
     public void loginFail() {
-        Toast alert = Toast.makeText(this.getApplicationContext(), "아이디 혹은 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT);
-        alert.show();
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run()
+            {
+                Toast alert = Toast.makeText(getApplicationContext(), "아이디 혹은 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT);
+                alert.show();
+            }
+        }, 0);
+
     }
 
 }

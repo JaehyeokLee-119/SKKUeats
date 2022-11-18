@@ -1,5 +1,7 @@
 package edu.skku.cs.skkueats.Register;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public interface RegisterContract {
@@ -16,6 +18,6 @@ public interface RegisterContract {
 
         boolean verifyCode(String code);
 
-        void signup(String id, String pw, String pw2, String email);
+        void signup(String id, String pw, String pw2, String email) throws JSONException;
     }
 }

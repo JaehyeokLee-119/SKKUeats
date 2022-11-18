@@ -1,6 +1,8 @@
 package edu.skku.cs.skkueats.Register;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
 
 import javax.mail.MessagingException;
 import javax.mail.SendFailedException;
@@ -122,6 +126,9 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
                     Boolean result = code.equals(verifycode);
                     if(result){
                         verifyCodeCheck = true;
+
+
+
                         Toast alert = Toast.makeText(getApplicationContext(), "인증코드 인증 성공", Toast.LENGTH_SHORT);
                         alert.show();
                     }else{
@@ -154,7 +161,11 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
                     Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
                     alert.show();
                 }else{
-                    model.signup(id, pw, pw2, email);
+                    try {
+                        model.signup(id, pw, pw2, email);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -179,16 +190,28 @@ public class RegisterView extends AppCompatActivity implements RegisterContract.
 
     @Override
     public void signupFail() {
-        alertText = "회원가입실패";
-        Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
-        alert.show();
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                alertText = "회원가입실패";
+                Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
+                alert.show();
+            }
+        });
+
     }
 
     @Override
     public void signupSuccess() {
-        alertText = "회원가입성공";
-        Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
-        alert.show();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                alertText = "회원가입실패";
+                Toast alert = Toast.makeText(getApplicationContext(), alertText, Toast.LENGTH_SHORT);
+                alert.show();
+            }
+        });
     }
 
 

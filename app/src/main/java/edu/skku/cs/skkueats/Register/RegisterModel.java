@@ -9,6 +9,7 @@ import edu.skku.cs.skkueats.ApplicationGlobal;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -21,6 +22,7 @@ public class RegisterModel implements RegisterContract.contactModel {
     private String verifyCode;
     private ApplicationGlobal applicationGlobal;
     private String serverUrl;
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     public RegisterModel(RegisterContract.contactView view, ApplicationGlobal applicationGlobal) {
         this.view = view;
@@ -70,20 +72,22 @@ public class RegisterModel implements RegisterContract.contactModel {
 
 
     @Override
-    public void signup(String id, String pw, String pw2, String email){
+    public void signup(String id, String pw, String pw2, String email) throws JSONException {
         //add signup logic
 
         OkHttpClient client = new OkHttpClient();
 
-        RequestBody body = new FormBody.Builder()
-                .add("id", id)
-                .add("password", pw)
-                .add("passwordcheck", pw2)
-                .add("email", email)
-                .add("emailCheck", "true")
-                .build();
+        JSONObject json = new JSONObject();
+        json.put("id", id)
+            .put("password", pw)
+            .put("passwordCheck", pw2)
+            .put("email", email)
+            .put("emailCheck", "true");
+
+        RequestBody body = RequestBody.create(JSON, json.toString());
         Request request = new Request.Builder()
                 .url(serverUrl + "users/new-user")
+                .post(body)
                 .build();
 
         client.newCall(request).enqueue(callback);

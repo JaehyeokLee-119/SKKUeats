@@ -1,5 +1,7 @@
 package edu.skku.cs.skkueats.Login;
 
+import org.json.JSONException;
+
 public interface LoginContract {
     interface contactView {
         void initView();
@@ -10,6 +12,6 @@ public interface LoginContract {
     }
 
     interface contactModel {
-        void verifyId(String id, String password);
+        void verifyId(String id, String password) throws JSONException;
     }
 }
