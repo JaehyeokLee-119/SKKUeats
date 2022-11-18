@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,8 +44,7 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
          */
         searchCondition = 0;
         initView();
-        model = new SearchActivityModel(this, (ApplicationGlobal) getApplicationContext());
-        getApplicationContext();
+        model = new SearchActivityModel(this, (ApplicationGlobal) getApplication());
 
         textViewOptionToggle.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,11 +3,16 @@ package edu.skku.cs.skkueats;
 import android.app.Application;
 
 public class ApplicationGlobal extends Application {
-    private String serverURL;
+    private static String serverURL;
     @Override
     public void onCreate() {
+        this.serverURL = "http://3.39.192.139:5000/";
         super.onCreate();
-        serverURL = "http://3.39.192.139:5000/";
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
     }
 
     public String getServerURL() {

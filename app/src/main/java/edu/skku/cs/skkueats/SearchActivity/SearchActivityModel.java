@@ -1,6 +1,8 @@
 package edu.skku.cs.skkueats.SearchActivity;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -46,10 +48,15 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         } else {
             OkHttpClient client = new OkHttpClient();
 
-            HttpUrl.Builder urlBuilder = HttpUrl.parse(applicationGlobal.getServerURL()).newBuilder();
-            //urlBuilder.addQueryParameter();
+            HttpUrl.Builder urlBuilder = HttpUrl.parse(applicationGlobal.getServerURL()+"/search").newBuilder();
+            urlBuilder.addQueryParameter("search",queryContent);
             String url = urlBuilder.build().toString();
             Request req = new Request.Builder().url(url).build();
+
+            Toast.makeText((Context) view, (CharSequence) url, Toast.LENGTH_SHORT).show();
+
+
+
             client.newCall(req).enqueue(new Callback() {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -59,21 +66,24 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                     final String myResponse = response.body().string();
+                    //Log.i("response", myResponse.toString());
+                    //Toast.makeText((Context) view, myResponse.toString(), Toast.LENGTH_SHORT).show();
+                    searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 2.5, "후문쪽"));
+                    searchResultsArray.add(new SearchResult("모수밀면", "물밀면, 비빔밀면, 찐만두", 4.7, "길건너"));
+                    searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
+                    searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
+                    searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
 
                     pushSearchResultsToViewer(searchResultsArray);
 
                 }
             });
 
-            searchResultsArray.add(new SearchResult("미가", "돈가스김치나베", 2.5, "후문쪽"));
-            searchResultsArray.add(new SearchResult("모수밀면", "물밀면, 비빔밀면, 찐만두", 4.7, "길건너"));
-            searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
-            searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
-            searchResultsArray.add(new SearchResult("본찌 돈가스", "우동정식, 치즈돈가스덮밥", 4.2, "후문쪽"));
+
 
         }
 
-        pushSearchResultsToViewer(searchResultsArray);
+        //pushSearchResultsToViewer(searchResultsArray);
 
     }
 
