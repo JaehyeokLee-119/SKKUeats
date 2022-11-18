@@ -2,6 +2,7 @@ package edu.skku.cs.skkueats.WriteReview;
 
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -79,8 +80,55 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
         }
     };
 
+    private Callback callback2 = new Callback() {
+        @Override
+        public void onFailure(Call call, IOException e) {
+
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+            String res = response.body().string();
+
+            JSONObject json = null;
+            JSONArray menu = null;
+            try {
+                json = new JSONObject(res);
+                menu = json.getJSONArray("menu");
+
+                JSONObject tempJson = new JSONObject();
+                for(int i=0; i<menu.length(); i++){
+                    tempJson = menu.getJSONObject(i);
+                    menus.add(tempJson.getString("menu_name"));
+                }
+
+                String[] menuStringArray = menus.toArray(new String[menus.size()]);
+                view.setSpinnerMenus(menuStringArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
+        }
+    };
+
+
     @Override
     public void fetchMenus(String restaurantName) {
+
+        OkHttpClient client = new OkHttpClient();
+
+
+        Request request = new Request.Builder()
+                .url("http://3.39.192.139:5000/menus")
+                .addHeader("restaurant_name", restaurantName)
+                .build();
+
+
+        client.newCall(request).enqueue(callback2);
+
+        /*
         menus.add("미가돈코츠라멘");
         menus.add("사케동");
         menus.add("쇼유라멘");
@@ -88,6 +136,8 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
 
         String[] menuStringArray = menus.toArray(new String[menus.size()]);
         view.setSpinnerMenus(menuStringArray);
+        */
+
     }
 
     @Override
