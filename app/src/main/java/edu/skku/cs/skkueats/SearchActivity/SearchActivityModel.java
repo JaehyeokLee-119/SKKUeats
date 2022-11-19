@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.JsonArray;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +41,89 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         pushSearchResultsToViewer(searchResultsArray);
     }
 
+    private Callback callback_menu = new Callback() {
+        @Override
+        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+            e.printStackTrace();
+        }
+
+        @Override
+        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+            final String myResponse = response.body().string();
+
+            JSONArray menu = null;
+            JSONObject json = null;
+
+            Log.v("aaa", myResponse.toString());
+
+            try {
+                json = new JSONObject(myResponse);
+                menu = json.getJSONArray("menu");
+                JSONObject tempJson = new JSONObject();
+                for(int i=0; i<menu.length(); i++) {
+                    tempJson = menu.getJSONObject(i);
+                    searchResultsArray.add(new SearchResult(
+                            tempJson.getString("restaurant_name"),
+                            tempJson.getString("menu_name"),
+                            tempJson.getInt("price"),
+                            tempJson.getString("main_category")));
+                }
+
+                pushSearchResultsToViewer(searchResultsArray);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    private Callback callback_restaurant = new Callback() {
+        @Override
+        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+            e.printStackTrace();
+        }
+
+        @Override
+        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+            final String myResponse = response.body().string();
+
+            String restaurant_name;
+            String menu_name;
+            try {
+                JSONObject jsObj = new JSONObject(myResponse);
+                //restaurant_name = jsObj.getJSONArray("menu").getString("restaurant_name");
+                menu_name = jsObj.getJSONObject("menu").getString("menu_name");
+                // Toast.makeText((Context) view, (CharSequence) restaurant_name, Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            String res = response.body().string();
+
+            JSONObject json = null;
+            JSONArray restraurant = null;
+            try {
+                json = new JSONObject(res);
+                restraurant = json.getJSONArray("menu");
+
+                JSONObject tempJson = new JSONObject();
+                for(int i=0; i<restraurant.length(); i++){
+                    tempJson = restraurant.getJSONObject(i);
+                    searchResultsArray.add(new SearchResult(tempJson.getString("restaurant_name"),
+                            tempJson.getString("menu_name"),
+                            tempJson.getInt("price"),
+                            ""));
+                }
+
+                pushSearchResultsToViewer(searchResultsArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            pushSearchResultsToViewer(searchResultsArray);
+        }
+    };
+
     @Override
     public void fetchSearchResults(String queryContent, int queryType) {
         /*
@@ -46,71 +131,25 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         가게, 가게의 위치, 메뉴들, 저장된 리뷰들 모두 가져오기
             > 리뷰 평점 평균내기
          */
-
-
         if (queryContent.isEmpty()) {
             searchResultReset();
-        } else {
+        } else if(queryType == 0){      // 가게 검색
             OkHttpClient client = new OkHttpClient();
 
             HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl+"search?search="+queryContent).newBuilder();
-            //urlBuilder.addQueryParameter("search",queryContent);
+            String url = urlBuilder.build().toString();
+            Request req = new Request.Builder().url(url).build();
+            //Toast.makeText((Context) view, (CharSequence) url, Toast.LENGTH_SHORT).show();
+
+            client.newCall(req).enqueue(callback_restaurant);
+        } else if(queryType == 1) {     // 메뉴 검색
+            OkHttpClient client = new OkHttpClient();
+
+            HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl+"search?search="+queryContent).newBuilder();
             String url = urlBuilder.build().toString();
             Request req = new Request.Builder().url(url).build();
 
-            //Toast.makeText((Context) view, (CharSequence) url, Toast.LENGTH_SHORT).show();
-
-
-
-            client.newCall(req).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                    final String myResponse = response.body().string();
-
-                    String restaurant_name;
-                    String menu_name;
-                    try {
-                        JSONObject jsObj = new JSONObject(myResponse);
-                        restaurant_name = jsObj.getJSONObject("menu").getString("restaurant_name");
-                        menu_name = jsObj.getJSONObject("menu").getString("menu_name");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    String res = response.body().string();
-
-                    JSONObject json = null;
-                    JSONArray restraurant = null;
-                    try {
-                        json = new JSONObject(res);
-                        restraurant = json.getJSONArray("menu");
-
-                        JSONObject tempJson = new JSONObject();
-                        for(int i=0; i<restraurant.length(); i++){
-                            tempJson = restraurant.getJSONObject(i);
-                            searchResultsArray.add(new SearchResult(tempJson.getString("restaurant_name"),
-                                    tempJson.getString("menu_name"),
-                                    tempJson.getInt("price"),
-                                    ""));
-                        }
-
-                        pushSearchResultsToViewer(searchResultsArray);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    pushSearchResultsToViewer(searchResultsArray);
-
-                }
-            });
-
-
-
+            client.newCall(req).enqueue(callback_menu);
         }
 
         //pushSearchResultsToViewer(searchResultsArray);
@@ -124,6 +163,5 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
             searchResult = new SearchResult(searchResultsArray.get(i));
             view.showSearchResult(searchResult);
         }
-
     }
 }
