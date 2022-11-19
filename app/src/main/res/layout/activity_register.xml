@@ -25,12 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textSize="7pt"
         android:text="아이디"
+        android:textSize="7pt"
         app:layout_constraintEnd_toStartOf="@+id/editregisterid"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editregisterid"
-         />
+        app:layout_constraintTop_toTopOf="@id/editregisterid" />
 
     <EditText
         android:id="@+id/editregisterid"
@@ -38,24 +37,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="ID"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewid"
-        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine"
-         />
+        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine" />
 
     <TextView
         android:id="@+id/textViewpw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textSize="7pt"
         android:text="비밀번호"
+        android:textSize="7pt"
         app:layout_constraintEnd_toStartOf="@+id/editregisterpw"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editregisterpw"
-        />
+        app:layout_constraintTop_toTopOf="@id/editregisterpw" />
 
     <EditText
         android:id="@+id/editregisterpw"
@@ -73,13 +70,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:textSize="7pt"
-        android:text="비밀번호\n 재입력"
         android:inputType="textPassword"
+        android:text="비밀번호\n 재입력"
+        android:textSize="7pt"
         app:layout_constraintEnd_toStartOf="@+id/editregisterpw2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editregisterpw2"
-        />
+        app:layout_constraintTop_toTopOf="@id/editregisterpw2" />
 
     <EditText
         android:id="@+id/editregisterpw2"
@@ -94,16 +90,15 @@
 
 
     <TextView
-    android:id="@+id/textViewemail"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:textSize="7pt"
-    android:text="이메일"
-    app:layout_constraintEnd_toStartOf="@+id/editregisteremail"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@id/editregisteremail"
-    />
+        android:id="@+id/textViewemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="이메일"
+        android:textSize="7pt"
+        app:layout_constraintEnd_toStartOf="@+id/editregisteremail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/editregisteremail" />
 
     <EditText
         android:id="@+id/editregisteremail"
@@ -123,19 +118,18 @@
         android:layout_marginTop="20dp"
         android:text="인증 코드 전송"
         app:layout_constraintStart_toStartOf="@id/editregisteremail"
-        app:layout_constraintTop_toBottomOf="@id/editregisteremail"/>
+        app:layout_constraintTop_toBottomOf="@id/editregisteremail" />
 
     <TextView
         android:id="@+id/textViewcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textSize="7pt"
         android:text="인증코드"
+        android:textSize="7pt"
         app:layout_constraintEnd_toStartOf="@+id/editregistercode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editregistercode"
-        />
+        app:layout_constraintTop_toTopOf="@id/editregistercode" />
 
     <EditText
         android:id="@+id/editregistercode"
@@ -161,18 +155,18 @@
         android:id="@+id/buttonsignupresult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginBottom="40dp"
         android:text="가입하기"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonverify"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textskkkemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="\@skku.edu"
+        android:text="\@g.skku.edu"
         android:textSize="7pt"
         app:layout_constraintStart_toEndOf="@id/editregisteremail"
         app:layout_constraintTop_toTopOf="@id/editregisteremail" />
