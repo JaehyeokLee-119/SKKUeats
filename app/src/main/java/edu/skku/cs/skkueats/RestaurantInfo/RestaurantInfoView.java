@@ -3,6 +3,7 @@ package edu.skku.cs.skkueats.RestaurantInfo;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -70,6 +71,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
          */
 
         restaurantName = getIntent().getStringExtra("RestaurantName");
+        //restaurantName = "해담";
         initView();
         model = new RestaurantInfoModel(this, restaurantName);
 
@@ -142,16 +144,26 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         DB에서 가게의 위도, 경도를 받아오고 난 뒤 view의 setMapCamera를 실행하면,
         네이버지도가 가게 위치를 가리킨다
          */
-        latLng = new LatLng(latitude,  longitude);
-        cameraPosition = new CameraPosition(
-                latLng,  // 위치 지정
-                17,                           // 줌 레벨
-                28,
-                0
-        );
-        Marker marker = new Marker();
-        marker.setPosition(latLng);
-        marker.setMap(naverMap);
-        naverMap.setCameraPosition(cameraPosition);
+        Double lat = latitude;
+        Double longit = longitude;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.v("result", lat.toString());
+                Log.v("result", longit.toString());
+                latLng = new LatLng(lat,  longit);
+                cameraPosition = new CameraPosition(
+                        latLng,  // 위치 지정
+                        17,                           // 줌 레벨
+                        28,
+                        0
+                );
+                Marker marker = new Marker();
+                marker.setPosition(latLng);
+                marker.setMap(naverMap);
+                naverMap.setCameraPosition(cameraPosition);
+            }
+        });
+
     }
 }
