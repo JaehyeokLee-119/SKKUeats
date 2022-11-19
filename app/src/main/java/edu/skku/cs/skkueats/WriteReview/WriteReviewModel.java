@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -43,6 +44,7 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
     private String restaurantName;
     private boolean check = false;
     private MenuReview menuReview;
+    public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     public WriteReviewModel(WriteReviewContract.contactView view, String restaurantName) {
         this.view = view;
@@ -140,19 +142,23 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
     }
 
     @Override
-    public void reviewUpload(MenuReview menuReview, String id) {
+    public void reviewUpload(MenuReview menuReview, String id) throws JSONException {
         // 리뷰(menuReview)를 서버에 보냄
 
         this.menuReview = menuReview;
 
+
         OkHttpClient client = new OkHttpClient();
 
-        RequestBody body = new FormBody.Builder()
-                .add("restaurantName", menuReview.restaurantName)
-                .add("menuName", menuReview.menu)
-                .add("grade", menuReview.grade.toString())
-                .add("reviewContents", menuReview.reviewContent)
-                .build();
+        JSONObject json = new JSONObject();
+        json.put("restaurantName", menuReview.restaurantName)
+                .put("menuName", menuReview.menu)
+                .put("grade", menuReview.grade.toString())
+                .put("reviewContents", menuReview.reviewContent);
+
+        RequestBody body = RequestBody.create(JSON, json.toString());
+
+
         Request request = new Request.Builder()
                 .url("http://3.39.192.139:5000/reviews")
                 .post(body)

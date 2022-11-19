@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.SearchActivity.SearchActivityModel;
 import edu.skku.cs.skkueats.SearchActivity.SearchActivityView;
@@ -53,7 +55,11 @@ public class WriteReviewView extends AppCompatActivity implements WriteReviewCon
                 reviewContent = editTextReviewContent.getText().toString();
 
                 MenuReview menuReview = new MenuReview(restaurantName, menuName, grade, reviewContent);
-                model.reviewUpload(menuReview, id);
+                try {
+                    model.reviewUpload(menuReview, id);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
