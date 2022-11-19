@@ -1,6 +1,7 @@
 package edu.skku.cs.skkueats.Login;
 
 import android.provider.MediaStore;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +44,7 @@ public class LoginModel implements LoginContract.contactModel {
             JSONObject json = null;
             try {
                 json = new JSONObject(res);
+                Log.v("result", res.toString());
                 check = json.getBoolean("loginSuccess");
             } catch (JSONException e) {
                 e.printStackTrace();
