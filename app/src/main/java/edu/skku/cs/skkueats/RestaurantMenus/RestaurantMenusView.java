@@ -54,6 +54,7 @@ public class RestaurantMenusView extends AppCompatActivity implements Restaurant
          */
 
         restaurantName = getIntent().getStringExtra("RestaurantName");
+        //restaurantName = "본찌";
         initView();
         model = new RestaurantMenusModel(this, restaurantName);
     }
@@ -67,12 +68,18 @@ public class RestaurantMenusView extends AppCompatActivity implements Restaurant
     }
 
     @Override
-    public void showMenu(String menu, double grade, int price) {
+    public void showMenu(String menu, String grade, int price) {
         /*
         받은 정보를 바탕으로 ListView에 menu를 추가하여 화면에 표시한다
          */
-        menuArray.add(new RestaurantMenu(menu, grade, price));
-        restaurantMenusAdapter = new RestaurantMenusAdapter(getApplicationContext(), menuArray);
-        menuList.setAdapter(restaurantMenusAdapter);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                menuArray.add(new RestaurantMenu(menu, grade, price));
+                restaurantMenusAdapter = new RestaurantMenusAdapter(getApplicationContext(), menuArray);
+                menuList.setAdapter(restaurantMenusAdapter);
+            }
+        });
+
     }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface RestaurantMenusContract {
     interface contactView {
-        void showMenu(String menu, double grade, int price);
+        void showMenu(String menu, String grade, int price);
     }
 
     interface contactModel {

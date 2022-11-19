@@ -14,10 +14,10 @@ import edu.skku.cs.skkueats.R;
 
 class RestaurantMenu {
     public String menu;
-    public double grade;
+    public String grade;
     public int price;
 
-    public RestaurantMenu(String menu, double grade, int price) {
+    public RestaurantMenu(String menu, String grade, int price) {
         this.menu = menu;
         this.grade = grade;
         this.price = price;
@@ -65,7 +65,7 @@ public class RestaurantMenusAdapter extends BaseAdapter {
         TextView textViewPrice = view.findViewById(R.id.textViewRMIprice);
 
         textViewMenuName.setText(items.get(i).menu);
-        textViewGrade.setText(Double.toString(items.get(i).grade)+" 점");
+        textViewGrade.setText(items.get(i).grade);
         textViewPrice.setText(items.get(i).price+"  ₩");
 
         // ListView 클릭 비활성화
