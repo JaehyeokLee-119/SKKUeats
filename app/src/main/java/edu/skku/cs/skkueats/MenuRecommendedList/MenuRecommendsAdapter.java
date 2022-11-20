@@ -95,6 +95,7 @@ public class MenuRecommendsAdapter extends BaseAdapter {
                 Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
                 intent.putExtra("id", id);
                 intent.putExtra("RestaurantName", items.get(i).restaurantName);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });

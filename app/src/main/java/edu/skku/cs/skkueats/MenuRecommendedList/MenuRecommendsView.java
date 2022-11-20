@@ -62,9 +62,15 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
         /*
         받은 정보를 바탕으로 ListView에 Review를 추가하여 화면에 표시한다
          */
-        recommendsArray.add(new MenuRecommends(menuRecommends));
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                recommendsArray.add(new MenuRecommends(menuRecommends));
 //        restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray);
-        restaurantReviewAdapter = new MenuRecommendsAdapter(this, recommendsArray, id);
-        recommendsList.setAdapter(restaurantReviewAdapter);
+                restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray, id);
+                recommendsList.setAdapter(restaurantReviewAdapter);
+            }
+        });
+
     }
 }
