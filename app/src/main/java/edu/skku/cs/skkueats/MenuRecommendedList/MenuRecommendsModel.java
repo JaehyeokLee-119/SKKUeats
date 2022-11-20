@@ -27,16 +27,16 @@ class RecommendQueryCondition {
     public String bigCategory;      // 대분류 조건
     public String smallCategory;    // 소분류 조건
     public int price;               // 가격 조건
-    public double minGrade;         // 최소 평점 조건
+    public String purpose;         // 최소 평점 조건
     public String location;         // 가게 위치 조건
     public int maxNum;              // 추천받을 식사메뉴의 최대 개수
 
     public RecommendQueryCondition(String bigCategory, String smallCategory,
-                                   int price, double minGrade, String location, int maxNum) {
+                                   int price, String purpose, String location, int maxNum) {
         this.bigCategory = bigCategory;
         this.smallCategory = smallCategory;
         this.price = price;
-        this.minGrade = minGrade;
+        this.purpose = purpose;
         this.location = location;
         this.maxNum = maxNum;
     }
@@ -99,7 +99,7 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
 
 
         Request request = new Request.Builder()
-                .url("http://3.39.192.139:5000/recommend?mainCategory=" + recommendQueryCondition.bigCategory + "&subCategory=" + recommendQueryCondition.smallCategory + "&location=" + recommendQueryCondition.location + "&price=0-" + recommendQueryCondition.price)
+                .url("http://3.39.192.139:5000/recommend?mainCategory=" + recommendQueryCondition.bigCategory + "&subCategory=" + recommendQueryCondition.smallCategory + "&location=" + recommendQueryCondition.location + "&price=0-" + recommendQueryCondition.price+ "&purpose=" + recommendQueryCondition.purpose)
                 .build();
         client.newCall(request).enqueue(callback);
 

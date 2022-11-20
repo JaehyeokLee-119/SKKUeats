@@ -39,7 +39,7 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
         String[] conditions = getIntent().getStringArrayExtra("conditions");
         RecommendQueryCondition recommendQueryCondition = new RecommendQueryCondition(
                 conditions[0], conditions[1], Integer.parseInt(conditions[2]),
-                Double.parseDouble(conditions[3]), conditions[4], Integer.parseInt(conditions[5])
+                conditions[3], conditions[4], Integer.parseInt(conditions[5])
         );
 
         // 받은 조건 Intent를 일단 테스트용으로 토스트 띄워보기
