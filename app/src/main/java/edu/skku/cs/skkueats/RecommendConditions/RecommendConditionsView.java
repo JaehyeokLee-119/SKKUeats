@@ -2,11 +2,9 @@ package edu.skku.cs.skkueats.RecommendConditions;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,11 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
-import java.util.ArrayList;
-
 import edu.skku.cs.skkueats.MenuRecommendedList.MenuRecommendsView;
 import edu.skku.cs.skkueats.R;
-import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
 
 public class RecommendConditionsView extends AppCompatActivity implements RecommendConditionsContract.contactView {
@@ -32,26 +27,25 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     ConstraintLayout boxBigCategory;
     ConstraintLayout boxSmallCategory;
     ConstraintLayout boxPrice;
-    ConstraintLayout boxMinGrade;
+    ConstraintLayout boxPurpose;
     ConstraintLayout boxLocation;
 
     RadioGroup bigCategoryCondition;
     RadioGroup smallCategoryCondition;
     ConstraintLayout priceCondition;
-    ConstraintLayout minGradeCondition;
+    RadioGroup purposeCondition;
     RadioGroup locationCondition;
 
     TextView textViewBigCategoryArrow;
     TextView textViewSmallCategoryArrow;
     TextView textViewPriceArrow;
-    TextView textViewMinGradeArrow;
+    TextView textViewPurposeArrow;
     TextView textViewLocationArrow;
 
 
     CheckBox checkBoxActivatePrice;
     CheckBox checkBoxActivateMinGrade;
     TextView textViewPriceText;
-    TextView textViewMinGradeText;
     SeekBar seekBarPrice;
     SeekBar seekBarMinGrade;
 
@@ -62,6 +56,14 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     CheckBox checkBoxBigAsian;
     CheckBox checkBoxBigFast;
     CheckBox checkBoxBigAll;
+
+    CheckBox checkBoxPurposeSolo   ;
+    CheckBox checkBoxPurposeFriend ;
+    CheckBox checkBoxPurposeCouple ;
+    CheckBox checkBoxPurposeGroup  ;
+    CheckBox checkBoxPurposeAlcohol;
+    CheckBox checkBoxPurposeAll    ;
+
 
     CheckBox checkBoxSmallRice;
     CheckBox checkBoxSmallSoup;
@@ -123,13 +125,12 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             }
         });
 
-        boxMinGrade.setOnClickListener(new View.OnClickListener() {
+        boxPurpose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (visibilityLevel <= 3)
                     visibilityLevel = 4;
                 showConditions(visibilityLevel);
-                minGradeTextChange();
             }
         });
 
@@ -159,22 +160,6 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             }
         });
 
-        seekBarMinGrade.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minGradeTextChange();
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                //textViewPriceText.setText(String.format(": %d₩", seekBar.getProgress()*1000));
-            }
-        });
         checkBoxActivatePrice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -182,34 +167,22 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 priceTextChange();
             }
         });
-        checkBoxActivateMinGrade.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                minGradeTextChange();
-            }
-        });
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 int priceValue;
-                double minGradeValue;
                 if (checkBoxActivatePrice.isChecked() && visibilityLevel >= 3) {
                     priceValue = seekBarPrice.getProgress()*1000;
                 } else {
                     priceValue = 0;
                 }
-                if (checkBoxActivateMinGrade.isChecked()  && visibilityLevel >= 4) {
-                    minGradeValue = (double)seekBarMinGrade.getProgress()/2;
-                } else {
-                    minGradeValue = 0;
-                }
                 RecommendQueryCondition recommendQueryCondition = new RecommendQueryCondition(
                         makeBigCategoryQueryString(),
                         makeSmallCategoryQueryString(),
                         priceValue,
-                        minGradeValue,
+                        makePurposeQueryString(),
                         makeLocationQueryString(),
                         5
                 );
@@ -221,12 +194,14 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                         recommendQueryCondition.bigCategory,
                         recommendQueryCondition.smallCategory,
                         Integer.toString(recommendQueryCondition.price),
-                        Double.toString(recommendQueryCondition.minGrade),
+                        recommendQueryCondition.purpose,
                         recommendQueryCondition.location,
                         Integer.toString(recommendQueryCondition.maxNum)};
                 intent.putExtra("conditions", conditions);
                 intent.putExtra("id", id);
-
+                /*Toast.makeText(getApplicationContext(), conditions[0]+" "+conditions[1]+" "+conditions[2]+" "+
+                        conditions[3]+" "+conditions[4]+" "+conditions[5], Toast.LENGTH_SHORT).show();
+                */
                 startActivity(intent);
             }
         });
@@ -244,13 +219,6 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             textViewPriceText.setText(String.format(": 상관없음"));
     }
 
-    public void minGradeTextChange() {
-        if (checkBoxActivateMinGrade.isChecked())
-            textViewMinGradeText.setText(String.format(": %.1f", (double)seekBarMinGrade.getProgress()/2));
-        else
-            textViewMinGradeText.setText(String.format(": 상관없음"));
-    }
-
 
     @Override
     public void initView() {
@@ -259,27 +227,24 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         boxBigCategory = findViewById(R.id.constraintLayoutBigCategory);
         boxSmallCategory = findViewById(R.id.constraintLayoutSmallCategory);
         boxPrice = findViewById(R.id.constraintLayoutPrice);
-        boxMinGrade = findViewById(R.id.constraintLayoutMinGrade);
+        boxPurpose = findViewById(R.id.constraintLayoutPurpose);
         boxLocation = findViewById(R.id.constraintLayoutLocation);
 
         bigCategoryCondition = findViewById(R.id.BigCategoryCondition);
         smallCategoryCondition = findViewById(R.id.SmallCategoryCondition);
         priceCondition = findViewById(R.id.PriceCondition);
-        minGradeCondition = findViewById(R.id.MinGradeCondition);
+        purposeCondition = findViewById(R.id.PurposeCondition);
         locationCondition = findViewById(R.id.LocationCondition);
 
         textViewBigCategoryArrow = findViewById(R.id.textViewBigCategoryArrow);
         textViewSmallCategoryArrow = findViewById(R.id.textViewSmallCategoryArrow);
         textViewPriceArrow = findViewById(R.id.textViewPriceArrow);
-        textViewMinGradeArrow = findViewById(R.id.textViewMinGradeArrow);
+        textViewPurposeArrow = findViewById(R.id.textViewPurposeArrow);
         textViewLocationArrow = findViewById(R.id.textViewLocationArrow);
 
         seekBarPrice = findViewById(R.id.seekBarPrice);
-        seekBarMinGrade = findViewById(R.id.seekBarMinGrade);
         textViewPriceText = findViewById(R.id.textViewPriceText);
-        textViewMinGradeText = findViewById(R.id.textViewMinGradeText);
         checkBoxActivatePrice = findViewById(R.id.checkBoxActivatePrice);
-        checkBoxActivateMinGrade = findViewById(R.id.checkBoxActivateMinGrade);
 
         checkBoxBigKorean           =   findViewById(R.id.checkBoxBigKorean);
         checkBoxBigChinese          =   findViewById(R.id.checkBoxBigChinese);
@@ -296,6 +261,14 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         checkBoxSmallPizza          =   findViewById(R.id.checkBoxSmallPizza);
         checkBoxSmallChicken        =   findViewById(R.id.checkBoxSmallChicken);
         checkBoxSmallAll            =   findViewById(R.id.checkBoxSmallAll);
+
+        checkBoxPurposeSolo   =   findViewById(R.id.checkBoxPurposeSolo);
+        checkBoxPurposeFriend    =   findViewById(R.id.checkBoxPurposeFriend);
+        checkBoxPurposeCouple      =   findViewById(R.id.checkBoxPurposeCouple);
+        checkBoxPurposeGroup   =   findViewById(R.id.checkBoxPurposeGroup);
+        checkBoxPurposeAlcohol   =   findViewById(R.id.checkBoxPurposeAlcohol);
+        checkBoxPurposeAll         =   findViewById(R.id.checkBoxPurposeAll);
+
         checkBoxLocationFrontDoor   =   findViewById(R.id.checkBoxLocationFrontDoor);
         checkBoxLocationBackDoor    =   findViewById(R.id.checkBoxLocationBackDoor);
         checkBoxLocationAcross      =   findViewById(R.id.checkBoxLocationAcross);
@@ -307,8 +280,8 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         smallCategoryCondition.setVisibility(View.GONE);
         boxPrice.setVisibility(View.GONE);
         priceCondition.setVisibility(View.GONE);
-        boxMinGrade.setVisibility(View.GONE);
-        minGradeCondition.setVisibility(View.GONE);
+        boxPurpose.setVisibility(View.GONE);
+        purposeCondition.setVisibility(View.GONE);
         boxLocation.setVisibility(View.GONE);
         locationCondition.setVisibility(View.GONE);
 
@@ -417,6 +390,49 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         }
         return res;
     }
+
+    public String makePurposeQueryString() {
+        String res = "";
+        if (checkBoxPurposeAll.isChecked()) {
+            res += "모두";
+        } else {
+            if (checkBoxPurposeSolo.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "혼밥";
+            }
+            if (checkBoxPurposeAlcohol.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "술";
+            }
+            if (checkBoxPurposeCouple.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "연인";
+            }
+            if (checkBoxPurposeFriend.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "친구";
+            }
+            if (checkBoxPurposeGroup.isChecked()) {
+                if (!res.isEmpty()) {
+                    res += ",";
+                }
+                res += "모임";
+            }
+        }
+        if (res.isEmpty()) {
+            return "뭐든지";
+        }
+        return res;
+    }
+
     public String makeLocationQueryString() {
         String res = "";
 
@@ -493,18 +509,18 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
 
         if (visibilityLevel >= 3) {
             priceCondition.setVisibility(View.VISIBLE);
-            boxMinGrade.setVisibility(View.VISIBLE);
+            boxPurpose.setVisibility(View.VISIBLE);
             if (visibilityLevel == 3) {
-                textViewMinGradeArrow.setTextColor(ContextCompat.getColor(getApplicationContext(),
+                textViewPurposeArrow.setTextColor(ContextCompat.getColor(getApplicationContext(),
                         R.color.black));
             } else {
-                textViewMinGradeArrow.setTextColor(ContextCompat.getColor(getApplicationContext(),
+                textViewPurposeArrow.setTextColor(ContextCompat.getColor(getApplicationContext(),
                         R.color.blackGrey));
             }
         }
 
         if (visibilityLevel >= 4) {
-            minGradeCondition.setVisibility(View.VISIBLE);
+            purposeCondition.setVisibility(View.VISIBLE);
             boxLocation.setVisibility(View.VISIBLE);
             if (visibilityLevel == 4) {
                 textViewLocationArrow.setTextColor(ContextCompat.getColor(getApplicationContext(),
