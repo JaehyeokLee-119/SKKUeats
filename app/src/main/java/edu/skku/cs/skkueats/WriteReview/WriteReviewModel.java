@@ -1,5 +1,6 @@
 package edu.skku.cs.skkueats.WriteReview;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -62,6 +63,7 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
         @Override
         public void onResponse(Call call, Response response) throws IOException {
             String res = response.body().string();
+            Log.v("result", res);
 
             JSONObject json = null;
             try {

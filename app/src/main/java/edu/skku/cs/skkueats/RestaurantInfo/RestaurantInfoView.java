@@ -125,6 +125,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         naverMap.setMapType(NaverMap.MapType.Terrain);
         marker.setPosition(latLng);
         marker.setMap(naverMap);
+        Log.v("result", cameraPosition.toString());
         naverMap.setCameraPosition(cameraPosition);
         model.onMapLoaded();
     }
@@ -152,18 +153,18 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
             public void run() {
                 Log.v("result", lat.toString());
                 Log.v("result", longit.toString());
-                latLng = new LatLng(lat,  longit);
-                CameraPosition cameraPosition;
-                cameraPosition = new CameraPosition(
-                        latLng,  // 위치 지정
+                LatLng latLng2 = new LatLng(lat,  longit);
+                CameraPosition cameraPosition2;
+                cameraPosition2 = new CameraPosition(
+                        latLng2,  // 위치 지정
                         17,                           // 줌 레벨
                         28,
                         0
                 );
                 Marker marker = new Marker();
-                marker.setPosition(latLng);
+                marker.setPosition(latLng2);
                 marker.setMap(naverMap);
-                naverMap.setCameraPosition(cameraPosition);
+                naverMap.setCameraPosition(cameraPosition2);
             }
         });
 
