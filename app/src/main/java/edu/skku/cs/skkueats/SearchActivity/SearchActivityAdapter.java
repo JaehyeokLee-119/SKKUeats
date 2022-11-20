@@ -100,7 +100,12 @@ public class SearchActivityAdapter extends BaseAdapter {
             textViewLocation.setText("");
             textViewMenus.setTextSize(Dimension.SP, 10);
         }
-        textViewMenus.setText(items.get(i).menus);
+        String menusText = items.get(i).menus;
+        if (menusText.length() > 30) {
+            menusText = menusText.substring(0,30);
+            menusText += "...";
+        }
+        textViewMenus.setText(menusText);
 
 
         view.setOnClickListener(new View.OnClickListener(){

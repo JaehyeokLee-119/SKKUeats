@@ -23,17 +23,18 @@
     <TextView
         android:id="@+id/textReviewRestaurantName"
         android:layout_width="350dp"
-        android:layout_height="64dp"
-        android:text="Restuarant Name"
-        android:background="@drawable/shape_for_soft_rectangle_pastelcyan"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="32sp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:background="@drawable/shape_for_soft_rectangle_pastelcyan"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="6dp"
+        android:text="Restuarant Name"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewHeadLine" />
 
     <Spinner
         android:id="@+id/spinner"

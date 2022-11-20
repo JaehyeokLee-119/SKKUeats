@@ -27,7 +27,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class SearchActivityModel implements SearchActivityContract.contactModel {
-    private ArrayList<SearchResult> searchResultsArray;
+    public ArrayList<SearchResult> searchResultsArray;
     private ArrayList<String> menuArray;
     private String menuString;
     private SearchActivityContract.contactView view;

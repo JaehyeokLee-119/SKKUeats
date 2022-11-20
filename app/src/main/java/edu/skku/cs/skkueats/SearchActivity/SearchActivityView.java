@@ -68,6 +68,11 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                searchResultArray.clear();
+                model.searchResultsArray.clear();
+                searchActivityAdapter = new SearchActivityAdapter(getApplicationContext(), searchResultArray, id);
+                searchResultList.setAdapter(searchActivityAdapter);
+
                 String searchQuery = String.valueOf(editTextSearchContent.getText());
                 int inputSearchCondition = searchCondition;
                 model.fetchSearchResults(searchQuery, inputSearchCondition);
