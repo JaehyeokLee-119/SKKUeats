@@ -114,6 +114,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         RestaurantInfoView.naverMap = naverMap;
+        CameraPosition cameraPosition;
         cameraPosition = new CameraPosition(
                 latLng,  // 위치 지정
                 17,                           // 줌 레벨
@@ -152,6 +153,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
                 Log.v("result", lat.toString());
                 Log.v("result", longit.toString());
                 latLng = new LatLng(lat,  longit);
+                CameraPosition cameraPosition;
                 cameraPosition = new CameraPosition(
                         latLng,  // 위치 지정
                         17,                           // 줌 레벨
