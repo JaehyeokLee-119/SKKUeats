@@ -135,9 +135,14 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         /*
         받은 정보를 바탕으로 ListView에 Review를 추가하여 화면에 표시한다
          */
-        reviewArray.add(new RestaurantReview(writer, menu, grade, content, isTroll));
-        restaurantReviewAdapter = new RestaurantReviewAdapter(getApplicationContext(), reviewArray);
-        reviewList.setAdapter(restaurantReviewAdapter);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                reviewArray.add(new RestaurantReview(writer, menu, grade, content, isTroll));
+                restaurantReviewAdapter = new RestaurantReviewAdapter(getApplicationContext(), reviewArray);
+                reviewList.setAdapter(restaurantReviewAdapter);
+            }
+        });
     }
 
     public void setMapCamera(double latitude, double longitude) {
