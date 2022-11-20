@@ -82,6 +82,7 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
                     recommendsArray.add(new MenuRecommends(tempJson.getString("restaurant_name"), tempJson.getString("menu_name"), tempJson.getInt("price"), tempJson.getString("main_category")));
                 }
 
+                // 리뷰 maxNum개를 고르기
                 Random random = new Random();
                 random.setSeed(System.currentTimeMillis());
                 // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
@@ -106,7 +107,12 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
 
 
         Request request = new Request.Builder()
-                .url("http://3.39.192.139:5000/recommend?mainCategory=" + recommendQueryCondition.bigCategory + "&subCategory=" + recommendQueryCondition.smallCategory + "&location=" + recommendQueryCondition.location + "&price=0-" + recommendQueryCondition.price+ "&purpose=" + recommendQueryCondition.purpose)
+                .url("http://3.39.192.139:5000/recommend?"+
+                        "mainCategory=" + recommendQueryCondition.bigCategory +
+                        "&subCategory=" + recommendQueryCondition.smallCategory +
+                        "&location=" + recommendQueryCondition.location +
+                        "&price=0-" + recommendQueryCondition.price+
+                        "&purpose=" + recommendQueryCondition.purpose)
                 .build();
         client.newCall(request).enqueue(callback);
 
