@@ -156,6 +156,7 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
         json.put("restaurantName", menuReview.restaurantName)
                 .put("menuName", menuReview.menu)
                 .put("grade", menuReview.grade.toString())
+                .put("id", id)
                 .put("reviewContents", menuReview.reviewContent);
 
         RequestBody body = RequestBody.create(JSON, json.toString());
