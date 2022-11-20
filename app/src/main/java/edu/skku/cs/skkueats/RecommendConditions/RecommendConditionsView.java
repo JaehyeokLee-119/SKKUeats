@@ -216,8 +216,14 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     }
 
     public void priceTextChange() {
-        if (checkBoxActivatePrice.isChecked())
-            textViewPriceTitleText.setText(String.format("최대가격: %d ₩", seekBarPrice.getProgress()*1000));
+        if (checkBoxActivatePrice.isChecked()) {
+
+            if (seekBarPrice.getProgress() == 0) {
+                textViewPriceTitleText.setText(String.format("최대가격: 상관없음"));
+            }
+            else textViewPriceTitleText.setText(String.format("최대가격: %d ₩", seekBarPrice.getProgress() * 1000));
+
+        }
         else
             textViewPriceTitleText.setText(String.format("최대가격: 상관없음"));
     }

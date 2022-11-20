@@ -3,6 +3,7 @@ package edu.skku.cs.skkueats.MenuRecommendedList;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
     private Bundle savedInstanceState;
     private MenuRecommendsModel model;
     private String id;
+    private TextView textViewNotice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +45,9 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
         );
 
         // 받은 조건 Intent를 일단 테스트용으로 토스트 띄워보기
-        Toast.makeText(getApplicationContext(), conditions[0]+" "+conditions[1]+" "+conditions[2]+" "+
+        /*Toast.makeText(getApplicationContext(), conditions[0]+" "+conditions[1]+" "+conditions[2]+" "+
                 conditions[3]+" "+conditions[4]+" "+conditions[5], Toast.LENGTH_SHORT).show();
-        
+        */
         
         model = new MenuRecommendsModel(this, recommendQueryCondition);
     }
@@ -53,7 +55,7 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
     @Override
     public void initView() {
         recommendsList = findViewById(R.id.listViewRecommends);
-
+        textViewNotice = findViewById(R.id.textViewNotice);
     }
 
 
@@ -65,6 +67,9 @@ public class MenuRecommendsView extends AppCompatActivity implements MenuRecomme
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                if (model.queryRetryNum != 0) {
+                    textViewNotice.setText("조건에 맞지 않는 메뉴가 나올 수 있습니다");
+                }
                 recommendsArray.add(new MenuRecommends(menuRecommends));
 //        restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray);
                 restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray, id);

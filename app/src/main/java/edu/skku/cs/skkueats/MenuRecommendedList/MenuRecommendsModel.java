@@ -32,6 +32,7 @@ class RecommendQueryCondition {
     public String location;         // 가게 위치 조건
     public int maxNum;              // 추천받을 식사메뉴의 최대 개수
 
+
     public RecommendQueryCondition(String bigCategory, String smallCategory,
                                    int price, String purpose, String location, int maxNum) {
         this.bigCategory = bigCategory;
@@ -46,11 +47,13 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
     private ArrayList<MenuRecommends> recommendsArray;
     private MenuRecommendsContract.contactView view;
     private RecommendQueryCondition recommendQueryCondition;
+    public int queryRetryNum;
 
     public MenuRecommendsModel(MenuRecommendsContract.contactView view, RecommendQueryCondition recommendQueryCondition) {
         this.view = view;
         recommendsArray = new ArrayList<>();
         this.recommendQueryCondition = recommendQueryCondition;
+        queryRetryNum = 0;
         fetchRecommends();
     }
 
@@ -82,15 +85,32 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
                     recommendsArray.add(new MenuRecommends(tempJson.getString("restaurant_name"), tempJson.getString("menu_name"), tempJson.getInt("price"), tempJson.getString("main_category")));
                 }
 
-                // 리뷰 maxNum개를 고르기
-                Random random = new Random();
-                random.setSeed(System.currentTimeMillis());
-                // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
-                while(recommendsArray.size() > recommendQueryCondition.maxNum) {
-                    int toRemove = random.nextInt(recommendsArray.size());
-                    recommendsArray.remove(toRemove);
+                if (recommendsArray.isEmpty()) {
+
+                    if (queryRetryNum == 0) {
+                        recommendQueryCondition.location = "모두";
+                    } else if (queryRetryNum == 1) {
+                        recommendQueryCondition.purpose = "모두";
+                    } else if (queryRetryNum == 2) {
+                        recommendQueryCondition.price = 999999;
+                    } else if (queryRetryNum == 4) {
+                        recommendQueryCondition.smallCategory = "모두";
+                    } else if (queryRetryNum == 5) {
+                        recommendQueryCondition.bigCategory = "모두";
+                    }
+                    fetchRecommends();
+                    queryRetryNum++;
+                } else {
+                    // 리뷰 maxNum개를 고르기
+                    Random random = new Random();
+                    random.setSeed(System.currentTimeMillis());
+                    // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
+                    while (recommendsArray.size() > recommendQueryCondition.maxNum) {
+                        int toRemove = random.nextInt(recommendsArray.size());
+                        recommendsArray.remove(toRemove);
+                    }
+                    pushRecommendsToViewer(recommendsArray);
                 }
-                pushRecommendsToViewer(recommendsArray);
 
             } catch (JSONException e) {
                 e.printStackTrace();
