@@ -373,7 +373,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutMinGrade"
+        android:id="@+id/constraintLayoutPurpose"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayoutPrice"
@@ -382,7 +382,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutMinGradeTitle"
+            android:id="@+id/constraintLayoutPurposeTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_for_soft_rectangle_grey"
@@ -393,32 +393,21 @@
             app:layout_constraintVertical_bias="0.135">
 
             <TextView
-                android:id="@+id/textViewMinGradeTitleText"
+                android:id="@+id/textViewPurposeTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
-                android:text="최소평점"
+                android:text="목적"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewMinGradeArrow"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.461" />
-
-            <TextView
-                android:id="@+id/textViewMinGradeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textViewMinGradeTitleText"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewMinGradeArrow"
+                android:id="@+id/textViewPurposeArrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
@@ -430,35 +419,59 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/MinGradeCondition"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <RadioGroup
+            android:id="@+id/PurposeCondition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGradeTitle">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPurposeTitle">
 
             <CheckBox
-                android:id="@+id/checkBoxActivateMinGrade"
+                android:id="@+id/checkBoxPurposeSolo"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:checked="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="혼밥" />
 
-            <SeekBar
-                android:id="@+id/seekBarMinGrade"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:max="10"
-                android:progress="0"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/checkBoxActivateMinGrade"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <CheckBox
+                android:id="@+id/checkBoxPurposeFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="친구" />
+
+            <CheckBox
+                android:id="@+id/checkBoxPurposeCouple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="연인" />
+
+            <CheckBox
+                android:id="@+id/checkBoxPurposeGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="모임" />
+
+            <CheckBox
+                android:id="@+id/checkBoxPurposeAlcohol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="술" />
+
+            <CheckBox
+                android:id="@+id/checkBoxPurposeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="모두" />
+
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -466,9 +479,9 @@
         android:id="@+id/constraintLayoutLocation"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutMinGrade"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayoutMinGrade"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutMinGrade">
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutPurpose"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutPurpose"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPurpose">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutLocationTitle"

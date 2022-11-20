@@ -2,6 +2,7 @@ package edu.skku.cs.skkueats.CampusCafeInfo;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -75,9 +76,27 @@ public class CampusCafeInfoView extends AppCompatActivity implements OnMapReadyC
         textViewSeeMenu.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), RestaurantMenusView.class);
+                /*Intent intent = new Intent(getApplicationContext(), RestaurantMenusView.class);
                 intent.putExtra("RestaurantName", restaurantName);
-                startActivity(intent);
+                startActivity(intent);*/
+
+                if (restaurantName.equals("학생회관(행단골)")) {
+                    String intentURL = "https://www.skku.edu/skku/campus/support/welfare_11_1.do?mode=info&conspaceCd=20201104&srResId=3&srShowTime=D&srCategory=L";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(intentURL));
+                    startActivity(intent);
+                } else if (restaurantName.equals("교직원식당(구시재)")){
+                    String intentURL = "https://www.skku.edu/skku/campus/support/welfare_11_1.do?mode=info&conspaceCd=20201040&srResId=11&srShowTime=W&srCategory=L";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(intentURL));
+                    startActivity(intent);
+                } else if (restaurantName.equals("공대식당(해오름)")){
+                    String intentURL = "https://www.skku.edu/skku/campus/support/welfare_11_1.do?mode=info&conspaceCd=20201251&srResId=12&srShowTime=D&srCategory=L";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(intentURL));
+                    startActivity(intent);
+                } else { //if (restaurantName == "기숙사식당"){
+                    String intentURL = "https://dorm.skku.edu/dorm_suwon/lifeguide/dorm_restaurant_table.jsp";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(intentURL));
+                    startActivity(intent);
+                }
             }
         });
 

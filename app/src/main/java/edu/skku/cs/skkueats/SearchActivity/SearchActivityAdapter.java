@@ -85,7 +85,7 @@ public class SearchActivityAdapter extends BaseAdapter {
         box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
 
         textViewRestaurantName.setText(items.get(i).restaurantName);
-        textViewGrade.setText(items.get(i).price+" 원");
+        textViewGrade.setText(items.get(i).price+" ₩");
         textViewMenus.setText(items.get(i).menus);
         textViewLocation.setText(items.get(i).locations);
 

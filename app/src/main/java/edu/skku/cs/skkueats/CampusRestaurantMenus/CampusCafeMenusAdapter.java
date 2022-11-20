@@ -14,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import java.util.ArrayList;
 import java.util.Random;
 
+import edu.skku.cs.skkueats.CampusCafeInfo.CampusCafeInfoView;
 import edu.skku.cs.skkueats.R;
 import edu.skku.cs.skkueats.RestaurantInfo.RestaurantInfoView;
 
@@ -84,7 +85,7 @@ public class CampusCafeMenusAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
+                Intent intent = new Intent(mContext.getApplicationContext(), CampusCafeInfoView.class);
                 intent.putExtra("id", id);
                 intent.putExtra("RestaurantName", items.get(i).restaurantName);
                 mContext.startActivity(intent);
