@@ -432,7 +432,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             }
         }
         if (res.isEmpty()) {
-            return "뭐든지";
+            return "모두";
         }
         return res;
     }
