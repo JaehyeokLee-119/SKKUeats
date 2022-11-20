@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -81,7 +82,13 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
                     recommendsArray.add(new MenuRecommends(tempJson.getString("restaurant_name"), tempJson.getString("menu_name"), tempJson.getInt("price"), tempJson.getString("main_category")));
                 }
 
+                Random random = new Random();
+                random.setSeed(System.currentTimeMillis());
                 // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
+                while(recommendsArray.size() > 3) {
+                    int toRemove = random.nextInt(recommendsArray.size());
+                    recommendsArray.remove(toRemove);
+                }
                 pushRecommendsToViewer(recommendsArray);
 
             } catch (JSONException e) {
