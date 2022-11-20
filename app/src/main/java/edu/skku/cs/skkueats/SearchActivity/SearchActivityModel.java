@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.skku.cs.skkueats.ApplicationGlobal;
@@ -27,6 +28,8 @@ import okhttp3.Response;
 
 public class SearchActivityModel implements SearchActivityContract.contactModel {
     private ArrayList<SearchResult> searchResultsArray;
+    private ArrayList<String> menuArray;
+    private String menuString;
     private SearchActivityContract.contactView view;
     private ApplicationGlobal applicationGlobal;
     private String serverUrl;
@@ -34,6 +37,7 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         this.view = view;
         this.serverUrl = applicationGlobal.getServerURL();
         searchResultsArray = new ArrayList<>();
+        menuArray = new ArrayList<>();
         this.applicationGlobal = applicationGlobal;
     }
 
@@ -69,7 +73,7 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
                             tempJson.getString("restaurant_name"),
                             tempJson.getString("menu_name"),
                             tempJson.getInt("price"),
-                            tempJson.getString("main_category")));
+                            tempJson.getString("main_category"), 1));
                 }
 
                 pushSearchResultsToViewer(searchResultsArray);
@@ -90,40 +94,56 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
         public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
             final String myResponse = response.body().string();
 
-            String restaurant_name;
-            String menu_name;
-            try {
-                JSONObject jsObj = new JSONObject(myResponse);
-                //restaurant_name = jsObj.getJSONArray("menu").getString("restaurant_name");
-                menu_name = jsObj.getJSONObject("menu").getString("menu_name");
-                // Toast.makeText((Context) view, (CharSequence) restaurant_name, Toast.LENGTH_SHORT).show();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            String res = response.body().string();
-
+            JSONArray restaurant = null;
             JSONObject json = null;
-            JSONArray restraurant = null;
             try {
-                json = new JSONObject(res);
-                restraurant = json.getJSONArray("menu");
-
+                json = new JSONObject(myResponse);
+                restaurant = json.getJSONArray("restaurant");
                 JSONObject tempJson = new JSONObject();
-                for(int i=0; i<restraurant.length(); i++){
-                    tempJson = restraurant.getJSONObject(i);
-                    searchResultsArray.add(new SearchResult(tempJson.getString("restaurant_name"),
-                            tempJson.getString("menu_name"),
-                            tempJson.getInt("price"),
-                            ""));
+                for(int i=0; i<restaurant.length(); i++) {
+                    tempJson = restaurant.getJSONObject(i);
+                    String r_name = tempJson.getString("restaurant_name");
+                    String loc = tempJson.getString("location");
+
+                    OkHttpClient client = new OkHttpClient();
+                    HttpUrl.Builder urlBuilder = HttpUrl.parse(serverUrl+"menus?restaurant_name=" + r_name).newBuilder();
+                    String url = urlBuilder.build().toString();
+                    Request req = new Request.Builder().url(url).build();
+
+                    Response res = client.newCall(req).execute();
+
+                    final String myResponse2 = res.body().string();
+                    JSONArray menus = null;
+                    JSONObject json_menu = null;
+                    try {
+                        json_menu = new JSONObject(myResponse2);
+                        menus = json_menu.getJSONArray("menu");
+                        JSONObject tmpJson = new JSONObject();
+                        for(int k=0; k<menus.length(); k++) {
+                            tmpJson = menus.getJSONObject(k);
+                            menuArray.add(tmpJson.getString("menu_name"));
+                        }
+                        menuString = "";
+                        for(int j=0; j<menuArray.size(); j++) {
+                            menuString += menuArray.get(j);
+                            if(j == menuArray.size() - 1)
+                                break;
+                            menuString += ", ";
+                        }
+                        menuArray.clear();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    searchResultsArray.add(new SearchResult(r_name, menuString, 0, loc, 0));
                 }
 
                 pushSearchResultsToViewer(searchResultsArray);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            pushSearchResultsToViewer(searchResultsArray);
         }
     };
 

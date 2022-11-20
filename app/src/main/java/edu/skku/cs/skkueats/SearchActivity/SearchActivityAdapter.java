@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.Dimension;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
@@ -21,18 +22,21 @@ class SearchResult {
     public String menus;
     public int price;
     public String locations;
+    public int type;
 
-    public SearchResult(String restaurantName, String menus, int price, String locations) {
+    public SearchResult(String restaurantName, String menus, int price, String locations, int type) {
         this.restaurantName = restaurantName;
         this.menus = menus;
         this.price = price;
         this.locations = locations;
+        this.type = type;
     }
     public SearchResult(SearchResult searchResult) {
         this.restaurantName = searchResult.restaurantName;
         this.menus = searchResult.menus;
         this.price = searchResult.price;
         this.locations = searchResult.locations;
+        this.type = searchResult.type;
     }
 }
 
@@ -87,9 +91,17 @@ public class SearchActivityAdapter extends BaseAdapter {
         box.setBackgroundResource(shapeItems[rand.nextInt(shapeItems.length)]);
 
         textViewRestaurantName.setText(items.get(i).restaurantName);
-        textViewGrade.setText(items.get(i).price+" ₩");
+        if(items.get(i).type == 1) {
+            textViewGrade.setText(items.get(i).price+" ₩");
+            textViewLocation.setText(items.get(i).locations);
+        }
+        else if (items.get(i).type == 0) {
+            textViewGrade.setText(items.get(i).locations);
+            textViewLocation.setText("");
+            textViewMenus.setTextSize(Dimension.SP, 10);
+        }
         textViewMenus.setText(items.get(i).menus);
-        textViewLocation.setText(items.get(i).locations);
+
 
         view.setOnClickListener(new View.OnClickListener(){
             @Override
