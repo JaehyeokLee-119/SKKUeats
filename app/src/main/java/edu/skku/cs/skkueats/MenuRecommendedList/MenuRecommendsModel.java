@@ -85,7 +85,7 @@ public class MenuRecommendsModel implements MenuRecommendsContract.contactModel 
                 Random random = new Random();
                 random.setSeed(System.currentTimeMillis());
                 // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
-                while(recommendsArray.size() > 3) {
+                while(recommendsArray.size() > recommendQueryCondition.maxNum) {
                     int toRemove = random.nextInt(recommendsArray.size());
                     recommendsArray.remove(toRemove);
                 }

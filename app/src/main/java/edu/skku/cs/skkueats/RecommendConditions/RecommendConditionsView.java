@@ -44,7 +44,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
 
 
     CheckBox checkBoxActivatePrice;
-    CheckBox checkBoxActivateMinGrade;
+    TextView textViewPriceTitleText;
     TextView textViewPriceText;
     SeekBar seekBarPrice;
     SeekBar seekBarMinGrade;
@@ -178,16 +178,19 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
                 } else {
                     priceValue = 0;
                 }
+
+                if (priceValue == 0) {
+                    priceValue = 999999;
+                }
+
                 RecommendQueryCondition recommendQueryCondition = new RecommendQueryCondition(
                         makeBigCategoryQueryString(),
                         makeSmallCategoryQueryString(),
                         priceValue,
                         makePurposeQueryString(),
                         makeLocationQueryString(),
-                        5
+                        3
                 );
-
-
 
                 Intent intent = new Intent(getApplicationContext(), MenuRecommendsView.class);
                 String[] conditions = new String[]{
@@ -214,9 +217,9 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
 
     public void priceTextChange() {
         if (checkBoxActivatePrice.isChecked())
-            textViewPriceText.setText(String.format(": %d ₩", seekBarPrice.getProgress()*1000));
+            textViewPriceTitleText.setText(String.format("최대가격: %d ₩", seekBarPrice.getProgress()*1000));
         else
-            textViewPriceText.setText(String.format(": 상관없음"));
+            textViewPriceTitleText.setText(String.format("최대가격: 상관없음"));
     }
 
 
@@ -243,6 +246,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
         textViewLocationArrow = findViewById(R.id.textViewLocationArrow);
 
         seekBarPrice = findViewById(R.id.seekBarPrice);
+        textViewPriceTitleText = findViewById(R.id.textViewPriceTitleText);
         textViewPriceText = findViewById(R.id.textViewPriceText);
         checkBoxActivatePrice = findViewById(R.id.checkBoxActivatePrice);
 
@@ -293,7 +297,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
     public String makeBigCategoryQueryString() {
         String res = "";
         if (checkBoxBigAll.isChecked()) {
-            res += "뭐든지";
+            res += "모두";
         } else {
             if (checkBoxBigKorean.isChecked()) {
                 if (!res.isEmpty()) {
@@ -333,14 +337,14 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             }
         }
         if (res.isEmpty()) {
-            return "뭐든지";
+            return "모두";
         }
         return res;
     }
     public String makeSmallCategoryQueryString() {
         String res = "";
         if (checkBoxSmallAll.isChecked()) {
-            res += "뭐든지";
+            res += "모두";
         } else {
             if (checkBoxSmallRice.isChecked()) {
                 if (!res.isEmpty()) {
@@ -386,7 +390,7 @@ public class RecommendConditionsView extends AppCompatActivity implements Recomm
             }
         }
         if (res.isEmpty()) {
-            return "뭐든지";
+            return "모두";
         }
         return res;
     }
