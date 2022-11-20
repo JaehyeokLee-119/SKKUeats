@@ -67,8 +67,14 @@ public class WriteReviewView extends AppCompatActivity implements WriteReviewCon
 
     @Override
     public void reviewComplete(String strToShow) {
-        Toast.makeText(this, "리뷰가 등록되었습니다\n"+strToShow, Toast.LENGTH_SHORT).show();
-        finish();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), strToShow, Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
     }
 
     @Override
@@ -83,11 +89,20 @@ public class WriteReviewView extends AppCompatActivity implements WriteReviewCon
 
     @Override
     public void setSpinnerMenus(String[] menuList) {
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
                 R.layout.spinner_menu_item,
                 menuList);
-        spinner.setAdapter(adapter);
-        spinner.setSelection(0);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                spinner.setAdapter(adapter);
+                spinner.setSelection(0);
+            }
+        });
+
     }
 }
