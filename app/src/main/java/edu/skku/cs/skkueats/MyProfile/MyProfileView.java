@@ -1,5 +1,6 @@
 package edu.skku.cs.skkueats.MyProfile;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.naver.maps.geometry.LatLng;
@@ -67,6 +69,12 @@ public class MyProfileView extends AppCompatActivity implements MyProfileContrac
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        model.fetchReviews(userId);
+    }
+
+    @Override
     public void showReview(String restaurantName, String menu, int grade, String content, boolean isTroll) {
         /*
         받은 정보를 바탕으로 ListView에 Review를 추가하여 화면에 표시한다
@@ -75,7 +83,7 @@ public class MyProfileView extends AppCompatActivity implements MyProfileContrac
             @Override
             public void run() {
                 reviewArray.add(new MyProfileReview(restaurantName, menu, grade, content, isTroll));
-                myProfileReviewAdapter = new MyProfileReviewAdapter(getApplicationContext(), reviewArray);
+                myProfileReviewAdapter = new MyProfileReviewAdapter(getApplicationContext(), reviewArray, userId);
                 reviewList.setAdapter(myProfileReviewAdapter);
             }
         });

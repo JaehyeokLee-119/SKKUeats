@@ -112,6 +112,12 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent resultIntent = new Intent();
+        setResult(100, resultIntent);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

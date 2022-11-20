@@ -41,10 +41,12 @@ class MyProfileReview {
 public class MyProfileReviewAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<MyProfileReview> items;
+    private String id;
 
-    public MyProfileReviewAdapter(Context mContext, ArrayList<MyProfileReview> items) {
+    public MyProfileReviewAdapter(Context mContext, ArrayList<MyProfileReview> items, String id) {
         this.mContext = mContext;
         this.items = items;
+        this.id = id;
     }
 
     @Override
@@ -88,16 +90,18 @@ public class MyProfileReviewAdapter extends BaseAdapter {
         textViewGradeStar.setText(starString);
         textViewReviewContent.setText(items.get(i).content);
 
-        /*
-        view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
-                intent.putExtra("RestaurantName", items.get(i).restaurantName);
-                mContext.startActivity(intent);
-            }
-        });
-        */
+
+//        view.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
+//                intent.putExtra("RestaurantName", items.get(i).restaurantName);
+//                intent.putExtra("id", id);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                mContext.startActivity(intent);
+//            }
+//        });
+
 
         // ListView 클릭 비활성화
         view.setOnTouchListener(new View.OnTouchListener() {
