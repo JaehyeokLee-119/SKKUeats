@@ -71,6 +71,8 @@ public class WriteReviewView extends AppCompatActivity implements WriteReviewCon
             @Override
             public void run() {
                 Toast.makeText(getApplicationContext(), strToShow, Toast.LENGTH_SHORT).show();
+                Intent resultIntent = new Intent();
+                setResult(100, resultIntent);
                 finish();
             }
         });

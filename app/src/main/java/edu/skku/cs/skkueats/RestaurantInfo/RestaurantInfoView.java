@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.naver.maps.geometry.LatLng;
@@ -90,7 +91,7 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
                 Intent intent = new Intent(getApplicationContext(), WriteReviewView.class);
                 intent.putExtra("RestaurantName", restaurantName);
                 intent.putExtra("id", id);
-                startActivity(intent);
+                startActivityForResult(intent,100);
             }
         });
 
@@ -109,6 +110,13 @@ public class RestaurantInfoView extends AppCompatActivity implements OnMapReadyC
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        model.fetchReviews(restaurantName);
     }
 
     @Override

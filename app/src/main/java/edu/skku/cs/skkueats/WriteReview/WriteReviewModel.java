@@ -74,10 +74,11 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
             }
 
             if(check){
-                String strToShow= menuReview.reviewContent+"/ 점수는: "+Double.toString(menuReview.grade);
+//                String strToShow= menuReview.reviewContent+"/ 점수는: "+Double.toString(menuReview.grade);
+                String strToShow= "리뷰를 작성하였습니다.";
                 view.reviewComplete(strToShow);
             }else{
-                String strToShow= "리뷰작성에 실패하였습니다.";
+                String strToShow= "리뷰 작성에 실패하였습니다.";
                 view.reviewComplete(strToShow);
             }
 
@@ -130,17 +131,6 @@ public class WriteReviewModel implements WriteReviewContract.contactModel{
 
 
         client.newCall(request).enqueue(callback2);
-
-        /*
-        menus.add("미가돈코츠라멘");
-        menus.add("사케동");
-        menus.add("쇼유라멘");
-        menus.add("치킨동");
-
-        String[] menuStringArray = menus.toArray(new String[menus.size()]);
-        view.setSpinnerMenus(menuStringArray);
-        */
-
     }
 
     @Override
