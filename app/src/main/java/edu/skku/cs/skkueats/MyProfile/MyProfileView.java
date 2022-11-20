@@ -71,8 +71,14 @@ public class MyProfileView extends AppCompatActivity implements MyProfileContrac
         /*
         받은 정보를 바탕으로 ListView에 Review를 추가하여 화면에 표시한다
          */
-        reviewArray.add(new MyProfileReview(restaurantName, menu, grade, content, isTroll));
-        myProfileReviewAdapter = new MyProfileReviewAdapter(getApplicationContext(), reviewArray);
-        reviewList.setAdapter(myProfileReviewAdapter);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                reviewArray.add(new MyProfileReview(restaurantName, menu, grade, content, isTroll));
+                myProfileReviewAdapter = new MyProfileReviewAdapter(getApplicationContext(), reviewArray);
+                reviewList.setAdapter(myProfileReviewAdapter);
+            }
+        });
+
     }
 }
