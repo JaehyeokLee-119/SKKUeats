@@ -3,7 +3,7 @@
     package="edu.skku.cs.skkueats">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    
+
     <application
         android:name=".ApplicationGlobal"
         android:allowBackup="true"
@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Skkueats">
+
         <activity
             android:name=".Login.LoginView"
             android:exported="true">
@@ -22,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Select.SelectActivity" />
         <activity android:name=".RestaurantInfo.RestaurantInfoView" />
         <activity android:name=".MenuRecommendedList.MenuRecommendsView" />
@@ -33,6 +35,7 @@
         <activity android:name=".RestaurantMenus.RestaurantMenusView" />
         <activity android:name=".CampusRestaurantMenus.CampusCafeMenusView" />
         <activity android:name=".WriteReview.WriteReviewView" />
+        <activity android:name=".CampusCafeInfo.CampusCafeInfoView"/>
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
