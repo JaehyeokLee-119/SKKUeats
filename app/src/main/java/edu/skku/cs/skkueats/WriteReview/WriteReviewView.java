@@ -38,7 +38,6 @@ public class WriteReviewView extends AppCompatActivity implements WriteReviewCon
 
 
         restaurantName = getIntent().getStringExtra("RestaurantName");
-        //restaurantName = "본찌";
         id = getIntent().getStringExtra("id");
         textReviewRestaurantName.setText(restaurantName);
 

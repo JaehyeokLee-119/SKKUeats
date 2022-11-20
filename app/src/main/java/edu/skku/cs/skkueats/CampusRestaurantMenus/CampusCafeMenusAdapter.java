@@ -86,8 +86,8 @@ public class CampusCafeMenusAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext.getApplicationContext(), CampusCafeInfoView.class);
-                intent.putExtra("id", id);
                 intent.putExtra("RestaurantName", items.get(i).restaurantName);
+                intent.putExtra("id", id);
                 mContext.startActivity(intent);
             }
         });

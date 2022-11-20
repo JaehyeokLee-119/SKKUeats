@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.jetbrains.annotations.TestOnly;
 import org.json.JSONException;
 
 import edu.skku.cs.skkueats.ApplicationGlobal;

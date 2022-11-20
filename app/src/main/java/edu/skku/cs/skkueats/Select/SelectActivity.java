@@ -73,6 +73,7 @@ public class SelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), CampusCafeMenusView.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
 

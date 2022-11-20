@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.naver.maps.geometry.LatLng;
@@ -22,6 +23,7 @@ import com.naver.maps.map.overlay.Marker;
 import java.util.ArrayList;
 
 import edu.skku.cs.skkueats.R;
+import edu.skku.cs.skkueats.RestaurantInfo.RestaurantReviewAdapter;
 import edu.skku.cs.skkueats.RestaurantMenus.RestaurantMenusView;
 import edu.skku.cs.skkueats.WriteReview.WriteReviewView;
 
@@ -106,7 +108,7 @@ public class CampusCafeInfoView extends AppCompatActivity implements OnMapReadyC
                 Intent intent = new Intent(getApplicationContext(), WriteReviewView.class);
                 intent.putExtra("RestaurantName", restaurantName);
                 intent.putExtra("id", id);
-                startActivity(intent);
+                startActivityForResult(intent,100);
             }
         });
 
@@ -125,6 +127,13 @@ public class CampusCafeInfoView extends AppCompatActivity implements OnMapReadyC
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        reviewArray.clear();
+        model.fetchReviews(restaurantName);
     }
 
     @Override
@@ -149,9 +158,18 @@ public class CampusCafeInfoView extends AppCompatActivity implements OnMapReadyC
         /*
         받은 정보를 바탕으로 ListView에 Review를 추가하여 화면에 표시한다
          */
-        reviewArray.add(new RestaurantReview(writer, menu, grade, content, isTroll));
-        restaurantReviewAdapter = new CampusCafeReviewAdapter(getApplicationContext(), reviewArray);
-        reviewList.setAdapter(restaurantReviewAdapter);
+//        reviewArray.add(new RestaurantReview(writer, menu, grade, content, isTroll));
+//        restaurantReviewAdapter = new CampusCafeReviewAdapter(getApplicationContext(), reviewArray);
+//        reviewList.setAdapter(restaurantReviewAdapter);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                reviewArray.add(new edu.skku.cs.skkueats.CampusCafeInfo.RestaurantReview(writer, menu, grade, content, isTroll));
+                restaurantReviewAdapter = new CampusCafeReviewAdapter(getApplicationContext(), reviewArray);
+                reviewList.setAdapter(restaurantReviewAdapter);
+            }
+        });
     }
 
     public void setMapCamera(double latitude, double longitude) {

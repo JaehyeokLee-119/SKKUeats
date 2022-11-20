@@ -54,6 +54,7 @@ public class CampusCafeInfoModel implements CampusCafeInfoContract.contactModel 
                 menu = json.getJSONArray("reviews");
 
                 JSONObject tempJson = new JSONObject();
+                reviewArray.clear();
                 for(int i=0; i<menu.length(); i++){
                     tempJson = menu.getJSONObject(i);
                     reviewArray.add(new edu.skku.cs.skkueats.CampusCafeInfo.RestaurantReview(tempJson.getString("user_id"), tempJson.getString("menu_name"), tempJson.getInt("grade"), tempJson.getString("review_contents"), tempJson.getBoolean("validity")));
@@ -83,7 +84,6 @@ public class CampusCafeInfoModel implements CampusCafeInfoContract.contactModel 
         client.newCall(request).enqueue(callback);
 
         // 메뉴 정보 Response가 오면 아래 메소드를 실행시켜서 review를 view에 표시
-        pushReviewsToViewer(reviewArray);
     }
 
     @Override
