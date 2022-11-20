@@ -40,10 +40,12 @@ class SearchResult {
 public class SearchActivityAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<SearchResult> items;
+    private String id;
 
-    public SearchActivityAdapter(Context mContext, ArrayList<SearchResult> items) {
+    public SearchActivityAdapter(Context mContext, ArrayList<SearchResult> items, String id) {
         this.mContext = mContext;
         this.items = items;
+        this.id = id;
     }
 
     @Override
@@ -94,7 +96,8 @@ public class SearchActivityAdapter extends BaseAdapter {
             public void onClick(View view){
                 Intent intent = new Intent(mContext.getApplicationContext(), RestaurantInfoView.class);
                 intent.putExtra("RestaurantName",items.get(i).restaurantName);
-                mContext.startActivity(intent);
+                intent.putExtra("id", id);
+                mContext.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
         return view;
