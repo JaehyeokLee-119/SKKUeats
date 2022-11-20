@@ -26,6 +26,7 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
     private Button buttonSearch;
     private int searchCondition; // 0: 가게이름, 1: 메뉴이름
     private EditText editTextSearchContent;
+    private String id;
 
     /*
     검색 버튼을 누르면 버튼 아래 ListView에 검색결과를 search_result_item로 나열해서 보여줌
@@ -35,6 +36,8 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         this.savedInstanceState = savedInstanceState;
+
+        id = getIntent().getStringExtra("id");
 
         /*
         View 생성시:
@@ -87,9 +90,14 @@ public class SearchActivityView extends AppCompatActivity implements SearchActiv
         /*
         받은 SearchResult를 바탕으로 ListView에 Search Result를 추가하여 화면에 표시한다
          */
-        searchResultArray.add(new SearchResult(searchResult));
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                searchResultArray.add(new SearchResult(searchResult));
 //        restaurantReviewAdapter = new MenuRecommendsAdapter(getApplicationContext(), recommendsArray);
-        searchActivityAdapter = new SearchActivityAdapter(this, searchResultArray);
-        searchResultList.setAdapter(searchActivityAdapter);
+                searchActivityAdapter = new SearchActivityAdapter(getApplicationContext(), searchResultArray, id);
+                searchResultList.setAdapter(searchActivityAdapter);
+            }
+        });
     }
 }

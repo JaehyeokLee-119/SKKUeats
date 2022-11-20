@@ -13,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 import edu.skku.cs.skkueats.ApplicationGlobal;
@@ -44,7 +46,10 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
     private Callback callback_menu = new Callback() {
         @Override
         public void onFailure(@NonNull Call call, @NonNull IOException e) {
-            e.printStackTrace();
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            String ex = sw.toString();
+            Log.v("aaa", ex);
         }
 
         @Override
@@ -53,8 +58,6 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
 
             JSONArray menu = null;
             JSONObject json = null;
-
-            Log.v("aaa", myResponse.toString());
 
             try {
                 json = new JSONObject(myResponse);
@@ -151,9 +154,6 @@ public class SearchActivityModel implements SearchActivityContract.contactModel 
 
             client.newCall(req).enqueue(callback_menu);
         }
-
-        //pushSearchResultsToViewer(searchResultsArray);
-
     }
 
     @Override
